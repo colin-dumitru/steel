@@ -11,7 +11,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
-  <component name="CoverageDataManager" choice="3" />
+  <component name="Commander">
+    <leftPanel />
+    <rightPanel />
+    <splitter proportion="0.5" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
     <option name="REVERSE_PATCH" value="false" />
@@ -78,13 +82,65 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Socket.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Socket.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/Socket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="189" column="0" selection-start="8831" selection-end="8831" vertical-scroll-proportion="2.1653225">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="12" column="32" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Node.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/engine/world/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="4" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vector.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Vector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="16" selection-start="3192" selection-end="3192" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CachedMatrix4x4.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/CachedMatrix4x4.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="113" column="26" selection-start="5561" selection-end="5561" vertical-scroll-proportion="1.5472813">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Matrix.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Matrix.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="113" column="31" selection-start="5660" selection-end="5660" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArithmeticException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/ArithmeticException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="13" selection-start="123" selection-end="175" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Matrix4x4.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Matrix4x4.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="17" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,13 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/array/TypedArray.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/SocketEvent.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/SocketCloseEvent.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/MessagePort.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/concurent/EventThreadEntryPoint.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/concurent/EventThreadContainer.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/concurent/EventThread.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/NetworkException.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/Message.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/SocketObserver.java" />
@@ -115,6 +164,13 @@
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/Socket.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/steel/client/GameCore.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/Main.gwt.xml" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/engine/world/Node.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/ArithmeticException.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Matrix.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Vector.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/CachedMatrix.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Matrix4x4.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/CachedMatrix4x4.java" />
       </list>
     </option>
   </component>
@@ -148,30 +204,64 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+          </PATH>
+        </subPane>
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="web-client">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            <PATH_ELEMENT USER_OBJECT="web-client">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="edu.catalindumitru.gwt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="edu/catalindumitru/gwt">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="web-client">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="edu/catalindumitru/gwt">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="engine/world">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -230,36 +320,41 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gwt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="socket" />
+              <option name="myItemId" value="math" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Favorites" />
-      <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="edu.catalindumitru.gwt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -270,7 +365,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="fileTemplates" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="GWT.GenerateCompileReport.Module" value="edu.catalindumitru.gwt.Main" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -292,6 +387,7 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -310,6 +406,7 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -330,6 +427,7 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
@@ -339,6 +437,7 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -365,6 +464,7 @@
         <option name="BuildArtifacts" enabled="false" />
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -376,6 +476,7 @@
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
         <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
     <configuration default="false" name="steel" type="GWT.ConfigurationType" factoryName="GWT Configuration">
@@ -431,29 +532,39 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39954075" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295063" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3295063" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31917337" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19325154" sideWeight="0.21814007" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19325154" sideWeight="0.21814007" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19325154" sideWeight="0.6004592" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19386503" sideWeight="0.68082666" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969324" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295063" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
@@ -465,6 +576,7 @@
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
@@ -488,136 +600,93 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/../lib/gwt-2.3.0/gwt-dev.jar!/com/google/gwt/dev/shell/ModuleSpaceOOPHM.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="47" selection-start="945" selection-end="945" vertical-scroll-proportion="-10.88" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../lib/gwt-2.3.0/gwt-dev.jar!/com/google/gwt/dev/shell/BrowserChannelServer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="19" selection-start="3064" selection-end="3064" vertical-scroll-proportion="0.33187774" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../lib/gwt-2.3.0/gwt-dev.jar!/com/google/gwt/dev/shell/OophmSessionHandler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="59" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.6462882" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../lib/gwt-2.3.0/gwt-dev.jar!/com/google/gwt/core/ext/TreeLogger.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="52" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.35152838" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/MessagePort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="16" selection-start="737" selection-end="737" vertical-scroll-proportion="0.4798387" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/NetworkException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="50" selection-start="429" selection-end="429" vertical-scroll-proportion="0.48833033">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/SocketObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="16" selection-start="241" selection-end="241" vertical-scroll-proportion="0.30520648">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../lib/gwt-2.3.0/gwt-dev.jar!/com/google/gwt/dev/shell/ModuleSpace.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="28" selection-start="4120" selection-end="4120" vertical-scroll-proportion="0.35227272">
-          <folding />
-        </state>
+        <state line="57" column="28" selection-start="4120" selection-end="4120" vertical-scroll-proportion="0.35227272" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/concurent/EventThreadContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="10" selection-start="3795" selection-end="3795" vertical-scroll-proportion="1.6068548">
-          <folding>
-            <marker date="1309342728987" expanded="true" signature="913:1465" placeholder="{...}" />
-            <marker date="1309342728987" expanded="true" signature="1114:1263" placeholder="{...}" />
-            <marker date="1309342728987" expanded="true" signature="1312:1459" placeholder="{...}" />
-            <marker date="1309342728987" expanded="true" signature="2807:2839" placeholder="{...}" />
-            <marker date="1309342728987" expanded="true" signature="3139:3180" placeholder="{...}" />
-            <marker date="1309342728987" expanded="true" signature="3490:3531" placeholder="{...}" />
-            <marker date="1309342728987" expanded="true" signature="4163:4196" placeholder="{...}" />
-            <marker date="1309342728987" expanded="true" signature="4610:4653" placeholder="{...}" />
-          </folding>
-        </state>
+        <state line="70" column="10" selection-start="3795" selection-end="3795" vertical-scroll-proportion="1.6068548" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/NativeSocketObserver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="16" selection-start="224" selection-end="224" vertical-scroll-proportion="0.37701613">
-          <folding />
-        </state>
+        <state line="11" column="16" selection-start="224" selection-end="224" vertical-scroll-proportion="0.37701613" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/NetworkMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="40" selection-start="4324" selection-end="4324" vertical-scroll-proportion="0.82258064">
-          <folding />
-        </state>
+        <state line="100" column="40" selection-start="4324" selection-end="4324" vertical-scroll-proportion="0.82258064" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/SocketEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.41129032">
-          <folding>
-            <marker date="1309360657824" expanded="true" signature="800:833" placeholder="{...}" />
-            <marker date="1309360657824" expanded="true" signature="1084:1119" placeholder="{...}" />
-            <marker date="1309360657824" expanded="true" signature="1375:1415" placeholder="{...}" />
-            <marker date="1309360657824" expanded="true" signature="1679:1724" placeholder="{...}" />
-          </folding>
-        </state>
+        <state line="13" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.41129032" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/NativeSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="10" selection-start="4889" selection-end="4889" vertical-scroll-proportion="0.6229839">
-          <folding>
-            <marker date="1309360819228" expanded="true" signature="1064:1106" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="1429:1479" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="1804:1854" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="2168:2898" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="2210:2311" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="2361:2486" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="2536:2685" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="2737:2889" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="3195:3232" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="3525:3564" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="3860:3903" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="4197:4236" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="4528:4565" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="4852:4884" placeholder="{...}" />
-          </folding>
-        </state>
+        <state line="88" column="10" selection-start="4889" selection-end="4889" vertical-scroll-proportion="0.6229839" />
+      </provider>
+    </entry>
+    <entry file="jar://E:/programs/JDK/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="194" column="28" selection-start="9314" selection-end="9314" vertical-scroll-proportion="-5.5602837" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/steel/client/GameCore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="61" selection-start="1714" selection-end="1714" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="54" column="61" selection-start="1714" selection-end="1714" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/Main.gwt.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="59" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="6" column="59" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/Socket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="0" selection-start="8831" selection-end="8831" vertical-scroll-proportion="2.1653225">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="12" column="32" selection-start="277" selection-end="277" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/engine/world/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="4" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="16" selection-start="3192" selection-end="3192" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Matrix4x4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="17" selection-start="1638" selection-end="1638" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/ArithmeticException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="123" selection-end="175" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Matrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="31" selection-start="5660" selection-end="5660" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/CachedMatrix4x4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="26" selection-start="5561" selection-end="5561" vertical-scroll-proportion="1.5472813">
+          <folding />
         </state>
       </provider>
     </entry>
