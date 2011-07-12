@@ -1,4 +1,4 @@
-package edu.catalindumitru.gwt.math;
+package edu.catalindumitru.bee.math;
 
 /**
  * Created by IntelliJ IDEA.

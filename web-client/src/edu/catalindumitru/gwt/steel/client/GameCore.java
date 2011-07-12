@@ -12,6 +12,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
+import edu.catalindumitru.bee.network.socket.NetworkException;
+import edu.catalindumitru.bee.network.socket.NetworkMessage;
+import edu.catalindumitru.bee.network.socket.SocketObserver;
 import edu.catalindumitru.gwt.socket.*;
 
 /**
@@ -35,7 +38,7 @@ public class GameCore implements EntryPoint {
     public void onModuleLoad() {
 
         try {
-            final Socket nativeSocket = new Socket();
+            final JSSocket nativeSocket = new JSSocket();
 
             nativeSocket.addObserver(new SocketObserver() {
                 public void onNetworkMessage(NetworkMessage message) {

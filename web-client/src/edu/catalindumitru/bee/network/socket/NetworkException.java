@@ -1,4 +1,4 @@
-package edu.catalindumitru.gwt.socket;
+package edu.catalindumitru.bee.network.socket;
 
 
 /**

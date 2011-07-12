@@ -7,10 +7,15 @@ package edu.catalindumitru.gwt.socket;
  * Time: 5:10 PM
  * To change this template use File | Settings | File Templates.
  */
+ import edu.catalindumitru.bee.network.socket.NetworkException;
+ import edu.catalindumitru.bee.network.socket.NetworkMessage;
+ import edu.catalindumitru.bee.network.socket.Socket;
+ import edu.catalindumitru.bee.network.socket.SocketObserver;
+
  import java.util.List;
 import java.util.LinkedList;
 
-public class Socket implements NativeSocketObserver {
+public class JSSocket implements NativeSocketObserver , Socket{
     protected NativeSocket _socket;
     protected List<SocketObserver> _observers;
     protected String _url;
@@ -22,7 +27,7 @@ public class Socket implements NativeSocketObserver {
      * Creates an empty socket, not connected to anything. Any subsequent operations which require a valid connection
      * will throw a NetworkException.
      */
-    public Socket() {
+    public JSSocket() {
         this._observers = new LinkedList<SocketObserver>();
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -34,7 +39,7 @@ public class Socket implements NativeSocketObserver {
      * @param url The url of the host. This url must contain the full url, protocol and port.
      * @throws NetworkException Will be thrown if the url is invalid.
      */
-    public Socket(String url) throws NetworkException{
+    public JSSocket(String url) throws NetworkException{
         this();
 
         try{

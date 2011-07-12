@@ -2,16 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.catalindumitru.gwt.type;
+package edu.catalindumitru.bee.type;
 
 /**
- *
+ * A class that really shouldn't be used on it's own. It's more of a definition to be used with
+ * typed array than an actual implementation.
  * @author colin
  */
-public class UByte extends Number {
-    public static final Class<UByte> TYPE = UByte.class;
+public class UInteger extends Number{
+    public static final Class<UInteger> TYPE = UInteger.class;
     
-    protected byte _val;
+    protected int _val;
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
     /**
@@ -19,9 +20,9 @@ public class UByte extends Number {
      * MAX_VALUE
      * @param val 
      */
-    public void set(byte val) {
+    public void set(int val) {
         if(val < 0)
-            val = (byte) (Byte.MAX_VALUE + val);
+            val = Integer.MAX_VALUE + val;
         
         this._val = val;
     }
@@ -31,7 +32,7 @@ public class UByte extends Number {
      * Returns the value stored inside of this class.
      * @return 
      */
-    public byte get() {
+    public int get() {
         return this._val;
     }
     //----------------------------------------------------------------------------------------------
@@ -58,4 +59,5 @@ public class UByte extends Number {
     public double doubleValue() {
         return (double)this._val;
     }
+    
 }

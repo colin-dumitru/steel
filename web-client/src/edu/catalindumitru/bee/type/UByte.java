@@ -2,17 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.catalindumitru.gwt.type;
+package edu.catalindumitru.bee.type;
 
 /**
- * A class that really shouldn't be used on it's own. It's more of a definition to be used with
- * typed array than an actual implementation.
+ *
  * @author colin
  */
-public class UInteger extends Number{
-    public static final Class<UInteger> TYPE = UInteger.class;
+public class UByte extends Number {
+    public static final Class<UByte> TYPE = UByte.class;
     
-    protected int _val;
+    protected byte _val;
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
     /**
@@ -20,9 +19,9 @@ public class UInteger extends Number{
      * MAX_VALUE
      * @param val 
      */
-    public void set(int val) {
+    public void set(byte val) {
         if(val < 0)
-            val = Integer.MAX_VALUE + val;
+            val = (byte) (Byte.MAX_VALUE + val);
         
         this._val = val;
     }
@@ -32,7 +31,7 @@ public class UInteger extends Number{
      * Returns the value stored inside of this class.
      * @return 
      */
-    public int get() {
+    public byte get() {
         return this._val;
     }
     //----------------------------------------------------------------------------------------------
@@ -59,5 +58,4 @@ public class UInteger extends Number{
     public double doubleValue() {
         return (double)this._val;
     }
-    
 }

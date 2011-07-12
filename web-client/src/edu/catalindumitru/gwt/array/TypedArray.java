@@ -5,9 +5,9 @@
 package edu.catalindumitru.gwt.array;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import edu.catalindumitru.gwt.type.UByte;
-import edu.catalindumitru.gwt.type.UInteger;
-import edu.catalindumitru.gwt.type.UShort;
+import edu.catalindumitru.bee.type.UByte;
+import edu.catalindumitru.bee.type.UInteger;
+import edu.catalindumitru.bee.type.UShort;
 
 /**
  * Container for typed arrays found in JavaScript.

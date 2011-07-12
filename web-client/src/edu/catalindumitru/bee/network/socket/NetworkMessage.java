@@ -1,4 +1,4 @@
-package edu.catalindumitru.gwt.socket;
+package edu.catalindumitru.bee.network.socket;
 
 /**
  * Created by IntelliJ IDEA.
@@ -6,6 +6,8 @@ package edu.catalindumitru.gwt.socket;
  * Date: 6/29/11
  * Time: 5:25 PM
   */
+
+import edu.catalindumitru.gwt.socket.JSSocket;
 
 /**
  *  Container class for network events which pass beween the socket and every observer atached to the socket
@@ -20,7 +22,7 @@ public class NetworkMessage {
 
     protected String _message;
     protected EVENT_TYPE _type;
-    protected Socket _from;
+    protected JSSocket _from;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
@@ -31,7 +33,7 @@ public class NetworkMessage {
      * @param from  the originator of the event. Useful for differentiating subject sockets for observers which listen
      * to multiple sockets
      */
-    public NetworkMessage(String _message, EVENT_TYPE _type, Socket from) {
+    public NetworkMessage(String _message, EVENT_TYPE _type, JSSocket from) {
         this._message = _message;
         this._type = _type;
         this._from = from;
@@ -93,12 +95,12 @@ public class NetworkMessage {
      * return the originator of the message
      * @return the socket from which the message has originated
      */
-    public Socket get_from() {
+    public JSSocket get_from() {
         return _from;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void set_from(Socket _from) {
+    public void set_from(JSSocket _from) {
         this._from = _from;
     }
 

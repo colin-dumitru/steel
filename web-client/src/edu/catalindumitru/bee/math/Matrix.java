@@ -1,4 +1,4 @@
-package edu.catalindumitru.gwt.math;
+package edu.catalindumitru.bee.math;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,7 +15,7 @@ public class Matrix {
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Matrix() {
-        /*nothing yet fot emypy constructor*/
+        /*nothing yet fot empty constructor*/
         this.elem = new float[0][0];
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -25,6 +25,18 @@ public class Matrix {
         this.height = height;
 
         this.elem = new float[width][height];
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public Matrix(int width, int height, float value) {
+        this.width = width;
+        this.height = height;
+
+        this.elem = new float[width][height];
+
+        for(int i = 0; i < this.width; i++)
+            for(int j = 0; j < this.height; j++)
+                this.elem[i][j] = value;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -55,7 +67,7 @@ public class Matrix {
     public void set(int x, int y, float value) {
         /*check for index bounds*/
         if((x < 0 || x >= this.width) || (y < 0 || y >= this.height))
-            return;
+            throw new ArrayIndexOutOfBoundsException();
 
         this.elem[x][y] = value;
     }
@@ -82,7 +94,6 @@ public class Matrix {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    @Override
     public Matrix clone() {
         return new Matrix(this);
     }
@@ -143,6 +154,29 @@ public class Matrix {
         this.elem = ret.elem;
         this.width = ret.width;
         this.height = ret.height;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public static Matrix identity(int width, int height) {
+        /*create a new empty matrix*/
+        Matrix ret = new Matrix(width, height, 0);
+
+        int ipos = 0;
+
+        try{
+            for(int i = 0; i < width; i++)
+                ret.set(i, i, 1);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            return ret;
+        }
+
+        return ret;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public static Matrix zero(int width, int height) {
+        /*return a new empty matrix initialized to 0*/
+        return new Matrix(width, height, 0);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
