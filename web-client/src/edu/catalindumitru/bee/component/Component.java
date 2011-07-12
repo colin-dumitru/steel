@@ -11,9 +11,14 @@ import edu.catalindumitru.bee.world.Node;
  * @author colin
  */
 public interface Component {
-    public void setParrent(Node node);
-    public void update(float delta);
+    int E_STATE_CHANGED = 10;
+
+    public void setParent(Node node);
+
     public int getType();
+    public void setObserver(ComponentObserver observer);
+
+    public void update(float delta);
     public void destroy();
     
 }

@@ -66,7 +66,68 @@
     <favorites_list name="web-client" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Node.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/world/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="574" column="111" selection-start="26542" selection-end="26542" vertical-scroll-proportion="-0.64775413">
+              <folding>
+                <element signature="method#getChild#0;class#Node#0" expanded="false" />
+                <element signature="docComment;method#hasChild#0;class#Node#0" expanded="false" />
+                <element signature="method#scale#0;class#Node#0" expanded="false" />
+                <element signature="method#scale#1;class#Node#0" expanded="false" />
+                <element signature="method#setTranslation#0;class#Node#0" expanded="false" />
+                <element signature="method#setTranslation#1;class#Node#0" expanded="false" />
+                <element signature="method#setRotation#0;class#Node#0" expanded="false" />
+                <element signature="method#setRotation#1;class#Node#0" expanded="false" />
+                <element signature="method#setRotation#2;class#Node#0" expanded="false" />
+                <element signature="method#setScale#0;class#Node#0" expanded="false" />
+                <element signature="method#setScale#1;class#Node#0" expanded="false" />
+                <element signature="method#updateTransform#0;class#Node#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Component.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/component/Component.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="29" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="World.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/world/World.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="8" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComponentResolver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/component/ComponentResolver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="31" selection-start="1023" selection-end="1023" vertical-scroll-proportion="-14.48">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComponentObserver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/component/ComponentObserver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="62" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -76,12 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/CachedMatrix4x4.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/util/Cell.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/core/UniqueNameGenerator.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Matrix.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Vector.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/math/Matrix4x4.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/core/Logger.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/component/Component.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/engine/world/Node.java" />
@@ -92,6 +147,12 @@
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/JSSocket.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/Socket.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/NetworkMessage.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/world/NodeObserver.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/component/ComponentResolver.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/component/ComponentObserver.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/component/Component.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/world/World.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/world/Node.java" />
       </list>
     </option>
   </component>
@@ -125,6 +186,69 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="All">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="web-client">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="web-client">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="edu/catalindumitru/gwt">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="web-client">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="edu/catalindumitru/gwt">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="engine/world">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -162,6 +286,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="gwt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalindumitru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="world" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -239,71 +389,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="All">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web-client">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalindumitru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web-client">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="edu/catalindumitru/gwt">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="web-client">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="edu/catalindumitru/gwt">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="engine/world">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="component" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -349,9 +462,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RunManager" selected="GWT Configuration.steel">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -407,12 +520,14 @@
         <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
-      <module name="" />
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
         <option name="PhingTarget" enabled="false" />
       </method>
@@ -444,14 +559,12 @@
         <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
+    <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
+      <module name="" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
         <option name="PhingTarget" enabled="false" />
       </method>
@@ -511,7 +624,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39954075" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -520,11 +632,12 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19325154" sideWeight="0.21814007" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19386503" sideWeight="0.67124856" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19386503" sideWeight="0.67124856" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969324" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39977092" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -577,142 +690,109 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/Socket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="60" selection-start="575" selection-end="575" vertical-scroll-proportion="0.51699466" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/NetworkException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="13" selection-start="200" selection-end="250" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/JSSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="186" column="59" selection-start="8877" selection-end="8933" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/CloseEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/SocketObserver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="43" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/MessagePort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/NativeSocketObserver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/NetworkMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/SocketEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.3649374" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/NativeSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="13" selection-start="234" selection-end="234" vertical-scroll-proportion="0.33273703" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/world/NodeObserver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="56" selection-start="570" selection-end="570" vertical-scroll-proportion="0.30141845">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/component/ComponentObserver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="62" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/component/ComponentResolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="31" selection-start="1023" selection-end="1023" vertical-scroll-proportion="-14.48">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/component/Component.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="25" selection-start="351" selection-end="351" vertical-scroll-proportion="0.24113475">
+        <state line="13" column="29" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/world/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="8" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/world/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="471" column="5" selection-start="23084" selection-end="23084" vertical-scroll-proportion="1.0638298">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/core/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="26" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/util/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="26" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/type/UByte.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/steel/client/GameCore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="61" selection-start="1718" selection-end="1718" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/Socket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="60" selection-start="575" selection-end="575" vertical-scroll-proportion="0.51699466">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/NetworkException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="200" selection-end="250" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/JSSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="59" selection-start="8877" selection-end="8933" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/CloseEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
+        <state line="574" column="111" selection-start="26542" selection-end="26542" vertical-scroll-proportion="-0.64775413">
           <folding>
-            <marker date="1309360657828" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360657828" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360657828" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/SocketObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="43" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/MessagePort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1309341779174" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309341779174" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309341779174" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/NativeSocketObserver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="17" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/bee/network/socket/NetworkMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/SocketEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="277" selection-end="277" vertical-scroll-proportion="0.3649374">
-          <folding>
-            <marker date="1309360657824" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360657824" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360657824" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360657824" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/socket/NativeSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="234" selection-end="234" vertical-scroll-proportion="0.33273703">
-          <folding>
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1309360819228" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <element signature="method#getChild#0;class#Node#0" expanded="false" />
+            <element signature="docComment;method#hasChild#0;class#Node#0" expanded="false" />
+            <element signature="method#scale#0;class#Node#0" expanded="false" />
+            <element signature="method#scale#1;class#Node#0" expanded="false" />
+            <element signature="method#setTranslation#0;class#Node#0" expanded="false" />
+            <element signature="method#setTranslation#1;class#Node#0" expanded="false" />
+            <element signature="method#setRotation#0;class#Node#0" expanded="false" />
+            <element signature="method#setRotation#1;class#Node#0" expanded="false" />
+            <element signature="method#setRotation#2;class#Node#0" expanded="false" />
+            <element signature="method#setScale#0;class#Node#0" expanded="false" />
+            <element signature="method#setScale#1;class#Node#0" expanded="false" />
+            <element signature="method#updateTransform#0;class#Node#0" expanded="false" />
           </folding>
         </state>
       </provider>

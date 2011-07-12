@@ -5,6 +5,7 @@
 package edu.catalindumitru.bee.world;
 
 import edu.catalindumitru.bee.component.Component;
+import edu.catalindumitru.bee.component.ComponentObserver;
 import edu.catalindumitru.bee.core.Logger;
 import edu.catalindumitru.bee.core.UniqueNameGenerator;
 import edu.catalindumitru.bee.math.*;
@@ -19,7 +20,7 @@ import java.util.*;
  *
  * @author colin
  */
-public class Node {
+public class Node implements ComponentObserver{
     /*predefined axis*/
     public static final Vector V_UP = new Vector(new float[]{0, 1, 0});
     public static final Vector V_DOWN = new Vector(new float[]{0, -1, 0});
@@ -27,6 +28,14 @@ public class Node {
     public static final Vector V_RIGHT = new Vector(new float[]{1, 0, 0});
     public static final Vector V_FRONT = new Vector(new float[]{0, 0, 1});
     public static final Vector V_BACK = new Vector(new float[]{0, 0, -1});
+
+    public static final int E_COMPONENT_STATE_CHANGE = 10;
+    public static final int E_COMPONENT_ADD = 11;
+    public static final int E_COMPONENT_REMOVE = 12;
+
+    public static final int E_NODE_STATE_CHANGE = 20;
+    public static final int E_NODE_ADD = 21;
+    public static final int E_NODE_REMOVE = 22;
 
 
     /*the transform of this node. The transform is world aligned, and only updated when it is queried - this value is the
@@ -60,15 +69,27 @@ public class Node {
     * transform when queried*/
     protected boolean needTransformUpdate;
 
+    /*the list of observers which are listening to this node*/
+    protected Set<NodeObserver> observers;
+
 
     /*The number of node instances which have been created. Used to automatically generate a node name is no one is given*/
      protected static UniqueNameGenerator nameGenerator;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Creates a new empty node, without components with origin coordinates.
+     * @param name the name to give the node.
+     */
     public Node(String name) {
+        /*initialize containers*/
         this.children = new TreeMap<String, Node> ();
         this.components = new TreeMap<Integer, Component>();
+        this.observers = new TreeSet<NodeObserver>();
+
+        /*set the unique name of this node*/
         this.name = name;
 
         /*reset the transform and matrices*/
@@ -76,11 +97,19 @@ public class Node {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Creates a new empty node of which the default name is auto-generated using the static name generator.
+     */
     public Node() {
         this("Node_" + Node.nameGenerator.next("Node"));
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Resets the translation, rotation and scale to default (origin, 0 rotation across all axes and 1:1 scale).
+     */
     public void resetTransform() {
         this.translation = new Vector(new float[]{0, 0, 0});
         this.rotation = new Vector(new float[]{0, 0, 0});
@@ -95,21 +124,40 @@ public class Node {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Sets the name generator used when creating a node where the name is irelephant but needs to be unique.
+     * @param generator
+     */
     public static void setNameGenerator(UniqueNameGenerator generator) {
         Node.nameGenerator = generator;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Sets the parent of this node.
+     * @param parent the parent node.
+     */
     public void setParent(Node parent) {
         this.parent = parent;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Removes the parent from the node.
+     */
     public void removeParent(){
         this.parent = null;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the parent of the node. If no parent node is present, null is returned.
+     * @return
+     */
     public Node getParent(){
         return this.parent;
     }
@@ -117,7 +165,8 @@ public class Node {
     //------------------------------------------------------------------------------------------------------------------
     /**
      * Sets the name of this node. Setting the name is very important because it needs to by unique to be correctly
-     * identified in the node list of it's parrent. Also no 2 nodes ca exist in the same context with the same name.
+     * identified in the node list of it's parent. Also no 2 nodes ca exist in the same context with the same name
+     * (context being parent node or world).
      */
     public void setName(String name){
         this.name = name;
@@ -137,17 +186,24 @@ public class Node {
 
     /**
      * Adds the given node as a child to this node. If another node with the same name exists it will be replaced.
-     * @param child
+     * Any observers attached to this node will be added to the child node.
+     * @param child the child to add.
      */
     public void addChild(Node child){
         this.children.put(child.getName(), child);
+
+        child.setParent(this);
+        this.updateChild(child);
+
+        this.sendEvent(E_NODE_ADD, null);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
     /**
      * Remove the giver child from the child list. This function will traverse the entire list and do a comparison
-     * by reference, which is slower than removing a child by it's name.
+     * by reference, which is slower than removing a child by it's name. Removing a child this way removes also any
+     * observers from the child node, and any children below it's level.
      * @param child the node to remove
      */
     public void removeChild(Node child) {
@@ -160,16 +216,29 @@ public class Node {
                 return;
             }
         }
+
+        child.removeAllObservers();
+        child.removeParent();
+
+        this.sendEvent(E_NODE_REMOVE, null);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
     /**
-     * Removes a child with the given name. If no child has that name, no child will be removed.
+     * Removes a child with the given name. If no child has that name, no child will be removed. Removing a child this
+     * way removes also any observers from the child node, and any children below it's level.
      * @param name the name of the child to remove
      */
     public void removeChild(String name) {
-        this.children.remove(name);
+        Node child = this.children.remove(name);
+
+        if(child != null)
+            child.removeAllObservers();
+
+        child.removeParent();
+
+        this.sendEvent(E_NODE_REMOVE, null);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -262,6 +331,13 @@ public class Node {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Translates the node across all three axes.
+     * @param x amount to translate across the X axis.
+     * @param y amount to translate across the Y axis.
+     * @param z amount to translate across the Z axis.
+     */
     public void translate(float x, float y, float z) {
         this.translation.add(Vector.X, x);
         this.translation.add(Vector.Y, y);
@@ -271,6 +347,11 @@ public class Node {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Translates the node across all axes using the given vector. The vector need to have at least 3 coordinates.
+     * @param translation the amount to move across all axes.
+     */
     public void translate(Vector translation){
         try{
             this.translation.add(Vector.X, translation.get(Vector.X));
@@ -285,6 +366,12 @@ public class Node {
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Rotates the node across all axes using the given values.
+     * @param x pitch
+     * @param y yaw
+     * @param z roll
+     */
     public void rotate(float x, float y, float z) {
         this.rotation.add(Vector.X, x);
         this.rotation.add(Vector.Y, y);
@@ -294,6 +381,11 @@ public class Node {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Rotates the node using the angles provided by the vector. The vector need to have at least 3 coordinates.
+     * @param rotation
+     */
     public void rotate(Vector rotation){
         try{
             this.rotation.add(Vector.X, rotation.get(Vector.X));
@@ -307,6 +399,12 @@ public class Node {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Rotates the node across the given axis using the given angle. The axis need to be normalized to be used correctly.
+     * @param axis
+     * @param angle
+     */
     public void rotate(Vector axis, float angle) {
         /*The axis needs to be normalized for this to work*/
         try{
@@ -472,6 +570,11 @@ public class Node {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the cached transform of the node, representing a combination of translation, rotation and scale.
+     * @return
+     */
     public Matrix4x4 getTransform() {
         if(this.needTransformUpdate)
             this.updateTransform();
@@ -482,11 +585,15 @@ public class Node {
     //------------------------------------------------------------------------------------------------------------------
     public void addComponent(Component component) {
         this.components.put(component.getType(), component);
+
+        this.sendEvent(E_COMPONENT_ADD, null);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void removeComponent(int type) {
         this.components.remove(type);
+
+        this.sendEvent(E_COMPONENT_REMOVE, null);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -495,5 +602,49 @@ public class Node {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    
+    public void addObserver(NodeObserver observer) {
+        this.observers.add(observer);
+
+        /*Perpetuate this observer to children*/
+        for (Map.Entry<String, Node> entry: this.children.entrySet())
+            entry.getValue().addObserver(observer);
+
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void removeObserver(NodeObserver observer) {
+        this.observers.add(observer);
+
+        /*Perpetuate the change to children*/
+        for (Map.Entry<String, Node> entry: this.children.entrySet())
+            entry.getValue().removeObserver(observer);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void removeAllObservers(){
+        this.observers.clear();
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    private void updateChild(Node child){
+        for(NodeObserver observer : this.observers)
+            child.addObserver(observer);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    protected void sendEvent(int id, Object param) {
+        for(NodeObserver observer : this.observers)
+            observer.onEvent(id, param, this);
+
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public void onEvent(int id, Object param, Component from) {
+        switch(id) {
+            case Component.E_STATE_CHANGED:
+                this.sendEvent(id, from);
+                break;
+        }
+    }
 }
