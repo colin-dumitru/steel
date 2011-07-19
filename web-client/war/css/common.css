@@ -1,0 +1,103 @@
+html{
+    position: relative;
+    background-color: #42627a;
+
+    padding:0px;
+}
+
+body{
+    position: relative;
+    background: transparent;
+
+    width: 100%;
+    margin:  0px;
+    padding: 0px;
+}
+
+.horizontalBanner{
+    position:relative;
+
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+
+    text-align: center;
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.01, rgb(196,189,106)),
+        color-stop(1, rgb(157,163,121))
+    );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgb(196,189,106) 1%,
+        rgb(157,163,121) 100%
+    );
+    border-top: white solid 2px;
+    border-bottom: white solid 2px;
+}
+
+.horizontalBannerHeader{
+    position:relative;
+
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+
+    text-align: center;
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgba(33,114,150, 1.0)),
+        color-stop(1, rgba(33,114,150, 0.0))
+    );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgba(66,98,150,1.0) 0%,
+        rgba(33,114,255,0.0) 100%
+    );
+}
+
+.horizontalBannerFooter{
+    position:relative;
+
+    margin: 0px;
+    padding: 10px;
+    width: 100%;
+
+    text-align: center;
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgba(33,114,150, 0.0)),
+        color-stop(1, rgba(33,114,150, 1.0))
+    );
+    background-image: -moz-linear-gradient(
+        center bottom,
+        rgba(66,98,150, 0.0) 0%,
+        rgba(33,114,255, 1.0) 100%
+    );
+}
+
+.gameRoot{
+    position: relative;
+    background: transparent;
+}
+
+#canvas2d {
+    position:relative;
+
+    border: white solid 2px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

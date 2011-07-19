@@ -23,7 +23,7 @@ public class TypedArray<T extends Number> extends JavaScriptObject{
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
     public static<U extends Number> TypedArray<U> create(String type, int length) {
-        if(type.equals( Integer.class.getName())) {
+        /*if(type.equals( Integer.class.getName())) {
            return (TypedArray<U>) createIntArray(length);
         } else if(type.equals(Short.class.getName())) {
            return (TypedArray<U>) createShortArray(length);
@@ -39,7 +39,7 @@ public class TypedArray<T extends Number> extends JavaScriptObject{
            return (TypedArray<U>) createUByteArray(length);
         } else if(type.equals(UShort.class.getName())) {
            return (TypedArray<U>) createUShortArray(length);
-        }
+        }*/
         
         return null;
     }
