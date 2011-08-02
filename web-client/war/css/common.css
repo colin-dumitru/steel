@@ -27,13 +27,13 @@ body{
         linear,
         left bottom,
         left top,
-        color-stop(0.01, rgb(196,189,106)),
-        color-stop(1, rgb(157,163,121))
+        color-stop(0.01, rgb(230,217,133)),
+        color-stop(1, rgb(173,161,81))
     );
     background-image: -moz-linear-gradient(
         center bottom,
-        rgb(196,189,106) 1%,
-        rgb(157,163,121) 100%
+        rgb(230,217,133) 1%,
+        rgb(173,161,81) 100%
     );
     border-top: white solid 2px;
     border-bottom: white solid 2px;

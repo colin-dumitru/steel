@@ -1,63 +1,74 @@
-package edu.catalindumitru.bee.core;
-
-import edu.catalindumitru.bee.graphics.Render2DProvider;
-import edu.catalindumitru.bee.input.InputProvider;
+package edu.catalindumitru.bee.math;
 
 /**
  * Created by IntelliJ IDEA.
  * User: colin
- * Date: 7/18/11
- * Time: 11:20 AM
+ * Date: 7/21/11
+ * Time: 4:24 PM
  */
-public class Environment {
-    protected LoggingProvider loggingProvider;
-    protected InputProvider inputProvider;
-    protected Render2DProvider uiProvider;
+public class Rectangle {
+    protected float x;
+    protected float y;
+
+    protected float width;
+    protected float height;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public boolean complete() {
-        if(this.loggingProvider == null
-                || this.inputProvider == null
-                || this.uiProvider == null)
-            return false;
-
-        return true;
+    public Rectangle(float x, float y, float width, float height) {
+        this.x = x;
+        this.y = y;
+        this.height = height;
+        this.width = width;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public LoggingProvider getLoggingProvider() {
-        return loggingProvider;
+    public Rectangle(float width, float height) {
+        this(0, 0, width, height);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void setLoggingProvider(LoggingProvider loggingProvider) {
-        this.loggingProvider = loggingProvider;
+    public Rectangle() {
+        this(0, 0, 0, 0);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public InputProvider getInputProvider() {
-        return inputProvider;
+    public float getX() {
+        return x;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void setInputProvider(InputProvider inputProvider) {
-        this.inputProvider = inputProvider;
+    public void setX(float x) {
+        this.x = x;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-
-    public Render2DProvider getUiProvider() {
-        return uiProvider;
+    public float getY() {
+        return y;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-
-    public void setUiProvider(Render2DProvider uiProvider) {
-        this.uiProvider = uiProvider;
+    public void setY(float y) {
+        this.y = y;
     }
-
-
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+    public float getWidth() {
+        return width;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void setWidth(float width) {
+        this.width = width;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public float getHeight() {
+        return height;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void setHeight(float height) {
+        this.height = height;
+    }
 }
