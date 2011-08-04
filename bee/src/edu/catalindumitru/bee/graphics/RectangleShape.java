@@ -29,6 +29,8 @@ public class RectangleShape extends Shape {
         this.height = height;
 
         this.needsListRefresh = true;
+        this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -57,6 +59,8 @@ public class RectangleShape extends Shape {
         this.x = x;
 
         this.needsListRefresh = true;
+        this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -71,6 +75,8 @@ public class RectangleShape extends Shape {
         this.y = y;
 
         this.needsListRefresh = true;
+        this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -85,6 +91,8 @@ public class RectangleShape extends Shape {
         this.width = width;
 
         this.needsListRefresh = true;
+        this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -99,6 +107,8 @@ public class RectangleShape extends Shape {
         this.height = height;
 
         this.needsListRefresh = true;
+        this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -146,6 +156,14 @@ public class RectangleShape extends Shape {
 
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    protected void updateBounds() {
+        this.bounds.setAll(this.x, this.y, this.width, this.height);
+
+        this.needsBoundsUpdate = false;
+    }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 }

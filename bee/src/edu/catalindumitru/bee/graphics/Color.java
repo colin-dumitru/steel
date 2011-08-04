@@ -22,6 +22,10 @@ public class Color {
     public static final Color ORANGE = new Color(1.0f, 0.5f, 0.0f);
     public static final Color PURPLE = new Color(1.0f, 0.0f, 1.0f);
     public static final Color CYAN = new Color(0.0f, 1.0f, 1.0f);
+    public static final Color BLACK = new Color(0.0f, 0.0f, 0.0f);
+    public static final Color WHITE = new Color(1.0f, 1.0f, 1.0f);
+    public static final Color TRANSPARENT = new Color(1.0f, 1.0f, 1.0f, (float) 0.0);
+
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------

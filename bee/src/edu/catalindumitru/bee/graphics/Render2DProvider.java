@@ -1,5 +1,7 @@
 package edu.catalindumitru.bee.graphics;
 
+import java.awt.*;
+
 /**
  * Created by IntelliJ IDEA.
  * User: colin
@@ -17,6 +19,21 @@ public interface Render2DProvider {
     public enum TEXT_ALIGN {START, END, LEFT, RIGHT, CENTER}
 
     public enum TEXT_BASELINE {TOP, HANGING, MIDDLE, ALPHABETIC, IDEOGRAPHIC, BOTTOM}
+
+
+    /*---------------------------------------Screen details-------------------------------------------------------------*/
+
+    /**
+     * Returns the current screen width.
+     * @return screen width.
+     */
+    public int getScreenWidth();
+
+    /**
+     * Returns the current screen height.
+     * @return screen height.
+     */
+    public int getScreenHeight();
 
     /*---------------------------------------Drawing style-------------------------------------------------------------*/
 
@@ -45,12 +62,6 @@ public interface Render2DProvider {
      */
     public void setStrokeGradient(Gradient gradient);
 
-    /**
-     * Sets the color for clearing the screen.
-     *
-     * @param color the color to use for clearing the sreen
-     */
-    public void setClearColor(Color color);
 
     /**
      * Sets the active drawing color for filled shapes.
@@ -95,14 +106,34 @@ public interface Render2DProvider {
     public void setLineWidth(float lineWidth);
 
     /**
-     * Sets the font for when drawing / stroking text. Font is the same as CSS formatting (eg. 10px sans-serif).
+     * Sets the font for when drawing / stroking text.
      * @param font which font to use given
      */
-    public void setTextFont(String font);
+    public void setTextFont(Font font);
 
+    /**
+     * Sets which text align to use when drawing strings.
+     * @param align
+     */
     public void setTextAlign(TEXT_ALIGN align);
 
+    /**
+     * Sets which baseline to use when drawing strings.
+     * @param baseline
+     */
     public void setTextBaseline(TEXT_BASELINE baseline);
+
+    /**
+     * Sets the current drawing alpha. All subsequent drawing operations will be affected by this alpha value.
+     * @param alpha a value between 0 and 1 representing drawing alpha.
+     */
+    public void setAlpha(float alpha);
+
+    /**
+     * Returns the current drawing alpha.
+     * @return the current drawing alpha.
+     */
+    public float getAlpha();
 
     /*---------------------------------------General drawing-----------------------------------------------------------*/
 
@@ -117,12 +148,12 @@ public interface Render2DProvider {
     public void endDrawing();
 
     /**
-     * Clear the entire screen using the pre-set color.
+     * Clear the entire screen using a complete transparent black.
      */
     public void clearAll();
 
     /**
-     * Clear only a portion of the screen using the pre-set color.
+     * Clear only a portion of the screen using a complete transparent black.
      *
      * @param x      x coordinate for the top left corner of the rectangle.
      * @param y      y coordinate for the top left corner of the rectangle.
@@ -230,5 +261,9 @@ public interface Render2DProvider {
      * @param text which text to stroke.
      */
     public void strokeString(float x, float y, String text);
+
+    /*---------------------------------------------Image Drawing-------------------------------------------------------*/
+    /*TODO postponed image drawing until I can figure out a way to better handle resources (Images, Sounds etc.).*/
+
 
 }

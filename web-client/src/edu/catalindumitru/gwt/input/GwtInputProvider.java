@@ -30,7 +30,7 @@ public class GwtInputProvider implements InputProvider, ClickHandler, KeyDownHan
         /*key events*/
         canvas.addKeyDownHandler(this);
         canvas.addKeyUpHandler(this);
-        canvas.addDoubleClickHandler()
+        canvas.addDoubleClickHandler(this);
 
         this.canvas = canvas;
     }

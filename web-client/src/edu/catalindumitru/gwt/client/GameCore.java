@@ -4,30 +4,20 @@
  */
 package edu.catalindumitru.gwt.client;
 
-import com.gargoylesoftware.htmlunit.javascript.host.canvas.CanvasRenderingContext2D;
 import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.canvas.dom.client.FillStrokeStyle;
 import com.google.gwt.core.client.EntryPoint;
-//import edu.catalindumitru.array.TypedArray;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootPanel;
 import edu.catalindumitru.bee.core.Engine;
 import edu.catalindumitru.bee.core.Environment;
-import edu.catalindumitru.bee.core.Logger;
-import edu.catalindumitru.bee.input.InputManager;
-import edu.catalindumitru.bee.input.InputObserver;
-import edu.catalindumitru.bee.network.socket.NetworkException;
-import edu.catalindumitru.bee.network.socket.NetworkMessage;
-import edu.catalindumitru.bee.network.socket.SocketObserver;
+import edu.catalindumitru.bee.graphics.*;
+import edu.catalindumitru.bee.math.Point2D;
 import edu.catalindumitru.gwt.core.GwtLoggingProvider;
+import edu.catalindumitru.gwt.graphics.GwtRender2DProvider;
 import edu.catalindumitru.gwt.input.GwtInputProvider;
-import edu.catalindumitru.gwt.socket.*;
 
+//import edu.catalindumitru.array.TypedArray;
 
 
 /**
@@ -46,6 +36,7 @@ public class GameCore implements EntryPoint {
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Creates a new instance of MainEntryPoint
      */
@@ -54,11 +45,82 @@ public class GameCore implements EntryPoint {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * The entry point method, called automatically by loading a module
      * that declares an implementing class as an entry-point
      */
     public void onModuleLoad() {
+        this.initialise();
+
+
+        GwtRender2DProvider prov = new GwtRender2DProvider(this.canvas2d.getContext2d());
+
+        Shape shape = new Shape();
+        shape.addPoint(new Point2D(75,75));
+        shape.addPoint(new Point2D(175,55));
+        shape.addPoint(new Point2D(145,201));
+        shape.addPoint(new Point2D(30,44));
+
+        prov.setFillColor(Color.BLUE);
+        prov.setStrokeColor(Color.RED);
+
+        prov.setFillGradient(Gradient.BABY_BLUE);
+        prov.setStrokeGradient(Gradient.BABY_BLUE);
+
+        prov.setAlpha(0.2f);
+        prov.setLineWidth(5);
+        prov.setDrawingCap(Render2DProvider.CAP.ROUND);
+        prov.setDrawingJoin(Render2DProvider.JOIN.ROUND);
+
+        prov.setFillStyle(Render2DProvider.STYLE.GRADIENT);
+        prov.setStrokeStyle(Render2DProvider.STYLE.COLOR);
+
+
+
+        //prov.fillRectangle(100, 20, 200, 200);
+        //prov.strokeRectangle(300, 300, 100, 100);
+        //prov.fillArc(200, 200, 100, 0, (float) (Math.PI * 2));
+        //prov.strokeArc(50, 50, 10, 0, (float) (Math.PI * 2));
+
+
+        prov.setTextFont(new Font("Arial", 2.0f, 2.0f,  Font.STYLE.NORMAL, Font.WEIGHT.NORMAL));
+        prov.beginDrawing();
+        prov.fillString(100, 50, "mama");
+        prov.endDrawing();
+
+        prov.setTextFont(new Font("Arial", 2.0f, 2.0f, Font.STYLE.ITALIC, Font.WEIGHT.NORMAL));
+        prov.setTextBaseline(Render2DProvider.TEXT_BASELINE.BOTTOM);
+        prov.beginDrawing();
+        prov.fillString(200, 50, "mama");
+        prov.fillRectangle(200, 50, 100, 5);
+        prov.endDrawing();
+
+        prov.setTextFont(new Font("Arial", 2.0f, 2.0f, Font.STYLE.NORMAL, Font.WEIGHT.BOLD));
+        prov.setTextBaseline(Render2DProvider.TEXT_BASELINE.TOP) ;
+        prov.beginDrawing();
+        prov.fillString(300, 50, "mama");
+        //prov.strokeString(100, 50, "mama face mere");
+
+        //prov.fillShape(shape);
+        //prov.strokeShape(shape);
+
+        //Gradient shadow = new Gradient(Gradient.TYPE.RADIAL);
+        //shadow.addColorStop(0.6, new Color(0.0f, 0.0f, 0.0f, 0.0f));
+        //shadow.addColorStop(0.8, new Color(0.0f, 0.0f, 0.0f, 0.1f));
+        //shadow.addColorStop(1.0, new Color(0.0f, 0.0f, 0.0f, 0.4f));
+
+        //prov.setFillGradient(shadow);
+        //prov.fillArc(200, 200, 100, 0, (float) (Math.PI * 2));
+
+
+
+        prov.endDrawing();
+
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    protected void initialise() {
         /*setup window*/
         this.setupWindow();
         /*setup game engine*/
@@ -66,14 +128,6 @@ public class GameCore implements EntryPoint {
 
         /*first time game initialisation*/
         this.resetGame();
-
-        InputManager.instance().addObserver(new InputObserver() {
-            public void onEvent(InputManager.EVENTS event, float[] params) {
-                Logger.log(Logger.PRIORITY.INFORMATION, event.toString() + "(" + params[0] + (params.length > 1 ? params[1] : "") + ")");
-            }
-        });
-
-
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -104,6 +158,7 @@ public class GameCore implements EntryPoint {
         RootPanel.get("root").add(canvas2d);
 
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected Environment createEnvironment() {
@@ -116,9 +171,13 @@ public class GameCore implements EntryPoint {
         GwtInputProvider inputProvider = new GwtInputProvider(this.canvas2d);
         ret.setInputProvider(inputProvider);
 
+        /*Create 2d render provider*/
+        ret.setUiProvider(new GwtRender2DProvider(this.canvas2d.getContext2d()));
+
         return ret;
 
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected Engine setupEngine(Environment environment) {
@@ -130,7 +189,6 @@ public class GameCore implements EntryPoint {
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-
 
 
 }

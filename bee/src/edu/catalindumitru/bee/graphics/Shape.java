@@ -1,6 +1,8 @@
 package edu.catalindumitru.bee.graphics;
 
 import edu.catalindumitru.bee.math.Point2D;
+import edu.catalindumitru.bee.math.Point3D;
+import edu.catalindumitru.bee.math.Rectangle;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -23,11 +25,19 @@ public class Shape {
     protected boolean filled;
     /*If the shape should be stroked*/
     protected boolean stroked;
+    /*the smallest rectangle which encompasses all of the points*/
+    protected Rectangle bounds;
+    /*bounds need to be updated*/
+    protected boolean needsBoundsUpdate;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Shape() {
-        this.point2DList = new LinkedList<>();
+        this.point2DList = new LinkedList<Point2D>();
+        this.bounds = new Rectangle();
+
+        this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -42,6 +52,7 @@ public class Shape {
         this.point2DList.add(what);
 
         this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -56,6 +67,7 @@ public class Shape {
         this.point2DList.add(where, what);
 
         this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -69,6 +81,7 @@ public class Shape {
         this.point2DList.remove(where);
 
         this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -83,6 +96,7 @@ public class Shape {
         this.point2DList.remove(what);
 
         this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -109,6 +123,7 @@ public class Shape {
         this.point2DList.addAll(pointList);
 
         this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -122,6 +137,7 @@ public class Shape {
         this.point2DList.addAll(pointList);
 
         this.needsCacheRefresh = true;
+        this.needsBoundsUpdate = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -203,5 +219,39 @@ public class Shape {
     //------------------------------------------------------------------------------------------------------------------
     public void setStroked(boolean stroked) {
         this.stroked = stroked;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    protected void updateBounds() {
+        /*maximum and minimum baounds for all the points*/
+        float minX = Float.MAX_VALUE - 1;
+        float minY = Float.MAX_VALUE - 1;
+        float maxX = Float.MIN_VALUE + 1;
+        float maxY = Float.MIN_VALUE + 1;
+
+        /*parse through all the points and find the minimum and maximum values for the baounds*/
+        for(Point2D point : this.point2DList) {
+            if(point.getX() < minX)
+                minX = point.getX();
+            if(point.getY() < minY)
+                minY = point.getY();
+            if(point.getX() > maxX)
+                maxX = point.getX();
+            if(point.getY() > maxY)
+                maxY = point.getY();
+
+            this.bounds.setAll(minX, minY, maxX - minX, maxY - minY);
+        }
+
+        this.needsBoundsUpdate = false;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public Rectangle getBounds() {
+        if(this.needsBoundsUpdate)
+            this.updateBounds();
+
+
+        return this.bounds;
     }
 }

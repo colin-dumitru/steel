@@ -11,19 +11,74 @@ import java.util.TreeMap;
  * Time: 11:27 AM
  */
 public class Gradient {
+    public static enum TYPE {LINEAR, RADIAL}
+
     /*A pair of doubles and colors, representing each step color and it's offset. The offset is a value between 0 and 1*/
     protected Map<Double, Color> gradientMap;
+    /*affects only linear gradients. specifies the angle at which the linear gradient is drawn. (in radian)*/
+    protected float angle;
+    /*offset of the center of the gradient*/
+    protected float offsetX;
+    protected float offsetY;
+    /*the scale of the length od the gradient*/
+    protected float scale;
+
+    /*type of gradient*/
+    protected TYPE type;
+
+    public static Gradient BABY_BLUE;
+
+    /*dumb way of doing static initialisation*/
+    private static final StaticInitialiser staticInitialiser = new StaticInitialiser();
+
+    /**
+     * I use this type of method because static initialising blocks fire at a much later time than it should be.
+     */
+    private static class StaticInitialiser {
+        public StaticInitialiser() {
+            BABY_BLUE = new Gradient(TYPE.LINEAR);
+
+            BABY_BLUE.addColorStop(1.0, new Color(0.19f, 0.81f, 0.97f));
+            //BABY_BLUE.addColorStop(1.0, new Color(0.57f,  0.91f, 0.97f));
+            BABY_BLUE.addColorStop(0.0, new Color(1.00f,  1.00f, 1.00f));
+        }
+    }
+
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-
-    public Gradient() {
-        this.gradientMap = new TreeMap<>();
+    public Gradient(TYPE type) {
+        this(type, 0, 0, 0, 1.0f);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public Gradient(TYPE type, float angle) {
+        this(type, angle, 0, 0, 1.0f);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public Gradient(TYPE type, float offsetX, float offsetY) {
+        this(type, 0, offsetX, offsetY, 1.0f);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public Gradient(TYPE type, float angle, float offsetX, float offsetY) {
+        this(type, angle, offsetX, offsetY, 1.0f);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public Gradient(TYPE type, float angle, float offsetX, float offsetY, float scale) {
+        this.gradientMap = new TreeMap<Double, Color>();
+        this.type = type;
+        this.angle = angle;
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
+        this.scale = scale;
     }
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void addColorStop(double offset, Color color){
+    public void addColorStop(double offset, Color color) {
         this.gradientMap.put(offset, color);
     }
 
@@ -32,9 +87,69 @@ public class Gradient {
     public void clearColorStops() {
         this.gradientMap.clear();
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Set<Map.Entry<Double, Color>> getColorMap() {
         return this.gradientMap.entrySet();
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public TYPE getType() {
+        return type;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void setType(TYPE type) {
+        this.type = type;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public float getAngle() {
+        return angle;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public void setAngle(float angle) {
+        this.angle = angle;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public float getOffsetX() {
+        return offsetX;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public void setOffsetX(float offsetX) {
+        this.offsetX = offsetX;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public float getOffsetY() {
+        return offsetY;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public void setOffsetY(float offsetY) {
+        this.offsetY = offsetY;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public float getScale() {
+        return scale;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public void setScale(float scale) {
+        this.scale = scale;
     }
 }

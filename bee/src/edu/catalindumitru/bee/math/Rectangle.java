@@ -71,4 +71,12 @@ public class Rectangle {
     public void setHeight(float height) {
         this.height = height;
     }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void setAll(float x, float y, float width, float height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
 }
