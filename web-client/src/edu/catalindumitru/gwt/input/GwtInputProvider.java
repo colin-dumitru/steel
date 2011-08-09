@@ -82,7 +82,7 @@ public class GwtInputProvider implements InputProvider, ClickHandler, KeyDownHan
      * @param event the {@link com.google.gwt.event.dom.client.KeyDownEvent} that was fired
      */
     public void onKeyDown(KeyDownEvent event) {
-       if(this.resolver != null) {
+        if (this.resolver != null) {
             resolver.onEvent(InputManager.EVENTS.E_KEY_DOWN, new float[]{event.getNativeKeyCode()});
         }
     }
@@ -95,7 +95,7 @@ public class GwtInputProvider implements InputProvider, ClickHandler, KeyDownHan
      * @param event the {@link com.google.gwt.event.dom.client.KeyUpEvent} that was fired
      */
     public void onKeyUp(KeyUpEvent event) {
-        if(this.resolver != null) {
+        if (this.resolver != null) {
             resolver.onEvent(InputManager.EVENTS.E_KEY_UP, new float[]{event.getNativeKeyCode()});
         }
     }
@@ -117,12 +117,13 @@ public class GwtInputProvider implements InputProvider, ClickHandler, KeyDownHan
      */
     @Override
     public void onMouseMove(MouseMoveEvent event) {
-         if(this.resolver != null) {
+        if (this.resolver != null) {
             resolver.onEvent(InputManager.EVENTS.E_MOUSE_MOVE, new float[]{event.getX(), event.getY()});
         }
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Called when MouseWheelEvent is fired.
      *
@@ -130,11 +131,12 @@ public class GwtInputProvider implements InputProvider, ClickHandler, KeyDownHan
      */
     @Override
     public void onMouseWheel(MouseWheelEvent event) {
-        if(this.resolver != null) {
+        if (this.resolver != null) {
             resolver.onEvent(InputManager.EVENTS.E_MOUSE_WHEEL, new float[]{event.getDeltaY()});
         }
     }
-
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
     /**
      * Called when a {@link com.google.gwt.event.dom.client.DoubleClickEvent} is fired.
      *
@@ -142,6 +144,8 @@ public class GwtInputProvider implements InputProvider, ClickHandler, KeyDownHan
      */
     @Override
     public void onDoubleClick(DoubleClickEvent event) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        if (this.resolver != null) {
+            resolver.onEvent(InputManager.EVENTS.E_MOUSE_DOUBLE_CLICK, new float[]{event.getX(), event.getY()});
+        }
     }
 }

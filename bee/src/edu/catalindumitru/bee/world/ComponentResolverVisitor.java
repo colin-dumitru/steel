@@ -11,7 +11,7 @@ import java.util.Map;
  * Date: 7/13/11
  * Time: 11:24 AM
  */
-public class ComponentResolverVisitor implements NodeVisitor{
+public class ComponentResolverVisitor implements NodeVisitor {
     protected ComponentResolver resolver;
 
     //------------------------------------------------------------------------------------------------------------------
@@ -19,16 +19,18 @@ public class ComponentResolverVisitor implements NodeVisitor{
     public ComponentResolverVisitor() {
         this.resolver = null;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public ComponentResolverVisitor(ComponentResolver resolver) {
         this.resolver = resolver;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void visit(Node node) {
-        if(this.resolver != null){
-            for(Map.Entry<Integer, Component> entry : node.getComponents().entrySet())
+        if (this.resolver != null) {
+            for (Map.Entry<Integer, Component> entry : node.getComponents().entrySet())
                 this.resolver.addComponent(entry.getValue());
         }
 

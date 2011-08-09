@@ -6,12 +6,13 @@ package edu.catalindumitru.bee.math;
  * Date: 7/4/11
  * Time: 1:59 PM
  */
-public class ArithmeticException extends Exception{
+public class ArithmeticException extends Exception {
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public ArithmeticException () {
+    public ArithmeticException() {
         super("An aritmetic error has occured");
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public ArithmeticException(String error) {

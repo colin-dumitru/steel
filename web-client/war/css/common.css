@@ -1,21 +1,21 @@
-html{
+html {
     position: relative;
     background-color: #42627a;
 
-    padding:0px;
+    padding: 0px;
 }
 
-body{
+body {
     position: relative;
     background: transparent;
 
     width: 100%;
-    margin:  0px;
+    margin: 0px;
     padding: 0px;
 }
 
-.horizontalBanner{
-    position:relative;
+.horizontalBanner {
+    position: relative;
 
     margin: 0px;
     padding: 0px;
@@ -23,24 +23,14 @@ body{
 
     text-align: center;
 
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0.01, rgb(230,217,133)),
-        color-stop(1, rgb(173,161,81))
-    );
-    background-image: -moz-linear-gradient(
-        center bottom,
-        rgb(230,217,133) 1%,
-        rgb(173,161,81) 100%
-    );
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.01, rgb(230, 217, 133)), color-stop(1, rgb(173, 161, 81)));
+    background-image: -moz-linear-gradient(center bottom, rgb(230, 217, 133) 1%, rgb(173, 161, 81) 100%);
     border-top: white solid 2px;
     border-bottom: white solid 2px;
 }
 
-.horizontalBannerHeader{
-    position:relative;
+.horizontalBannerHeader {
+    position: relative;
 
     margin: 0px;
     padding: 0px;
@@ -48,22 +38,12 @@ body{
 
     text-align: center;
 
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0, rgba(33,114,150, 1.0)),
-        color-stop(1, rgba(33,114,150, 0.0))
-    );
-    background-image: -moz-linear-gradient(
-        center bottom,
-        rgba(66,98,150,1.0) 0%,
-        rgba(33,114,255,0.0) 100%
-    );
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(33, 114, 150, 1.0)), color-stop(1, rgba(33, 114, 150, 0.0)));
+    background-image: -moz-linear-gradient(center bottom, rgba(66, 98, 150, 1.0) 0%, rgba(33, 114, 255, 0.0) 100%);
 }
 
-.horizontalBannerFooter{
-    position:relative;
+.horizontalBannerFooter {
+    position: relative;
 
     margin: 0px;
     padding: 10px;
@@ -71,27 +51,17 @@ body{
 
     text-align: center;
 
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0, rgba(33,114,150, 0.0)),
-        color-stop(1, rgba(33,114,150, 1.0))
-    );
-    background-image: -moz-linear-gradient(
-        center bottom,
-        rgba(66,98,150, 0.0) 0%,
-        rgba(33,114,255, 1.0) 100%
-    );
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(33, 114, 150, 0.0)), color-stop(1, rgba(33, 114, 150, 1.0)));
+    background-image: -moz-linear-gradient(center bottom, rgba(66, 98, 150, 0.0) 0%, rgba(33, 114, 255, 1.0) 100%);
 }
 
-.gameRoot{
+.gameRoot {
     position: relative;
     background: transparent;
 }
 
 #canvas2d {
-    position:relative;
+    position: relative;
 
     border: white solid 2px;
 

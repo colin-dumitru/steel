@@ -17,21 +17,25 @@ public interface ComponentResolver {
     /*Predetermined priorities*/
     public static final int P_LOGIC = 10;
     public static final int P_NORMAL_RENDER = 20;
+
     /**
      * Adds a new component to be resolved. For maximum performance and predictability the Component list should be a
      * set.
+     *
      * @param component which component to add
      */
     public void addComponent(Component component);
 
     /**
      * Removes the component from it's list.
+     *
      * @param component which component ro remove.
      */
     public void removeComponent(Component component);
 
     /**
      * Update the state of the every component from it's list.
+     *
      * @param delta the delta time from the call of this method.
      */
     public void updateCycle(float delta);
@@ -44,11 +48,13 @@ public interface ComponentResolver {
      */
 
     public void endCycle();
+
     /**
-         * The priority of the component resolver. Every component resolver will have their update method called in the order
-         * of their priority. For example you want the logic update component resolver to fire up before the one for rendering.
-         * @return the priority of the component resolver.
-         */
+     * The priority of the component resolver. Every component resolver will have their update method called in the order
+     * of their priority. For example you want the logic update component resolver to fire up before the one for rendering.
+     *
+     * @return the priority of the component resolver.
+     */
 
     public int priority();
 }

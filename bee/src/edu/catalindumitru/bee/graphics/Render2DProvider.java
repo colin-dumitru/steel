@@ -1,6 +1,6 @@
 package edu.catalindumitru.bee.graphics;
 
-import java.awt.*;
+import edu.catalindumitru.bee.content.ImageResource;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,7 +10,9 @@ import java.awt.*;
  */
 public interface Render2DProvider {
     /*---------------------------------------Static params-------------------------------------------------------------*/
-    public enum STYLE { COLOR, GRADIENT}
+    public enum STYLE {
+        COLOR, GRADIENT
+    }
 
     public enum CAP {BUTT, ROUND, SQUARE}
 
@@ -25,12 +27,14 @@ public interface Render2DProvider {
 
     /**
      * Returns the current screen width.
+     *
      * @return screen width.
      */
     public int getScreenWidth();
 
     /**
      * Returns the current screen height.
+     *
      * @return screen height.
      */
     public int getScreenHeight();
@@ -107,30 +111,35 @@ public interface Render2DProvider {
 
     /**
      * Sets the font for when drawing / stroking text.
+     *
      * @param font which font to use given
      */
     public void setTextFont(Font font);
 
     /**
      * Sets which text align to use when drawing strings.
+     *
      * @param align
      */
     public void setTextAlign(TEXT_ALIGN align);
 
     /**
      * Sets which baseline to use when drawing strings.
+     *
      * @param baseline
      */
     public void setTextBaseline(TEXT_BASELINE baseline);
 
     /**
      * Sets the current drawing alpha. All subsequent drawing operations will be affected by this alpha value.
+     *
      * @param alpha a value between 0 and 1 representing drawing alpha.
      */
     public void setAlpha(float alpha);
 
     /**
      * Returns the current drawing alpha.
+     *
      * @return the current drawing alpha.
      */
     public float getAlpha();
@@ -262,8 +271,45 @@ public interface Render2DProvider {
      */
     public void strokeString(float x, float y, String text);
 
-    /*---------------------------------------------Image Drawing-------------------------------------------------------*/
-    /*TODO postponed image drawing until I can figure out a way to better handle resources (Images, Sounds etc.).*/
+    /*---------------------------------------------ImageResource Drawing-------------------------------------------------------*/
+
+    /**
+     *  Draw the specified imageResource to the canvas. The imageResource will retain it's dimensions when drawn.
+     * @param imageResource which imageResource to draw to the canvas.
+     * @param destinationX the x coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationY the y coordinate of the top left point on the canvas where the imageResource should be drawn.
+     */
+    public void drawImage(ImageResource imageResource, float destinationX, float destinationY);
+
+    /**
+     *  Draw the specified imageResource to the canvas.  The source imageResource will be drawn at coordinates destinationX,
+     *  destinationY with the dimensions destinationWidth and destinationHeight. If the height or width differ from
+     *  the source imageResource, then the imageResource will be scaled accordingly.
+     * @param imageResource which imageResource to draw to the canvas.
+     * @param destinationX the x coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationY the y coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationWidth the destination width of the final imageResource to be drawn.
+     * @param destinationHeight the destination height of the final imageResource to be drawn.
+     */
+    public void drawImage(ImageResource imageResource, float destinationX, float destinationY, float destinationWidth, float destinationHeight );
+
+    /**
+     *  Draw the specified imageResource to the canvas. The imageResource will be cropped using a rectangle described the the parameters:
+     *  sourceX, sourceY, sourceWidth and sourceHeight. The cropped imageResource will be drawn at coordinates destinationX,
+     *  destinationY with the dimensions destinationWidth and destinationHeight. If the height or width differ from
+     *  the source imageResource, then the imageResource will be scaled accordingly.
+     * @param imageResource which imageResource to draw to the canvas.
+     * @param destinationX the x coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationY the y coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationWidth the destination width of the final imageResource to be drawn.
+     * @param destinationHeight the destination height of the final imageResource to be drawn.
+     * @param sourceX the x coordinate of the top left corner of the rectangle which will crop the imageResource.
+     * @param sourceY the y coordinate of the top left corner of the rectangle which will crop the imageResource.
+     * @param sourceWidth the width of the rectangle which will crop the source imageResource.
+     * @param sourceHeight the height of the rectangle which will crop the source imageResource.
+     */
+    public void drawImage(ImageResource imageResource, float destinationX, float destinationY, float destinationWidth, float destinationHeight,
+                          float sourceX, float sourceY, float sourceWidth, float sourceHeight);
 
 
 }

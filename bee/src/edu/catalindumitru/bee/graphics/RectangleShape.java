@@ -115,23 +115,24 @@ public class RectangleShape extends Shape {
     //------------------------------------------------------------------------------------------------------------------
     @Override
     public List<Point2D> getPointList() {
-         if(this.needsListRefresh) {
-             this.needsListRefresh = false;
-             /*we also need to update the point cache*/
-             this.needsCacheRefresh = true;
+        if (this.needsListRefresh) {
+            this.needsListRefresh = false;
+            /*we also need to update the point cache*/
+            this.needsCacheRefresh = true;
 
-             /*recalculate points for the shape*/
-             this.point2DList.clear();
+            /*recalculate points for the shape*/
+            this.point2DList.clear();
 
-             this.point2DList.add(new Point2D(this.x, this.y));
-             this.point2DList.add(new Point2D(this.x + this.width, this.y));
-             this.point2DList.add(new Point2D(this.x + this.width, this.y + this.height));
-             this.point2DList.add(new Point2D(this.x, this.y + this.height));
+            this.point2DList.add(new Point2D(this.x, this.y));
+            this.point2DList.add(new Point2D(this.x + this.width, this.y));
+            this.point2DList.add(new Point2D(this.x + this.width, this.y + this.height));
+            this.point2DList.add(new Point2D(this.x, this.y + this.height));
 
-         }
+        }
 
         return this.point2DList;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     @Override
@@ -146,12 +147,13 @@ public class RectangleShape extends Shape {
 
     /**
      * Overrides the super class to provide faster calculation for a simple point and reclangle.
+     *
      * @param what which point to calculate if whether it is conatined in the recnagle
      * @return true of false, depending whether or not the point is inside or on the edge of the rectangle
      */
     @Override
     public boolean containsPoint(Point2D what) {
-        return ((what.getX() >= this.x) && (what.getY() >= this.y) &&(what.getX() <= this.x + this.width)
+        return ((what.getX() >= this.x) && (what.getY() >= this.y) && (what.getX() <= this.x + this.width)
                 && (what.getY() <= this.getY() + this.height));
 
     }

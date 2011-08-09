@@ -1,5 +1,7 @@
 package edu.catalindumitru.bee.core;
 
+import edu.catalindumitru.bee.concurent.ScheduleProvider;
+import edu.catalindumitru.bee.content.ResourceProvider;
 import edu.catalindumitru.bee.graphics.Render2DProvider;
 import edu.catalindumitru.bee.input.InputProvider;
 
@@ -12,33 +14,41 @@ import edu.catalindumitru.bee.input.InputProvider;
 public class Environment {
     protected LoggingProvider loggingProvider;
     protected InputProvider inputProvider;
-    protected Render2DProvider uiProvider;
+    protected Render2DProvider render2dProvider;
+    protected ResourceProvider resourceProvider;
+    protected ScheduleProvider scheduleProvider;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public boolean complete() {
-        if(this.loggingProvider == null
+        if (this.loggingProvider == null
                 || this.inputProvider == null
-                || this.uiProvider == null)
+                || this.render2dProvider == null
+                || this.resourceProvider == null
+                || this.scheduleProvider == null)
             return false;
 
         return true;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public LoggingProvider getLoggingProvider() {
         return loggingProvider;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void setLoggingProvider(LoggingProvider loggingProvider) {
         this.loggingProvider = loggingProvider;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public InputProvider getInputProvider() {
         return inputProvider;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void setInputProvider(InputProvider inputProvider) {
@@ -47,17 +57,39 @@ public class Environment {
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
-    public Render2DProvider getUiProvider() {
-        return uiProvider;
+    public Render2DProvider getRender2dProvider() {
+        return render2dProvider;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
-    public void setUiProvider(Render2DProvider uiProvider) {
-        this.uiProvider = uiProvider;
+    public void setRender2dProvider(Render2DProvider render2dProvider) {
+        this.render2dProvider = render2dProvider;
     }
 
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
+    public ResourceProvider getResourceProvider() {
+        return resourceProvider;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public void setResourceProvider(ResourceProvider resourceProvider) {
+        this.resourceProvider = resourceProvider;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public ScheduleProvider getScheduleProvider() {
+        return scheduleProvider;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void setScheduleProvider(ScheduleProvider scheduleProvider) {
+        this.scheduleProvider = scheduleProvider;
+    }
 }

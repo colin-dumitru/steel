@@ -6,9 +6,11 @@ package edu.catalindumitru.gwt.concurent;
 
 /**
  * Used to listen for events from an event thread.
+ *
  * @author catalin.dumitru
  */
 public interface EventThreadObserver {
     public void onEvent(Event event);
+
     public void onError(Event event);
 }

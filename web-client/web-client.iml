@@ -32,6 +32,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="gwt-user" level="project" />
     <orderEntry type="module" module-name="bee" exported="" />
+    <orderEntry type="module" module-name="steel" exported="" />
   </component>
 </module>
 

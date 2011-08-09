@@ -7,15 +7,16 @@ package edu.catalindumitru.gwt.socket;
  * Time: 5:10 PM
  * To change this template use File | Settings | File Templates.
  */
- import edu.catalindumitru.bee.network.socket.NetworkException;
- import edu.catalindumitru.bee.network.socket.NetworkMessage;
- import edu.catalindumitru.bee.network.socket.Socket;
- import edu.catalindumitru.bee.network.socket.SocketObserver;
 
- import java.util.List;
+import edu.catalindumitru.bee.network.socket.NetworkException;
+import edu.catalindumitru.bee.network.socket.NetworkMessage;
+import edu.catalindumitru.bee.network.socket.Socket;
+import edu.catalindumitru.bee.network.socket.SocketObserver;
+
 import java.util.LinkedList;
+import java.util.List;
 
-public class JSSocket implements NativeSocketObserver , Socket{
+public class JSSocket implements NativeSocketObserver, Socket {
     protected NativeSocket _socket;
     protected List<SocketObserver> _observers;
     protected String _url;
@@ -36,21 +37,22 @@ public class JSSocket implements NativeSocketObserver , Socket{
     /**
      * Creates a new socket and connects to the specified host. If the host is invalid, a NetworkException will be
      * thrown.
+     *
      * @param url The url of the host. This url must contain the full url, protocol and port.
      * @throws NetworkException Will be thrown if the url is invalid.
      */
-    public JSSocket(String url) throws NetworkException{
+    public JSSocket(String url) throws NetworkException {
         this();
 
-        try{
+        try {
             this._socket = NativeSocket.connect(url);
             this._socket.init(this);
             this._url = url;
         } catch (Exception ex) {
             this._url = "";
 
-            throw new NetworkException("an error occured while trying to connect to host " + url  + " :" +
-                ex.toString());
+            throw new NetworkException("an error occured while trying to connect to host " + url + " :" +
+                    ex.toString());
         }
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -58,6 +60,7 @@ public class JSSocket implements NativeSocketObserver , Socket{
 
     /**
      * Returns the native JavaScript object which can be used for low level communicating.
+     *
      * @return
      */
     public NativeSocket getNativeSocket() {
@@ -68,11 +71,12 @@ public class JSSocket implements NativeSocketObserver , Socket{
 
     /**
      * Sends a new message to the server.
+     *
      * @param message the string message which to send.
      * @throws NetworkException
      */
-    public void send(String message) throws NetworkException{
-        if(this._socket == null)
+    public void send(String message) throws NetworkException {
+        if (this._socket == null)
             throw new NetworkException("not connected to any host");
 
         this._socket.send(message);
@@ -83,19 +87,20 @@ public class JSSocket implements NativeSocketObserver , Socket{
     /**
      * Connects to the specified url. If the connection cannot be established, amd exception is thrown. The url must
      * contain the full address of the server, the protocol and the port to use.
-     * @param url  The full url of the host
+     *
+     * @param url The full url of the host
      * @throws NetworkException
      */
     public void connect(String url) throws NetworkException {
-        try{
+        try {
             this._socket = NativeSocket.connect(url);
             this._socket.init(this);
             this._url = url;
         } catch (Exception ex) {
             this._url = "";
 
-            throw new NetworkException("an error occured while trying to connect to host " + url  + " :" +
-                ex.toString());
+            throw new NetworkException("an error occured while trying to connect to host " + url + " :" +
+                    ex.toString());
         }
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -103,6 +108,7 @@ public class JSSocket implements NativeSocketObserver , Socket{
 
     /**
      * Adds a new observer which will be called when a new network event will occur.
+     *
      * @param observer The observer which will be called.
      */
     public void addObserver(SocketObserver observer) {
@@ -113,6 +119,7 @@ public class JSSocket implements NativeSocketObserver , Socket{
 
     /**
      * Removes an observer from the observer list.
+     *
      * @param observer The observer to remove.
      */
     public void removeObserver(SocketObserver observer) {
@@ -122,34 +129,37 @@ public class JSSocket implements NativeSocketObserver , Socket{
     //------------------------------------------------------------------------------------------------------------------
 
     public void onOpen() {
-        NetworkMessage event = new NetworkMessage("we have connected to host " +this._url ,
+        NetworkMessage event = new NetworkMessage("we have connected to host " + this._url,
                 NetworkMessage.EVENT_TYPE.T_OPEN, this);
 
-        for(SocketObserver observer : this._observers)
+        for (SocketObserver observer : this._observers)
             observer.onNetworkMessage(event);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void onMessage(SocketEvent eventNative) {
         NetworkMessage event = new NetworkMessage(eventNative.data(), NetworkMessage.EVENT_TYPE.T_MESSAGE, this);
 
-        for(SocketObserver observer : this._observers)
+        for (SocketObserver observer : this._observers)
             observer.onNetworkMessage(event);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void onClose(CloseEvent eventNative) {
         NetworkMessage event = new NetworkMessage(eventNative.reason(), NetworkMessage.EVENT_TYPE.T_CLOSE, this);
 
-        for(SocketObserver observer : this._observers)
+        for (SocketObserver observer : this._observers)
             observer.onNetworkMessage(event);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void onError(String error) {
         NetworkMessage event = new NetworkMessage(error, NetworkMessage.EVENT_TYPE.T_OPEN, this);
 
-        for(SocketObserver observer : this._observers)
+        for (SocketObserver observer : this._observers)
             observer.onNetworkMessage(event);
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -157,35 +167,39 @@ public class JSSocket implements NativeSocketObserver , Socket{
 
     /**
      * Returns the host url at which the socket is connected.
+     *
      * @return The host url.
      * @throws NetworkException
      */
-    public String getHostUrl() throws NetworkException{
-        if(this._socket == null)
+    public String getHostUrl() throws NetworkException {
+        if (this._socket == null)
             throw new NetworkException("not connected to any hosts");
 
         return this._url;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public String getHostExtensions() throws NetworkException{
-        if(this._socket == null)
+    public String getHostExtensions() throws NetworkException {
+        if (this._socket == null)
             throw new NetworkException("not connected to any hosts");
 
         return this._socket.extensions();
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public int getBufferedAmmount() throws NetworkException{
-        if(this._socket == null)
+    public int getBufferedAmmount() throws NetworkException {
+        if (this._socket == null)
             throw new NetworkException("not connected to any hosts");
 
         return this._socket.bufferedAmmount();
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public String getHostProtocol() throws NetworkException{
-        if(this._socket == null)
+    public String getHostProtocol() throws NetworkException {
+        if (this._socket == null)
             throw new NetworkException("not connected to any hosts");
 
         return this._socket.protocol();

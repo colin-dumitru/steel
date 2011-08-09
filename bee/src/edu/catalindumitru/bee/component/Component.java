@@ -7,7 +7,6 @@ package edu.catalindumitru.bee.component;
 import edu.catalindumitru.bee.world.Node;
 
 /**
- *
  * @author colin
  */
 public interface Component {
@@ -16,9 +15,11 @@ public interface Component {
     public void setParent(Node node);
 
     public int getType();
+
     public void setObserver(ComponentObserver observer);
 
     public void update(float delta);
+
     public void destroy();
-    
+
 }

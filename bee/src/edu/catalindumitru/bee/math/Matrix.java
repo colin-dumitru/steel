@@ -18,6 +18,7 @@ public class Matrix {
         /*nothing yet fot empty constructor*/
         this.elem = new float[0][0];
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Matrix(int width, int height) {
@@ -26,6 +27,7 @@ public class Matrix {
 
         this.elem = new float[width][height];
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Matrix(int width, int height, float value) {
@@ -34,64 +36,72 @@ public class Matrix {
 
         this.elem = new float[width][height];
 
-        for(int i = 0; i < this.width; i++)
-            for(int j = 0; j < this.height; j++)
+        for (int i = 0; i < this.width; i++)
+            for (int j = 0; j < this.height; j++)
                 this.elem[i][j] = value;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Matrix(int size) {
         this(size, size);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Matrix(float elem[][]) {
         this.width = elem.length;
-        if(this.width > 0)
+        if (this.width > 0)
             this.height = elem[0].length;
 
         this.elem = new float[this.width][this.height];
 
-        for(int i = 0; i < this.width; i++)
-            for(int j = 0; j < this.height; j++)
+        for (int i = 0; i < this.width; i++)
+            for (int j = 0; j < this.height; j++)
                 this.elem[i][j] = elem[i][j];
 
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Matrix(Matrix other) {
         this(other.elem);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void set(int x, int y, float value) {
         /*check for index bounds*/
-        if((x < 0 || x >= this.width) || (y < 0 || y >= this.height))
+        if ((x < 0 || x >= this.width) || (y < 0 || y >= this.height))
             throw new ArrayIndexOutOfBoundsException();
 
         this.elem[x][y] = value;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public float get(int x, int y){
-        if((x < 0 || x >= this.width) || (y < 0 || y >= this.height))
+    public float get(int x, int y) {
+        if ((x < 0 || x >= this.width) || (y < 0 || y >= this.height))
             throw new ArrayIndexOutOfBoundsException();
 
         return this.elem[x][y];
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void set(float data[][]) {
         /*if the given array is smaller or larger than our array, we take only data that fits into our array*/
-        for(int i = 0; i < data.length || i < this.width; i++)
+        for (int i = 0; i < data.length || i < this.width; i++)
             for (int j = 0; j < data[i].length || j < this.height; j++)
                 this.elem[i][j] = data[i][j];
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public float[][] get(){
+    public float[][] get() {
         return this.elem;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Matrix clone() {
@@ -99,16 +109,18 @@ public class Matrix {
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Computes the transpose of this matrix. The result is not stored locally, but a new Matrix is returned.
+     *
      * @return the matrix representing the inverse of this matrix.
      */
     public Matrix transpose() {
         Matrix ret = new Matrix(this.height, this.width);
 
-        for(int i = 0; i < this.width; i++)
-            for(int j = 0; j < this.height; j++)
-               ret.set(j, i, this.elem[i][j]);
+        for (int i = 0; i < this.width; i++)
+            for (int j = 0; j < this.height; j++)
+                ret.set(j, i, this.elem[i][j]);
 
         return ret;
     }
@@ -117,14 +129,15 @@ public class Matrix {
 
     /**
      * Adds a given matrix to this matrix.
+     *
      * @param other the matrix to add.
      * @throws ArithmeticException the exception is thrown if the sizes of the matrices do not match.
      */
     public void add(Matrix other) throws ArithmeticException {
-        if((other.width != this.width) || (other.height != this.height))
+        if ((other.width != this.width) || (other.height != this.height))
             throw new ArithmeticException("Matrix dimensions do not match");
 
-        for(int i = 0; i < this.width; i++)
+        for (int i = 0; i < this.width; i++)
             for (int j = 0; j < this.height; j++)
                 this.elem[i][j] += other.elem[i][j];
     }
@@ -133,11 +146,12 @@ public class Matrix {
 
     /**
      * Multiplies the given matrix with the current one.
+     *
      * @param other the matrix to be multiplied with.
      * @throws ArithmeticException if the sizes of the two matrices do not match, this exception is thrown.
      */
     public void multiply(Matrix other) throws ArithmeticException {
-        if(this.width != this.height)
+        if (this.width != this.height)
             throw new ArithmeticException("Incompatible matrices for multiplication");
 
         Matrix ret = new Matrix(other.width, this.height);
@@ -155,6 +169,7 @@ public class Matrix {
         this.width = ret.width;
         this.height = ret.height;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public static Matrix identity(int width, int height) {
@@ -163,8 +178,8 @@ public class Matrix {
 
         int ipos = 0;
 
-        try{
-            for(int i = 0; i < width; i++)
+        try {
+            for (int i = 0; i < width; i++)
                 ret.set(i, i, 1);
         } catch (ArrayIndexOutOfBoundsException ex) {
             return ret;
@@ -172,6 +187,7 @@ public class Matrix {
 
         return ret;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public static Matrix zero(int width, int height) {

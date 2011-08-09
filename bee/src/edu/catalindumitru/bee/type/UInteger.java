@@ -7,57 +7,66 @@ package edu.catalindumitru.bee.type;
 /**
  * A class that really shouldn't be used on it's own. It's more of a definition to be used with
  * typed array than an actual implementation.
+ *
  * @author colin
  */
-public class UInteger extends Number{
+public class UInteger extends Number {
     public static final Class<UInteger> TYPE = UInteger.class;
-    
+
     protected int _val;
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
+
     /**
      * Sets the value of this class. The value which is passed is wrapped to a value between 0 and
      * MAX_VALUE
-     * @param val 
+     *
+     * @param val
      */
     public void set(int val) {
-        if(val < 0)
+        if (val < 0)
             val = Integer.MAX_VALUE + val;
-        
+
         this._val = val;
     }
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
+
     /**
      * Returns the value stored inside of this class.
-     * @return 
+     *
+     * @return
      */
     public int get() {
         return this._val;
     }
+
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
     @Override
     public int intValue() {
-        return (int)this._val;
+        return (int) this._val;
     }
+
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
     @Override
     public long longValue() {
-        return (long)this._val;
+        return (long) this._val;
     }
+
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
     @Override
     public float floatValue() {
-        return (float)this._val;
+        return (float) this._val;
     }
+
     //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
     @Override
     public double doubleValue() {
-        return (double)this._val;
+        return (double) this._val;
     }
-    
+
 }

@@ -47,7 +47,7 @@ public class InputManager implements InputResolver {
     public void addObserver(InputObserver observer) {
         this.observers.add(observer);
 
-        if(this.provider == null)
+        if (this.provider == null)
             Logger.log(Logger.PRIORITY.WARNING, "An input observer has been added but no input provider has been setup");
     }
 
@@ -64,6 +64,7 @@ public class InputManager implements InputResolver {
         this.provider.setInputResolver(this);
 
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected void setupInputProvider(InputProvider provider) {
@@ -71,10 +72,11 @@ public class InputManager implements InputResolver {
 
         this.setupInputProvider(provider);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void onEvent(EVENTS event, float[] params) {
-        for(InputObserver observer : this.observers)
+        for (InputObserver observer : this.observers)
             observer.onEvent(event, params);
     }
 }

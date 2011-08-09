@@ -2,8 +2,6 @@ package edu.catalindumitru.bee.world;
 
 import edu.catalindumitru.bee.component.ComponentResolver;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -13,7 +11,7 @@ import java.util.TreeMap;
  * Date: 7/12/11
  * Time: 2:53 PM
  */
-public class World  implements NodeObserver{
+public class World implements NodeObserver {
     /*Root level nodes*/
     protected Map<String, Node> rootNodes;
     /*component resolvers*/
@@ -25,14 +23,15 @@ public class World  implements NodeObserver{
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void World(){
+    public void World() {
         /*initialize containers*/
-        this.rootNodes = new TreeMap<String, Node> ();
+        this.rootNodes = new TreeMap<String, Node>();
         this.componentResolvers = new TreeMap<Integer, ComponentResolver>();
 
         /*initialize visitors*/
         this.componentResolverVisitor = new ComponentResolverVisitor();
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void addRootNode(Node node) {
@@ -41,12 +40,14 @@ public class World  implements NodeObserver{
 
         /*Traverse new node to add it's component*/
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void removeRootNode(Node node) {
         this.rootNodes.remove(node.getName());
         node.removeObserver(this);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void removeRootNode(String name) {
@@ -54,6 +55,7 @@ public class World  implements NodeObserver{
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Send an event to the node observer. This event could be something like removed from the tree structure, a new
      * component has been added, removed etc.
@@ -86,7 +88,6 @@ public class World  implements NodeObserver{
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-
 
 
 }

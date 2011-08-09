@@ -8,19 +8,20 @@ import edu.catalindumitru.bee.component.Component;
 import edu.catalindumitru.bee.component.ComponentObserver;
 import edu.catalindumitru.bee.core.Logger;
 import edu.catalindumitru.bee.core.UniqueNameGenerator;
-import edu.catalindumitru.bee.math.*;
 import edu.catalindumitru.bee.math.ArithmeticException;
+import edu.catalindumitru.bee.math.Matrix4x4;
 import edu.catalindumitru.bee.math.Vector;
 
-import java.util.*;
-
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 
 /**
- *
  * @author colin
  */
-public class Node implements ComponentObserver{
+public class Node implements ComponentObserver {
     /*predefined axis*/
     public static final Vector V_UP = new Vector(new float[]{0, 1, 0});
     public static final Vector V_DOWN = new Vector(new float[]{0, -1, 0});
@@ -56,7 +57,6 @@ public class Node implements ComponentObserver{
     protected Vector scale;
 
 
-
     /*the parent of this transform, if it exists*/
     protected Node parent;
     /*the children of this node, sorted by their name*/
@@ -74,18 +74,19 @@ public class Node implements ComponentObserver{
 
 
     /*The number of node instances which have been created. Used to automatically generate a node name is no one is given*/
-     protected static UniqueNameGenerator nameGenerator;
+    protected static UniqueNameGenerator nameGenerator;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
     /**
      * Creates a new empty node, without components with origin coordinates.
+     *
      * @param name the name to give the node.
      */
     public Node(String name) {
         /*initialize containers*/
-        this.children = new TreeMap<String, Node> ();
+        this.children = new TreeMap<String, Node>();
         this.components = new TreeMap<Integer, Component>();
         this.observers = new HashSet<NodeObserver>();
 
@@ -127,6 +128,7 @@ public class Node implements ComponentObserver{
 
     /**
      * Sets the name generator used when creating a node where the name is irelephant but needs to be unique.
+     *
      * @param generator
      */
     public static void setNameGenerator(UniqueNameGenerator generator) {
@@ -137,6 +139,7 @@ public class Node implements ComponentObserver{
 
     /**
      * Sets the parent of this node.
+     *
      * @param parent the parent node.
      */
     public void setParent(Node parent) {
@@ -148,7 +151,7 @@ public class Node implements ComponentObserver{
     /**
      * Removes the parent from the node.
      */
-    public void removeParent(){
+    public void removeParent() {
         this.parent = null;
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -156,19 +159,21 @@ public class Node implements ComponentObserver{
 
     /**
      * Returns the parent of the node. If no parent node is present, null is returned.
+     *
      * @return
      */
-    public Node getParent(){
+    public Node getParent() {
         return this.parent;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Sets the name of this node. Setting the name is very important because it needs to by unique to be correctly
      * identified in the node list of it's parent. Also no 2 nodes ca exist in the same context with the same name
      * (context being parent node or world).
      */
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -176,9 +181,10 @@ public class Node implements ComponentObserver{
 
     /**
      * Gets the unique name of this Node.
+     *
      * @return name of the node.
      */
-    public String getName(){
+    public String getName() {
         return this.name;
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -187,9 +193,10 @@ public class Node implements ComponentObserver{
     /**
      * Adds the given node as a child to this node. If another node with the same name exists it will be replaced.
      * Any observers attached to this node will be added to the child node.
+     *
      * @param child the child to add.
      */
-    public void addChild(Node child){
+    public void addChild(Node child) {
         this.children.put(child.getName(), child);
 
         child.setParent(this);
@@ -204,15 +211,16 @@ public class Node implements ComponentObserver{
      * Remove the giver child from the child list. This function will traverse the entire list and do a comparison
      * by reference, which is slower than removing a child by it's name. Removing a child this way removes also any
      * observers from the child node, and any children below it's level.
+     *
      * @param child the node to remove
      */
     public void removeChild(Node child) {
         Set<Map.Entry<String, Node>> entrySet = this.children.entrySet();
 
-        for(Map.Entry<String, Node> entry : entrySet){
+        for (Map.Entry<String, Node> entry : entrySet) {
             /*check for reference equality*/
-            if(entry.getValue() == child) {
-                 entrySet.remove(entry);
+            if (entry.getValue() == child) {
+                entrySet.remove(entry);
                 return;
             }
         }
@@ -228,12 +236,13 @@ public class Node implements ComponentObserver{
     /**
      * Removes a child with the given name. If no child has that name, no child will be removed. Removing a child this
      * way removes also any observers from the child node, and any children below it's level.
+     *
      * @param name the name of the child to remove
      */
     public void removeChild(String name) {
         Node child = this.children.remove(name);
 
-        if(child != null)
+        if (child != null)
             child.removeAllObservers();
 
         child.removeParent();
@@ -246,27 +255,28 @@ public class Node implements ComponentObserver{
     /**
      * Searches for the child with the given name. If traverse is set to true, the search is continued to the children's
      * children and so on until the node is found or we run out of nodes.
-     * @param name the name of the node to search
+     *
+     * @param name     the name of the node to search
      * @param traverse if the search should continue down if no result is found in this node's children
      * @return the node matching the given name, or null if no node is found
      */
     public Node getChild(String name, boolean traverse) {
-        for(Map.Entry<String, Node> child : this.children.entrySet()) {
-             if(child.getKey().equals(name))
-                 return child.getValue();
+        for (Map.Entry<String, Node> child : this.children.entrySet()) {
+            if (child.getKey().equals(name))
+                return child.getValue();
         }
 
         /*if we reach this far , that means we haven't found a result yet -- we check whether we have to traverse
          children to, if not we return null*/
-        if(!traverse){
+        if (!traverse) {
             return null;
         } else {
             Node ret = null;
 
-            for(Map.Entry<String, Node> child : this.children.entrySet()) {
-                if((ret = child.getValue().getChild(name, true)) != null)
+            for (Map.Entry<String, Node> child : this.children.entrySet()) {
+                if ((ret = child.getValue().getChild(name, true)) != null)
                     return ret;
-                }
+            }
 
 
             return ret;
@@ -278,53 +288,56 @@ public class Node implements ComponentObserver{
     /**
      * Searches whether or not the child with the given name exists in this hierarchy. If traverse is set to true then,
      * if no results are found immediately, then the search continues with the children of this noe and so on
-     * @param name the name of the node to search
+     *
+     * @param name     the name of the node to search
      * @param traverse whether ot nor we should search withing out children
      * @return true if the child has been found, false otherwise.
      */
     public boolean hasChild(String name, boolean traverse) {
-        for(Map.Entry<String, Node> child : this.children.entrySet()) {
-             if(child.getKey().equals(name))
-                 return true;
+        for (Map.Entry<String, Node> child : this.children.entrySet()) {
+            if (child.getKey().equals(name))
+                return true;
         }
 
         /*if we reach this far , that means we haven't found a result yet -- we check whether we have to traverse
          children to, if not we return false*/
-        if(!traverse){
+        if (!traverse) {
             return false;
         } else {
-            for(Map.Entry<String, Node> child : this.children.entrySet()) {
-                if(child.getValue().hasChild(name, true))
+            for (Map.Entry<String, Node> child : this.children.entrySet()) {
+                if (child.getValue().hasChild(name, true))
                     return true;
-                }
+            }
 
             return false;
         }
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Searches whether or not the child with the given reference exists in this hierarchy. If traverse is set to true then,
      * if no results are found immediately, then the search continues with the children of this noe and so on
-     * @param node the node to search
+     *
+     * @param node     the node to search
      * @param traverse whether ot nor we should search withing out children
      * @return true if the child has been found, false otherwise.
      */
     public boolean hasChild(Node node, boolean traverse) {
-        for(Map.Entry<String, Node> child : this.children.entrySet()) {
-             if(child.getValue() == node)
-                 return true;
+        for (Map.Entry<String, Node> child : this.children.entrySet()) {
+            if (child.getValue() == node)
+                return true;
         }
 
         /*if we reach this far , that means we haven't found a result yet -- we check whether we have to traverse
          children to, if not we return false*/
-        if(!traverse){
+        if (!traverse) {
             return false;
         } else {
-            for(Map.Entry<String, Node> child : this.children.entrySet()) {
-                if(child.getValue().hasChild(node, true))
+            for (Map.Entry<String, Node> child : this.children.entrySet()) {
+                if (child.getValue().hasChild(node, true))
                     return true;
-                }
+            }
 
             return false;
         }
@@ -334,6 +347,7 @@ public class Node implements ComponentObserver{
 
     /**
      * Translates the node across all three axes.
+     *
      * @param x amount to translate across the X axis.
      * @param y amount to translate across the Y axis.
      * @param z amount to translate across the Z axis.
@@ -350,14 +364,15 @@ public class Node implements ComponentObserver{
 
     /**
      * Translates the node across all axes using the given vector. The vector need to have at least 3 coordinates.
+     *
      * @param translation the amount to move across all axes.
      */
-    public void translate(Vector translation){
-        try{
+    public void translate(Vector translation) {
+        try {
             this.translation.add(Vector.X, translation.get(Vector.X));
             this.translation.add(Vector.Y, translation.get(Vector.Y));
             this.translation.add(Vector.Z, translation.get(Vector.Z));
-        } catch(ArrayIndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
 
         } finally {
             this.needTransformUpdate = true;
@@ -368,6 +383,7 @@ public class Node implements ComponentObserver{
 
     /**
      * Rotates the node across all axes using the given values.
+     *
      * @param x pitch
      * @param y yaw
      * @param z roll
@@ -384,14 +400,15 @@ public class Node implements ComponentObserver{
 
     /**
      * Rotates the node using the angles provided by the vector. The vector need to have at least 3 coordinates.
+     *
      * @param rotation
      */
-    public void rotate(Vector rotation){
-        try{
+    public void rotate(Vector rotation) {
+        try {
             this.rotation.add(Vector.X, rotation.get(Vector.X));
             this.rotation.add(Vector.Y, rotation.get(Vector.Y));
             this.rotation.add(Vector.Z, rotation.get(Vector.Z));
-        } catch(ArrayIndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
 
         } finally {
             this.needTransformUpdate = true;
@@ -402,16 +419,17 @@ public class Node implements ComponentObserver{
 
     /**
      * Rotates the node across the given axis using the given angle. The axis need to be normalized to be used correctly.
+     *
      * @param axis
      * @param angle
      */
     public void rotate(Vector axis, float angle) {
         /*The axis needs to be normalized for this to work*/
-        try{
+        try {
             this.rotation.add(Vector.X, axis.get(Vector.X) * angle);
             this.rotation.add(Vector.Y, axis.get(Vector.Y) * angle);
             this.rotation.add(Vector.Z, axis.get(Vector.Z) * angle);
-        } catch(ArrayIndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
 
         } finally {
             this.needTransformUpdate = true;
@@ -427,98 +445,107 @@ public class Node implements ComponentObserver{
 
         this.needTransformUpdate = true;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void scale(Vector scale){
-        try{
+    public void scale(Vector scale) {
+        try {
             this.scale.add(Vector.X, scale.get(Vector.X));
             this.scale.add(Vector.Y, scale.get(Vector.Y));
             this.scale.add(Vector.Z, scale.get(Vector.Z));
-        } catch(ArrayIndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
 
         } finally {
             this.needTransformUpdate = true;
         }
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void  setTranslation(float x, float y, float z) {
+    public void setTranslation(float x, float y, float z) {
         this.translation.set(Vector.X, x);
         this.translation.set(Vector.Y, y);
         this.translation.set(Vector.Y, z);
 
         this.needTransformUpdate = true;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void setTranslation(Vector translation) {
-        try{
+        try {
             this.translation.set(Vector.X, translation.get(Vector.X));
             this.translation.add(Vector.Y, translation.get(Vector.Y));
             this.translation.add(Vector.Z, translation.get(Vector.Z));
-        } catch(ArrayIndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
 
         } finally {
             this.needTransformUpdate = true;
         }
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void  setRotation(float x, float y, float z) {
+    public void setRotation(float x, float y, float z) {
         this.rotation.set(Vector.X, x);
         this.rotation.set(Vector.Y, y);
         this.rotation.set(Vector.Y, z);
 
         this.needTransformUpdate = true;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void setRotation(Vector rotation) {
-        try{
+        try {
             this.rotation.set(Vector.X, rotation.get(Vector.X));
             this.rotation.add(Vector.Y, rotation.get(Vector.Y));
             this.rotation.add(Vector.Z, rotation.get(Vector.Z));
-        } catch(ArrayIndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
 
         } finally {
             this.needTransformUpdate = true;
         }
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void setRotation(Vector axis, float angle) {
-        try{
+        try {
             this.rotation.set(Vector.X, axis.get(Vector.X) * angle);
             this.rotation.set(Vector.Y, axis.get(Vector.Y) * angle);
             this.rotation.set(Vector.Z, axis.get(Vector.Z) * angle);
-        } catch(ArrayIndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
 
         } finally {
             this.needTransformUpdate = true;
         }
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void  setScale(float x, float y, float z) {
+    public void setScale(float x, float y, float z) {
         this.scale.set(Vector.X, x);
         this.scale.set(Vector.Y, y);
         this.scale.set(Vector.Y, z);
 
         this.needTransformUpdate = true;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void setScale(Vector scale) {
-        try{
+        try {
             this.scale.set(Vector.X, scale.get(Vector.X));
             this.scale.add(Vector.Y, scale.get(Vector.Y));
             this.scale.add(Vector.Z, scale.get(Vector.Z));
-        } catch(ArrayIndexOutOfBoundsException ex) {
+        } catch (ArrayIndexOutOfBoundsException ex) {
 
         } finally {
             this.needTransformUpdate = true;
         }
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected void updateTransform() {
@@ -528,21 +555,21 @@ public class Node implements ComponentObserver{
         this.mtranslation.set(3, 2, this.translation.get(Vector.Z));
 
         /*update rotation matrix*/
-        this.mrotation.set(0, 0, (float)(Math.cos(this.rotation.get(Vector.Y))*Math.cos(this.rotation.get(Vector.Z))));
-        this.mrotation.set(1, 0, (float)(-Math.cos(this.rotation.get(Vector.X))*Math.sin(this.rotation.get(Vector.Y))
-                + Math.sin(this.rotation.get(Vector.X))*Math.sin(this.rotation.get(Vector.Y))*Math.cos(this.rotation.get(Vector.Z))));
-        this.mrotation.set(2, 0, (float)(Math.sin(this.rotation.get(Vector.X))*Math.sin(this.rotation.get(Vector.Z)) +
-                Math.cos(this.rotation.get(Vector.X))*Math.sin(this.rotation.get(Vector.Y))*Math.cos(this.rotation.get(Vector.Z))));
+        this.mrotation.set(0, 0, (float) (Math.cos(this.rotation.get(Vector.Y)) * Math.cos(this.rotation.get(Vector.Z))));
+        this.mrotation.set(1, 0, (float) (-Math.cos(this.rotation.get(Vector.X)) * Math.sin(this.rotation.get(Vector.Y))
+                + Math.sin(this.rotation.get(Vector.X)) * Math.sin(this.rotation.get(Vector.Y)) * Math.cos(this.rotation.get(Vector.Z))));
+        this.mrotation.set(2, 0, (float) (Math.sin(this.rotation.get(Vector.X)) * Math.sin(this.rotation.get(Vector.Z)) +
+                Math.cos(this.rotation.get(Vector.X)) * Math.sin(this.rotation.get(Vector.Y)) * Math.cos(this.rotation.get(Vector.Z))));
 
-        this.mrotation.set(0, 1, (float)(Math.cos(this.rotation.get(Vector.Y))*Math.sin(this.rotation.get(Vector.Z))));
-        this.mrotation.set(1, 1, (float)(Math.cos(this.rotation.get(Vector.X))*Math.cos(this.rotation.get(Vector.Y)) +
-                Math.sin(this.rotation.get(Vector.X))*Math.sin(this.rotation.get(Vector.Y))*Math.sin(this.rotation.get(Vector.Z))));
-        this.mrotation.set(2, 1,  (float)(-Math.sin(rotation.get(Vector.X))*Math.cos(this.rotation.get(Vector.Z)) +
-                Math.cos(this.rotation.get(Vector.X))*Math.sin(this.rotation.get(Vector.Y))*Math.sin(this.rotation.get(Vector.Z))));
+        this.mrotation.set(0, 1, (float) (Math.cos(this.rotation.get(Vector.Y)) * Math.sin(this.rotation.get(Vector.Z))));
+        this.mrotation.set(1, 1, (float) (Math.cos(this.rotation.get(Vector.X)) * Math.cos(this.rotation.get(Vector.Y)) +
+                Math.sin(this.rotation.get(Vector.X)) * Math.sin(this.rotation.get(Vector.Y)) * Math.sin(this.rotation.get(Vector.Z))));
+        this.mrotation.set(2, 1, (float) (-Math.sin(rotation.get(Vector.X)) * Math.cos(this.rotation.get(Vector.Z)) +
+                Math.cos(this.rotation.get(Vector.X)) * Math.sin(this.rotation.get(Vector.Y)) * Math.sin(this.rotation.get(Vector.Z))));
 
-        this.mrotation.set(0, 2, (float)-Math.sin(this.rotation.get(Vector.Y)));
-        this.mrotation.set(1, 2, (float)(Math.sin(this.rotation.get(Vector.X))*Math.cos(this.rotation.get(Vector.Y))));
-        this.mrotation.set(2, 2, (float)(Math.cos(this.rotation.get(Vector.X)) * Math.cos(this.rotation.get(Vector.Y))));
+        this.mrotation.set(0, 2, (float) -Math.sin(this.rotation.get(Vector.Y)));
+        this.mrotation.set(1, 2, (float) (Math.sin(this.rotation.get(Vector.X)) * Math.cos(this.rotation.get(Vector.Y))));
+        this.mrotation.set(2, 2, (float) (Math.cos(this.rotation.get(Vector.X)) * Math.cos(this.rotation.get(Vector.Y))));
 
         /*update scale matrix*/
         this.mscale.set(0, 0, this.scale.get(Vector.X));
@@ -573,14 +600,16 @@ public class Node implements ComponentObserver{
 
     /**
      * Returns the cached transform of the node, representing a combination of translation, rotation and scale.
+     *
      * @return
      */
     public Matrix4x4 getTransform() {
-        if(this.needTransformUpdate)
+        if (this.needTransformUpdate)
             this.updateTransform();
 
         return this.mtransform;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void addComponent(Component component) {
@@ -589,56 +618,64 @@ public class Node implements ComponentObserver{
 
         this.sendEvent(E_COMPONENT_ADD, component);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void removeComponent(int type) {
 
         this.sendEvent(E_COMPONENT_REMOVE, this.components.remove(type));
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Component getComponent(int type) {
         return this.components.get(type);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public Map<Integer, Component> getComponents(){
+    public Map<Integer, Component> getComponents() {
         return this.components;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void addObserver(NodeObserver observer) {
         this.observers.add(observer);
 
         /*Perpetuate this observer to children*/
-        for (Map.Entry<String, Node> entry: this.children.entrySet())
+        for (Map.Entry<String, Node> entry : this.children.entrySet())
             entry.getValue().addObserver(observer);
 
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void removeObserver(NodeObserver observer) {
         this.observers.add(observer);
 
         /*Perpetuate the change to children*/
-        for (Map.Entry<String, Node> entry: this.children.entrySet())
+        for (Map.Entry<String, Node> entry : this.children.entrySet())
             entry.getValue().removeObserver(observer);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void removeAllObservers(){
+    public void removeAllObservers() {
         this.observers.clear();
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    private void updateChild(Node child){
-        for(NodeObserver observer : this.observers)
+    private void updateChild(Node child) {
+        for (NodeObserver observer : this.observers)
             child.addObserver(observer);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected void sendEvent(int id, Object param) {
-        for(NodeObserver observer : this.observers)
+        for (NodeObserver observer : this.observers)
             observer.onEvent(id, param, this);
 
     }
@@ -646,18 +683,19 @@ public class Node implements ComponentObserver{
     //------------------------------------------------------------------------------------------------------------------
 
     public void onEvent(int id, Object param, Component from) {
-        switch(id) {
+        switch (id) {
             case Component.E_STATE_CHANGED:
                 this.sendEvent(id, from);
                 break;
         }
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void accept(NodeVisitor visitor) {
         visitor.visit(this);
 
-        for(Map.Entry<String, Node> entry : this.children.entrySet())
+        for (Map.Entry<String, Node> entry : this.children.entrySet())
             entry.getValue().accept(visitor);
     }
     //------------------------------------------------------------------------------------------------------------------

@@ -1,7 +1,6 @@
 package edu.catalindumitru.bee.graphics;
 
 import edu.catalindumitru.bee.math.Point2D;
-import edu.catalindumitru.bee.math.Point3D;
 import edu.catalindumitru.bee.math.Rectangle;
 
 import java.util.LinkedList;
@@ -161,11 +160,12 @@ public class Shape {
     public List<Point2D> getPointList() {
         return this.point2DList;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Point2D[] getPointArray() {
         /*Update cache if needed*/
-        if(this.needsCacheRefresh || this.cachedPoints == null)   {
+        if (this.needsCacheRefresh || this.cachedPoints == null) {
             this.cachedPoints = (Point2D[]) this.point2DList.toArray();
             this.needsCacheRefresh = false;
         }
@@ -177,6 +177,7 @@ public class Shape {
 
     /**
      * Checks whether the point is contained in the shape.
+     *
      * @param point what point to test.
      * @return true or false, depending whether or not the point is int the shape.
      */
@@ -191,9 +192,9 @@ public class Shape {
         for (int i = 0, j = points.length - 1; i < points.length; j = i++) {
             if (((points[i].getY() > point.getY()) != (points[j].getY() > point.getY())) &&
                     (point.getX() < (points[j].getX() - points[i].getX())
-                    * (point.getY() - points[i].getY()) / (points[j].getY() - points[i].getY()) + points[i].getX()))
+                            * (point.getY() - points[i].getY()) / (points[j].getY() - points[i].getY()) + points[i].getX()))
 
-                 ret = !ret;
+                ret = !ret;
         }
         return ret;
     }
@@ -203,6 +204,7 @@ public class Shape {
     public boolean isFilled() {
         return filled;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void setFilled(boolean filled) {
@@ -220,6 +222,7 @@ public class Shape {
     public void setStroked(boolean stroked) {
         this.stroked = stroked;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected void updateBounds() {
@@ -230,14 +233,14 @@ public class Shape {
         float maxY = Float.MIN_VALUE + 1;
 
         /*parse through all the points and find the minimum and maximum values for the baounds*/
-        for(Point2D point : this.point2DList) {
-            if(point.getX() < minX)
+        for (Point2D point : this.point2DList) {
+            if (point.getX() < minX)
                 minX = point.getX();
-            if(point.getY() < minY)
+            if (point.getY() < minY)
                 minY = point.getY();
-            if(point.getX() > maxX)
+            if (point.getX() > maxX)
                 maxX = point.getX();
-            if(point.getY() > maxY)
+            if (point.getY() > maxY)
                 maxY = point.getY();
 
             this.bounds.setAll(minX, minY, maxX - minX, maxY - minY);
@@ -245,10 +248,11 @@ public class Shape {
 
         this.needsBoundsUpdate = false;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public Rectangle getBounds() {
-        if(this.needsBoundsUpdate)
+        if (this.needsBoundsUpdate)
             this.updateBounds();
 
 

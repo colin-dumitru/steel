@@ -5,9 +5,8 @@
 package edu.catalindumitru.gwt.concurent;
 
 /**
- *
  * @author colin
  */
 public class EventThreadFactory {
-    
+
 }

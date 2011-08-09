@@ -1,6 +1,7 @@
 package edu.catalindumitru.gwt.graphics;
 
 import com.google.gwt.canvas.dom.client.Context2d;
+import edu.catalindumitru.bee.content.ImageResource;
 import edu.catalindumitru.bee.graphics.*;
 import edu.catalindumitru.bee.math.Point2D;
 
@@ -380,9 +381,10 @@ public class GwtRender2DProvider implements Render2DProvider {
     //------------------------------------------------------------------------------------------------------------------
 
     /**
-     * Sets which baseline to use when drawing strings.
+     * Sets which baseline to use when drawing strings. See {@link Render2DProvider.TEXT_BASELINE} for addition information
+     * about the different types of baselines.
      *
-     * @param baseline
+     * @param baseline which baseline to use when drawing strings.
      */
     @Override
     public void setTextBaseline(TEXT_BASELINE baseline) {
@@ -466,12 +468,13 @@ public class GwtRender2DProvider implements Render2DProvider {
 
     /**
      * Creates a gradient at the specified location.
+     *
      * @param gradient which gradient to create
-     * @param x x coordinate for the left top corner of the gradient
-     * @param y y coordinate for the left top corner of the gradient
-     * @param width width of the gradient
-     * @param height height of the gradient
-     * @param type type of gradient (1 linear, non 1 radial)
+     * @param x        x coordinate for the left top corner of the gradient
+     * @param y        y coordinate for the left top corner of the gradient
+     * @param width    width of the gradient
+     * @param height   height of the gradient
+     * @param type     type of gradient (1 linear, non 1 radial)
      */
     private native void createNativeGradient(Gradient gradient, int x, int y, int width, int height, int type) /*-{
         var context = this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext;
@@ -489,11 +492,12 @@ public class GwtRender2DProvider implements Render2DProvider {
                 == "LINEAR") {
 
             //offset for x and y considering angle
-            var x1 = width * Math.sin(angle); var y1 =  height * Math.cos(angle);
+            var x1 = width * Math.sin(angle);
+            var y1 = height * Math.cos(angle);
 
             //depending which one is closer to the edge of the rectangle, use overextend that one to make sure
             //that the gradient rectangle is fit snuggly inside the actual bounds
-            if(Math.abs(x1 / width) > Math.abs(y1 / height)) {
+            if (Math.abs(x1 / width) > Math.abs(y1 / height)) {
                 y1 = y1 * (width / x1) * scale;
                 x1 = width * scale;
             } else {
@@ -531,7 +535,7 @@ public class GwtRender2DProvider implements Render2DProvider {
                     + entry.@java.util.Map.Entry::getValue()().@edu.catalindumitru.bee.graphics.Color::getAlpha()() + ")");
         }
 
-        if(type == 1)
+        if (type == 1)
             context.fillStyle = nativeGradient;
         else
             context.strokeStyle = nativeGradient;
@@ -742,7 +746,7 @@ public class GwtRender2DProvider implements Render2DProvider {
         if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::dynamicFillGradient) {
             this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::createNativeGradient(Ledu/catalindumitru/bee/graphics/Gradient;IIIII)(
                     this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::fillGradient,
-                   x - (radius / 2), y - (radius / 2), radius, radius,  1);
+                    x - (radius / 2), y - (radius / 2), radius, radius, 1);
         }
 
         //we draw the arc using the draw api
@@ -822,8 +826,8 @@ public class GwtRender2DProvider implements Render2DProvider {
     @Override
     public void strokeShape(Shape shape) {
         if (this.dynamicFillGradient)
-            this.createNativeGradient(this.strokeGradient, (int)shape.getBounds().getX(), (int)shape.getBounds().getY(),
-                    (int)shape.getBounds().getWidth(), (int)shape.getBounds().getHeight(), 0);
+            this.createNativeGradient(this.strokeGradient, (int) shape.getBounds().getX(), (int) shape.getBounds().getY(),
+                    (int) shape.getBounds().getWidth(), (int) shape.getBounds().getHeight(), 0);
 
         this.gwtContext.beginPath();
 
@@ -850,8 +854,8 @@ public class GwtRender2DProvider implements Render2DProvider {
                     (int) shape.getBounds().getWidth(), (int) shape.getBounds().getHeight(), 1);
         }
         if (shape.isStroked()) {
-            this.createNativeGradient(this.strokeGradient, (int)shape.getBounds().getX(), (int)shape.getBounds().getY(),
-                    (int)shape.getBounds().getWidth(), (int)shape.getBounds().getHeight(), 0);
+            this.createNativeGradient(this.strokeGradient, (int) shape.getBounds().getX(), (int) shape.getBounds().getY(),
+                    (int) shape.getBounds().getWidth(), (int) shape.getBounds().getHeight(), 0);
         }
 
         this.gwtContext.beginPath();
@@ -884,7 +888,7 @@ public class GwtRender2DProvider implements Render2DProvider {
 
         //calculate text dimensions based on text align/baseline and font
         var height = this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::font.@edu.catalindumitru.bee.graphics.Font::getSize()()
-            *16.0;
+                * 16.0;
         var width = this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.measureText(text).width;
 
         if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::dynamicFillGradient) {
@@ -922,5 +926,67 @@ public class GwtRender2DProvider implements Render2DProvider {
 
 
         this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.strokeText(text, x, y);
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Draw the specified imageResource to the canvas. The imageResource will retain it's dimensions when drawn.
+     *
+     * @param imageResource        which imageResource to draw to the canvas.
+     * @param destinationX the x coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationY the y coordinate of the top left point on the canvas where the imageResource should be drawn.
+     */
+    @Override
+    public native void drawImage(ImageResource imageResource, float destinationX, float destinationY) /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.drawImage(imageResource,
+            destinationX, destinationY);
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Draw the specified imageResource to the canvas.  The source imageResource will be drawn at coordinates destinationX,
+     * destinationY with the dimensions destinationWidth and destinationHeight. If the height or width differ from
+     * the source imageResource, then the imageResource will be scaled accordingly.
+     *
+     * @param imageResource             which imageResource to draw to the canvas.
+     * @param destinationX      the x coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationY      the y coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationWidth  the destination width of the final imageResource to be drawn.
+     * @param destinationHeight the destination height of the final imageResource to be drawn.
+     */
+    @Override
+    public native void drawImage(ImageResource imageResource, float destinationX, float destinationY, float destinationWidth,
+                                 float destinationHeight) /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.drawImage(imageResource,
+            destinationX, destinationY, destinationWidth, destinationHeight);
+    }-*/;
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Draw the specified imageResource to the canvas. The imageResource will be cropped using a rectangle described the the parameters:
+     * sourceX, sourceY, sourceWidth and sourceHeight. The cropped imageResource will be drawn at coordinates destinationX,
+     * destinationY with the dimensions destinationWidth and destinationHeight. If the height or width differ from
+     * the source imageResource, then the imageResource will be scaled accordingly.
+     *
+     * @param imageResource             which imageResource to draw to the canvas.
+     * @param destinationX      the x coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationY      the y coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationWidth  the destination width of the final imageResource to be drawn.
+     * @param destinationHeight the destination height of the final imageResource to be drawn.
+     * @param sourceX           the x coordinate of the top left corner of the rectangle which will crop the imageResource.
+     * @param sourceY           the y coordinate of the top left corner of the rectangle which will crop the imageResource.
+     * @param sourceWidth       the width of the rectangle which will crop the source imageResource.
+     * @param sourceHeight      the height of the rectangle which will crop the source imageResource.
+     */
+    @Override
+    public native void drawImage(ImageResource imageResource, float destinationX, float destinationY, float destinationWidth,
+                                 float destinationHeight, float sourceX, float sourceY, float sourceWidth, float sourceHeight) /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.drawImage(imageResource,
+                sourceX, sourceY, sourceWidth, sourceHeight,
+                destinationX, destinationY, destinationWidth, destinationHeight);
     }-*/;
 }
