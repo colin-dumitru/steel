@@ -1,7 +1,7 @@
 package edu.catalindumitru.gwt.content;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import edu.catalindumitru.bee.content.StringResource;
+import edu.catalindumitru.bee.content.TextResource;
 
 /**
  * Created by IntelliJ IDEA.
@@ -9,9 +9,9 @@ import edu.catalindumitru.bee.content.StringResource;
  * Date: 8/9/11
  * Time: 6:54 PM
  */
-public class GwtStringResource extends JavaScriptObject implements StringResource {
+public class GwtTextResource extends JavaScriptObject implements TextResource {
 
-    protected GwtStringResource() {
+    protected GwtTextResource() {
 
     }
     //------------------------------------------------------------------------------------------------------------------

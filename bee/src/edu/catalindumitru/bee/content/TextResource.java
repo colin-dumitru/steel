@@ -6,7 +6,7 @@ package edu.catalindumitru.bee.content;
  * Date: 8/9/11
  * Time: 6:48 PM
  */
-public interface StringResource extends NativeResource {
+public interface TextResource extends NativeResource {
     /**
      * Returns the string resource saved saved.
      * @return the string resource.

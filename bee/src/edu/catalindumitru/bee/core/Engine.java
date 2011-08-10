@@ -14,7 +14,7 @@ import edu.catalindumitru.bee.input.InputManager;
  */
 public class Engine {
     /*Period for garbage collection and resource manager*/
-    protected final static int P_RESOURCES = 1;
+    protected final static int P_RESOURCES = 50;
     protected final static int P_GARBAGE_COLLECTOR = 60000;
 
     protected Environment environment;

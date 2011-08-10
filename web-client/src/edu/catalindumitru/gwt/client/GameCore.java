@@ -12,7 +12,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import edu.catalindumitru.bee.content.ImageResource;
 import edu.catalindumitru.bee.content.Resource;
 import edu.catalindumitru.bee.content.ResourceObserver;
-import edu.catalindumitru.bee.content.StringResource;
+import edu.catalindumitru.bee.content.TextResource;
 import edu.catalindumitru.bee.core.Engine;
 import edu.catalindumitru.bee.core.Environment;
 import edu.catalindumitru.gwt.concurent.GwtScheduleProvider;
@@ -73,7 +73,7 @@ public class GameCore implements EntryPoint {
             @Override
             public void stateChanged(Resource from) {
                 if(from.getStatus() == Resource.STATUS.COMPLETED)
-                    GWT.log(((StringResource)from.getResource()).getString());
+                    GWT.log(((TextResource)from.getResource()).getString());
             }
         });
     }

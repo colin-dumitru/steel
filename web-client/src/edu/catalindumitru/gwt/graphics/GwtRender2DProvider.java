@@ -663,6 +663,115 @@ public class GwtRender2DProvider implements Render2DProvider {
     //------------------------------------------------------------------------------------------------------------------
 
     /**
+     * Sets clipping area for future drawing. Any drawings outside this rectangle will not be rendered.
+     *
+     * @param x      x coordinate for the top left corner of the rectangle.
+     * @param y      y coordinate for the top left corner of the rectangle.
+     * @param width  width of the rectangle.
+     * @param height height of the rectangle.
+     */
+    @Override
+    public native void setClip(int x, int y, float width, float height) /*-{
+        var context = this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext;
+
+        context.beginPath();
+        context.rect(x, y, width, height);
+        context.clip();
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Removes clipping area. Has the same affect as calling
+     * {@link edu.catalindumitru.bee.graphics.Render2DProvider#setClip(int, int, float, float)}
+     * with a rectangle described by coordinates (0, 0) and dimensions (
+     * {@link edu.catalindumitru.bee.graphics.Render2DProvider#getScreenWidth(),
+     * ({@link edu.catalindumitru.bee.graphics.Render2DProvider#getScreenWidth()}}
+     */
+    @Override
+    public native void removeClip() /*-{
+        var context = this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext;
+
+        context.beginPath();
+        context.rect(0, 0, this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::screenWidth,
+                this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::screenHeight);
+        context.clip();
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * Translates the origin of future drawing on the screen.
+     *
+     * @param x amount on the x axis to translate.
+     * @param y amount on the y axis to translate.
+     */
+    @Override
+    public native void translate(float x, float y) /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.translate(x, y);
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Rotates the drawing api which will affect all future drawings.
+     *
+     * @param angle the amount to rotate in radians.
+     */
+    @Override
+    public native void rotate(float angle) /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.rotate(angle);
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Scales the drawing api which will affect all future drawings.
+     *
+     * @param x amount on the x axis to scale.
+     * @param y amount on the y axis to scale.
+     */
+    @Override
+    public native void scale(float x, float y) /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.scale(x, y);
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * Adds the given values to the transform of the drawing api, which will affect all future drawings.
+     * Values (a11, a21, a12, a22) affect scale and rotation and values (x, y) affect translation.
+     *
+     * @param a11 value from position (1,1) of the transform matrix.
+     * @param a21 value from position (2,1) of the transform matrix.
+     * @param a12 value from position (2,1) of the transform matrix.
+     * @param a22 value from position (2,2) of the transform matrix.
+     * @param x   value from position (3,1) of the transform matrix.
+     * @param y   value from position (3,2) of the transform matrix.
+     */
+    @Override
+    public native void transform(float a11, float a12, float a21, float a22, float x, float y) /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.transform(a11, a12, a21, a22, x, y);
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * Sets the transform of the drawing api to the given values, which will affect all future drawings.
+     * Values (a11, a21, a12, a22) affect scale and rotation and values (x, y) affect translation.
+     *
+     * @param a11 value from position (1,1) of the transform matrix.
+     * @param a21 value from position (2,1) of the transform matrix.
+     * @param a12 value from position (2,1) of the transform matrix.
+     * @param a22 value from position (2,2) of the transform matrix.
+     * @param x   value from position (3,1) of the transform matrix.
+     * @param y   value from position (3,2) of the transform matrix.
+     */
+    @Override
+    public native void setTransform(float a11, float a12, float a21, float a22, float x, float y) /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.setTransform(a11, a12, a21, a22, x, y);
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
      * Fills a rectangle using the current drawing color.
      *
      * @param x      x coordinate for the left bottom vertex of the rectangle.

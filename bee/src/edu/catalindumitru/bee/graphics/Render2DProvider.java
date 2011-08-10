@@ -171,6 +171,68 @@ public interface Render2DProvider {
      */
     public void clearRect(int x, int y, float width, float height);
 
+    /**
+     * Sets clipping area for future drawing. Any drawings outside this rectangle will not be rendered.
+     * @param x      x coordinate for the top left corner of the rectangle.
+     * @param y      y coordinate for the top left corner of the rectangle.
+     * @param width  width of the rectangle.
+     * @param height height of the rectangle.
+     */
+    public void setClip(int x, int y, float width, float height);
+
+    /**
+     * Removes clipping area. Has the same affect as calling {@link Render2DProvider#setClip(int, int, float, float)}
+     * with a rectangle described by coordinates (0, 0) and dimensions (
+     * {@link edu.catalindumitru.bee.graphics.Render2DProvider#getScreenWidth(),
+     * ({@link edu.catalindumitru.bee.graphics.Render2DProvider#getScreenWidth()}}
+     */
+    public void removeClip();
+
+    /*-------------------------------------Drawing Transform------------------------------------------------------------*/
+
+    /**
+     * Translates the origin of future drawing on the screen.
+     * @param x amount on the x axis to translate.
+     * @param y amount on the y axis to translate.
+     */
+    public void translate(float x, float y);
+
+    /**
+     * Rotates the drawing api which will affect all future drawings.
+     * @param angle the amount to rotate in radians.
+     */
+    public void rotate(float angle);
+
+    /**
+     * Scales the drawing api which will affect all future drawings.
+     * @param x amount on the x axis to scale.
+     * @param y amount on the y axis to scale.
+     */
+    public void scale(float x, float y);
+
+    /**
+     * Adds the given values to the transform of the drawing api, which will affect all future drawings.
+     * Values (a11, a21, a12, a22) affect scale and rotation and values (x, y) affect translation.
+     * @param a11 value from position (1,1) of the transform matrix.
+     * @param a21 value from position (2,1) of the transform matrix.
+     * @param a12 value from position (2,1) of the transform matrix.
+     * @param a22 value from position (2,2) of the transform matrix.
+     * @param x value from position (3,1) of the transform matrix.
+     * @param y value from position (3,2) of the transform matrix.
+     */
+    public void transform(float a11, float a12, float a21, float a22, float x, float y);
+
+    /**
+     * Sets the transform of the drawing api to the given values, which will affect all future drawings.
+     * Values (a11, a21, a12, a22) affect scale and rotation and values (x, y) affect translation.
+     * @param a11 value from position (1,1) of the transform matrix.
+     * @param a21 value from position (2,1) of the transform matrix.
+     * @param a12 value from position (2,1) of the transform matrix.
+     * @param a22 value from position (2,2) of the transform matrix.
+     * @param x value from position (3,1) of the transform matrix.
+     * @param y value from position (3,2) of the transform matrix.
+     */
+    public void setTransform(float a11, float a12, float a21, float a22, float x, float y);
     /*---------------------------------------Shape drawing ------------------------------------------------------------*/
 
     /**

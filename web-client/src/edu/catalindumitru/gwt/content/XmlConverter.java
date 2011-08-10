@@ -1,7 +1,7 @@
 package edu.catalindumitru.gwt.content;
 
 import edu.catalindumitru.bee.content.Resource;
-import edu.catalindumitru.bee.content.StringResource;
+import edu.catalindumitru.bee.content.TextResource;
 
 /**
  * Created by IntelliJ IDEA.
@@ -61,8 +61,8 @@ public class XmlConverter implements ResourceConverter {
                 var response = new Object();
                 response.text = request.responseText;
 
-                //use this method to ensure that the methods defined by GwtStringResource are defined
-                that.@edu.catalindumitru.gwt.content.XmlConverter::setStringResource(Ledu/catalindumitru/bee/content/StringResource;Ledu/catalindumitru/bee/content/Resource;)(
+                //use this method to ensure that the methods defined by GwtTextResource are defined
+                that.@edu.catalindumitru.gwt.content.XmlConverter::setTextResource(Ledu/catalindumitru/bee/content/TextResource;Ledu/catalindumitru/bee/content/Resource;)(
                         response, cache
                 )
 
@@ -91,8 +91,8 @@ public class XmlConverter implements ResourceConverter {
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    protected void setStringResource(StringResource stringResource, Resource resource) {
-        resource.setResource(stringResource);
+    protected void setTextResource(TextResource textResource, Resource resource) {
+        resource.setResource(textResource);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
