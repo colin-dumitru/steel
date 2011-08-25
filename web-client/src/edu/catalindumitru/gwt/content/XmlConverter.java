@@ -1,7 +1,6 @@
 package edu.catalindumitru.gwt.content;
 
 import edu.catalindumitru.bee.content.Resource;
-import edu.catalindumitru.bee.content.TextResource;
 
 /**
  * Created by IntelliJ IDEA.
@@ -54,16 +53,11 @@ public class XmlConverter implements ResourceConverter {
                 );
 
             } else if (request.readyState == 4 && request.status == 200) {//complete
-                //cache.@edu.catalindumitru.bee.content.Resource::setResource(Ledu/catalindumitru/bee/content/NativeResource;)(
-                        //request.responseText
-                //);
 
-                var response = new Object();
-                response.text = request.responseText;
-
-                //use this method to ensure that the methods defined by GwtTextResource are defined
-                that.@edu.catalindumitru.gwt.content.XmlConverter::setTextResource(Ledu/catalindumitru/bee/content/TextResource;Ledu/catalindumitru/bee/content/Resource;)(
-                        response, cache
+                cache.@edu.catalindumitru.bee.content.Resource::setResource(Ledu/catalindumitru/bee/content/NativeResource;)(
+                        @edu.catalindumitru.gwt.content.GwtXmlResource::wrap(Ledu/catalindumitru/gwt/content/GwtXmlResource;)(
+                                request.responseXML
+                        )
                 )
 
                 cache.@edu.catalindumitru.bee.content.Resource::setStatus(Ledu/catalindumitru/bee/content/Resource$STATUS;)(
@@ -89,11 +83,6 @@ public class XmlConverter implements ResourceConverter {
         request.send();
     }-*/;
 
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-    protected void setTextResource(TextResource textResource, Resource resource) {
-        resource.setResource(textResource);
-    }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected void updateStatus(Resource resource) {

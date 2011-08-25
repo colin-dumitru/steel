@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact name="web-client:GWT">
+  <artifact build-on-make="true" name="web-client:GWT">
     <output-path>$PROJECT_DIR$/out/artifacts/web_client_GWT</output-path>
     <root id="root">
       <element id="gwt-compiler-output" facet="web-client/gwt/GWT" />

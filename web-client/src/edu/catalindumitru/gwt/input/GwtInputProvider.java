@@ -137,6 +137,7 @@ public class GwtInputProvider implements InputProvider, ClickHandler, KeyDownHan
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Called when a {@link com.google.gwt.event.dom.client.DoubleClickEvent} is fired.
      *

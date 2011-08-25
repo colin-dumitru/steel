@@ -17,6 +17,7 @@ public class GwtImageResource extends JavaScriptObject implements ImageResource 
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Returns the height of the unmodified image.
      *
@@ -40,6 +41,7 @@ public class GwtImageResource extends JavaScriptObject implements ImageResource 
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Returns whether or not the image has been fully loaded and converted.
      *

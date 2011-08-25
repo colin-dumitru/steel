@@ -5,6 +5,7 @@ import edu.catalindumitru.bee.content.Resource;
 import edu.catalindumitru.bee.content.ResourceProvider;
 import edu.catalindumitru.bee.gui.UiManager;
 import edu.catalindumitru.bee.input.InputManager;
+import edu.catalindumitru.bee.xscript.XScriptHandler;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,6 +17,9 @@ public class Engine {
     /*Period for garbage collection and resource manager*/
     protected final static int P_RESOURCES = 50;
     protected final static int P_GARBAGE_COLLECTOR = 60000;
+
+    protected final static int P_ACTION_DISPATCHER = 1;
+    protected final static int P_XSCRIPT_HANDLER = 1;
 
     protected Environment environment;
 
@@ -30,7 +34,7 @@ public class Engine {
     //------------------------------------------------------------------------------------------------------------------
     protected void setup(Environment environment) {
         /*setup logging service*/
-        Logger.setLoggingProvider(environment.getLoggingProvider());
+        Logger.initialise(environment.getLoggingProvider());
 
         /*setup input service*/
         InputManager.instance().setInputProvider(environment.getInputProvider());
@@ -39,7 +43,7 @@ public class Engine {
         UiManager.instance().setRenderProvider(environment.getRender2dProvider());
 
         /*resource manager*/
-        Resource.setProvider(environment.getResourceProvider());
+        Resource.initialise(environment.getResourceProvider());
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -52,6 +56,10 @@ public class Engine {
 
         /*schedule content loader update and garbage collector*/
         final ResourceProvider resourceProvider = environment.getResourceProvider();
+        /*action dispacther*/
+        final ActionDispatcher dispatcher = ActionDispatcher.instance();
+        /*xscript translator*/
+        final XScriptHandler xScriptHandler = XScriptHandler.instance();
 
         /*content manager*/
         provider.schedule(new Runnable() {
@@ -69,17 +77,42 @@ public class Engine {
             }
         }, ScheduleProvider.TYPE.PERIODIC, P_GARBAGE_COLLECTOR);
 
+        /*action dispatcher*/
+        provider.schedule(new Runnable() {
+            @Override
+            public void run() {
+                dispatcher.update();
+            }
+        }, ScheduleProvider.TYPE.PERIODIC, P_ACTION_DISPATCHER);
+
+        /*xscript handler*/
+        provider.schedule(new Runnable() {
+            @Override
+            public void run() {
+                xScriptHandler.update();
+            }
+        }, ScheduleProvider.TYPE.PERIODIC, P_XSCRIPT_HANDLER);
+
+
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public boolean initialize() {
         /*setup general managers which use the environment*/
         this.setup(environment);
-        /*setup managers which need a periodic funcion call*/
+        /*setup managers which need a periodic function call*/
         this.scheduleComponents(environment);
 
         if (!environment.complete())
             Logger.log(Logger.PRIORITY.WARNING, "Environment has not been setup completely. Some services might not be available");
+
+        /*additional components*/
+
+        /*ui manager*/
+        UiManager.instance().initialize();
+        /*action dispatcher*/
+        ActionDispatcher.instance().initialise();
 
         return true;
     }

@@ -11,6 +11,7 @@ import edu.catalindumitru.bee.core.LoggingProvider;
  * Time: 11:14 AM
  */
 public class GwtLoggingProvider implements LoggingProvider {
+
     public void log(Logger.PRIORITY priority, String message) {
         switch (priority) {
             case CRITICAL:

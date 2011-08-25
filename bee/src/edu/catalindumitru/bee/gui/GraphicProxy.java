@@ -14,7 +14,7 @@ import edu.catalindumitru.bee.math.Rectangle;
  * Event proxy which handles the redrawing and painting of a delegated widget. All events of type {@link UiEvent.TYPE#REDRAW_REGION}
  * will be checked if the region affected intersects the widget bounds, and then delegated to that widget.
  */
-public class GraphicProxy implements EventProxy{
+public class GraphicProxy implements EventProxy {
     public static final int PRIORIY = 10;
 
     /*graphic used to redraw the widgets*/
@@ -24,6 +24,7 @@ public class GraphicProxy implements EventProxy{
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Priority is used to sort the proxies on the order in which they should be called to handle the event.
      *
@@ -45,10 +46,10 @@ public class GraphicProxy implements EventProxy{
      */
     @Override
     public boolean handleEvent(UiEvent event) {
-        if(this.provider == null || this.root == null)
+        if (this.provider == null || this.root == null)
             return false;
 
-        switch(event.getType()){
+        switch (event.getType()) {
             /*a region of the root widget needs to be redrawn*/
             case REDRAW_REGION:
                 return this.redrawRootWidget(event.getRegionAffected());
@@ -64,25 +65,32 @@ public class GraphicProxy implements EventProxy{
 
     /**
      * Tests whether the region affected intersects width the root widget bounds, and if so, redraws the widget.
+     *
      * @param region which region should be redrawn.
      * @return if the widget has been redrawn.
      */
     private boolean redrawRootWidget(Rectangle region) {
-        if(this.root == null || this.provider == null)
+        if (this.root == null || this.provider == null)
             return false;
 
-        if(region.intersects(this.root.bounds))
+        if (region.intersects(this.root.bounds)) {
+            this.provider.beginDrawing();
             this.root.draw(this.provider, region);
+            this.provider.endDrawing();
+        }
 
-        return false;
+        return true;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     private boolean redrawRootWidget() {
-        if(this.root == null || this.provider == null)
+        if (this.root == null || this.provider == null)
             return false;
 
+        this.provider.beginDrawing();
         this.root.draw(this.provider, null);
+        this.provider.endDrawing();
 
         return true;
     }
@@ -105,6 +113,7 @@ public class GraphicProxy implements EventProxy{
     public Widget getRoot() {
         return root;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void setRoot(Widget root) {

@@ -65,7 +65,7 @@ public class GwtScheduleProvider implements ScheduleProvider {
     public void cancel(Runnable runnable) {
         Timer tmp = null;
 
-        if((tmp = this.schedules.get(runnable)) == null)
+        if ((tmp = this.schedules.get(runnable)) == null)
             return;
 
         tmp.cancel();
@@ -79,7 +79,7 @@ public class GwtScheduleProvider implements ScheduleProvider {
      * @return current time in milliseconds
      */
     @Override
-    public native int currentTime() /*-{
+    public native double currentTime() /*-{
         return Date.now();
     }-*/;
 }

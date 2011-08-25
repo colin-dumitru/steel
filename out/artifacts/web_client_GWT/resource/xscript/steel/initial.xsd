@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="xscript" type="xscriptType"/>
+    <xs:complexType name="preloadType">
+        <xs:sequence>
+            <xs:element type="resourceType" name="resource"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="xscriptType">
+        <xs:sequence>
+            <xs:element type="preloadType" name="preload"/>
+            <xs:element type="actionType" name="action" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="actionType">
+        <xs:sequence>
+            <xs:element type="paramType" name="param"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="paramType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="id" use="optional"/>
+                <xs:attribute type="xs:string" name="resource" use="optional"/>
+                <xs:attribute type="xs:string" name="menu" use="optional"/>
+                <xs:attribute type="xs:string" name="val" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="resourceType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="type"/>
+                <xs:attribute type="xs:string" name="link"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

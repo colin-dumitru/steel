@@ -13,22 +13,25 @@ package edu.catalindumitru.bee.content;
  * a {@link Resource} using the {@link ResourceProvider} and converting the Object returned by the method
  * {@link edu.catalindumitru.bee.content.Resource#getResource()} to this interface.
  */
-public interface ImageResource extends NativeResource{
+public interface ImageResource extends NativeResource {
 
     /**
      * Returns the height of the unmodified image.
+     *
      * @return height of the image
      */
     public int height();
 
     /**
      * Returns the width of the unmodified image.
+     *
      * @return width of the image.
      */
     public int width();
 
     /**
      * Returns whether or not the image has been fully loaded and converted.
+     *
      * @return if the image is complete and ready to use.
      */
     public boolean complete();

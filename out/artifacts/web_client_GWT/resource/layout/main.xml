@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<panel id="main" layout="absolute" bgcolor="#A0000050" fgcolor="rgba(100, 20, 10, 50)" visible="true">
+
+    <label id="TestLabel" width="100px" height="3%h" text="Test Label" bgcolor="rgba(0, 0, 100, 50)" voffset="100"
+           fgcolor="#FFFFFFFF" fontSize="0.7" paddingX="10" paddingY="2" border="true" borderRadius="3"
+           borderColor="#FF0000FF"/>
+
+    <button width="150px" height="30px" text="Test Button" onclick="TestAction" voffset="50" />
+
+</panel>

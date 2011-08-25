@@ -24,6 +24,7 @@ public class UniqueNameGenerator {
     protected UniqueNameGenerator() {
         this.instances = new TreeMap<String, Cell<Integer>>();
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public static UniqueNameGenerator instance() {

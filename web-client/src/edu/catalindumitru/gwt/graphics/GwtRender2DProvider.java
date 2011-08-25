@@ -139,6 +139,116 @@ public class GwtRender2DProvider implements Render2DProvider {
     //------------------------------------------------------------------------------------------------------------------
 
     /**
+     * Converts the formatted length string into the corresponding dimension in pixels. The formatted string includes
+     * a number and a suffix, which can be one of the fallowing : px for pixels, % for percent fallowed by w or h (w
+     * for a percentage based of the width of the screen and h for a percentage based on the height on the screen).
+     *
+     * @param dimension a formatted string representing the dimension to be converted.
+     * @return the dimension converted to pixels.
+     */
+    @Override
+    public int convertDimension(String dimension) {
+        if (dimension.toLowerCase().endsWith("px"))
+            return Integer.parseInt(dimension.substring(0, dimension.length() - 2));
+        else if (dimension.toLowerCase().endsWith("%w"))
+            return (int) (Float.parseFloat(dimension.substring(0, dimension.length() - 2)) * this.screenWidth * 0.01);
+        else if (dimension.toLowerCase().endsWith("%h"))
+            return (int) (Float.parseFloat(dimension.substring(0, dimension.length() - 2)) * this.screenHeight * 0.01);
+
+        return -1;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * Converts the given color formatted as a string, into a {@link edu.catalindumitru.bee.graphics.Color} object. The formatted string can be one of
+     * two types:
+     * <ul>
+     * <li>
+     * A color comprised of a # symbol fallowed by four pairs of hexadecimal numbers, which represent,
+     * in order : red, green, blue, and alpha. For example #A000007F results in a dark semitransparent red.
+     * </li>
+     * <li>
+     * A color comprised of a function call to rgba(...) which takes 4 params, all numbers between 0 and 255,
+     * representing , in order : red, green , blue and alpha. For example rgba(160, 0, 0, 127) yelds the
+     * same color as before.
+     * </li>
+     * <li>
+     * A color comprised of a function call to rgb(...) which takes 3 params, all numbers between 0 and 255,
+     * representing , in order : red, green and blue. For example rgb(160, 0, 0) yields the same color as before,
+     * except it is now fully opaque. The value of alpha is considered to be fully opaque.
+     * </li>
+     * </ul>
+     *
+     * @param color the color formatted as a string.
+     * @return the corresponding {@link edu.catalindumitru.bee.graphics.Color} object.
+     */
+    @Override
+    public Color convertColor(String color) {
+        Color ret = null;
+
+        /*check for each prefix*/
+        if(color.startsWith("#")) {
+            ret = new Color(
+                    (float)Integer.parseInt(color.substring(1, 3), 16) / 255,
+                    (float)Integer.parseInt(color.substring(3, 5), 16) / 255,
+                    (float)Integer.parseInt(color.substring(5, 7), 16) / 255,
+                    (float)Integer.parseInt(color.substring(7, 9), 16) / 255
+                    );
+
+        } else if(color.startsWith("rgba")) {
+            /*split all the params*/
+            String[] params = color.substring(color.indexOf('(') + 1, color.lastIndexOf(')')).split(",");
+
+            /*insufficient params*/
+            if(params.length < 4)
+                return ret;
+
+            ret = new Color(
+                    (float)Integer.parseInt(params[0].trim()) / 255,
+                    (float)Integer.parseInt(params[1].trim()) / 255,
+                    (float)Integer.parseInt(params[2].trim()) / 255,
+                    (float)Integer.parseInt(params[3].trim()) / 255
+            );
+
+        } else if (color.startsWith("rgb")) {
+            /*split all the params*/
+            String[] params = color.substring(color.indexOf('(') + 1, color.lastIndexOf(')')).split(",");
+
+            /*insufficient params*/
+            if(params.length < 3)
+                return ret;
+
+            ret = new Color(
+                    (float)Integer.parseInt(params[0].trim()) / 255,
+                    (float)Integer.parseInt(params[1].trim()) / 255,
+                    (float)Integer.parseInt(params[2].trim()) / 255
+            );
+        }
+
+        /*invalid format string*/
+        return ret;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Returns the given string's width when drawn, using the current text metrics.
+     *
+     * @param text which text to calculate it's dimension.
+     * @return the width of the string as it will be rendered on the screen.
+     */
+    @Override
+    public final native int getStringWidth(String text) /*-{
+        //we need to update text metrics to ensure measurement is correct.
+    if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsFontUpdate)
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateFont()();
+
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.measureText(text).width;
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
      * Sets the active fille color.
      *
      * @param color the color to use for future drawings.
@@ -346,7 +456,7 @@ public class GwtRender2DProvider implements Render2DProvider {
     /**
      * Sets which text align to use when drawing strings.
      *
-     * @param align
+     * @param align the type of text align.
      */
     @Override
     public void setTextAlign(TEXT_ALIGN align) {
@@ -548,7 +658,7 @@ public class GwtRender2DProvider implements Render2DProvider {
     /**
      * Doing it this way because gwt does some funky stuff with the string which doesn't allow me to use rgba.
      *
-     * @param style
+     * @param style the style to use when drawing (rgb, rgba, gradient).
      */
     private native void setFillStyle(String style) /*-{
         this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.fillStyle = style;
@@ -576,7 +686,7 @@ public class GwtRender2DProvider implements Render2DProvider {
             /*Gradients need to be updated for every shape that uses them because of a stupid way they are implemented*/
             case COLOR:
                 this.setFillStyle("rgba(" + (int) (this.fillColor.getRed() * 255) + ", " +
-                        (int) (this.fillColor.getGreen()) * 255 + "," + (int) (this.fillColor.getBlue() * 255) +
+                        (int) (this.fillColor.getGreen() * 255) + "," + (int) (this.fillColor.getBlue() * 255) +
                         ", " + this.fillColor.getAlpha() + ")");
 
                 this.dynamicFillGradient = false;
@@ -591,7 +701,7 @@ public class GwtRender2DProvider implements Render2DProvider {
         switch (this.strokeStyle) {
 
             case COLOR:
-                this.setStrokeStyle("rgba(" + (int) (this.strokeColor.getRed()) * 255 + ", " +
+                this.setStrokeStyle("rgba(" + (int) (this.strokeColor.getRed() * 255) + ", " +
                         (int) (this.strokeColor.getGreen() * 255) + "," + (int) (this.strokeColor.getBlue() * 255)
                         + ", " + this.strokeColor.getAlpha() + ")");
                 this.dynamicStrokeGradient = false;
@@ -612,6 +722,16 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public void beginDrawing() {
+        this.gwtContext.save();
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Function check if the style needs an update before we draw, and calls the subsequent functions to update
+     * drawing styles.
+     */
+    protected void checkForUpdate() {
 
         /*check if we need to update style or font params, and act accordingly*/
         if (this.needsFontUpdate)
@@ -619,7 +739,6 @@ public class GwtRender2DProvider implements Render2DProvider {
         if (this.needsStyleUpdate)
             this.updateStyle();
 
-        this.gwtContext.save();
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -632,6 +751,26 @@ public class GwtRender2DProvider implements Render2DProvider {
         /*TODO if there isn't anything more complicated to be added to this function convert to a JSNI function*/
         this.gwtContext.restore();
     }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * This method saves all the current params for the drawing api (like color, clipping area etc). This method
+     * should be called before setting custom drawing params.
+     */
+    @Override
+    public final native void pushState() /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.save();
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * This method restores current drawing params (like color, fill styles etc.). This method should be called
+     * after setting cutom params for drawing.
+     */
+    @Override
+    public final native void popState() /*-{
+        this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.restore();
+    }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
@@ -671,11 +810,62 @@ public class GwtRender2DProvider implements Render2DProvider {
      * @param height height of the rectangle.
      */
     @Override
-    public native void setClip(int x, int y, float width, float height) /*-{
+    public native void setRectangleClip(int x, int y, float width, float height) /*-{
         var context = this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext;
 
         context.beginPath();
         context.rect(x, y, width, height);
+        context.closePath();
+        context.clip();
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Sets the clipping area for future drawings in the shape of a rounded rectangle.
+     *
+     * @param x      x coordinate for the top left corner of the rectangle.
+     * @param y      y coordinate for the top left corner of the rectangle.
+     * @param width  width of the rectangle.
+     * @param height height of the rectangle.
+     * @param radius the radius of the rounded rectangle.
+     */
+    @Override
+    public native final void setRoundedRectangleClip(int x, int y, int width, int height, int radius) /*-{
+        var context = this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext;
+
+        context.beginPath();
+
+        context.moveTo(x + radius, y);
+        context.lineTo(x + width - radius, y);
+        context.quadraticCurveTo(x + width, y, x + width,  y + radius);
+        context.lineTo(x + width, y + height - radius);
+        context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        context.lineTo(x + radius, y + height);
+        context.quadraticCurveTo(x, y + height, x, y + height - radius);
+        context.lineTo(x, y + radius);
+        context.quadraticCurveTo(x, y, x + radius, y);
+
+        context.closePath();
+
+        context.clip();
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Sets the clipping area for future drawings in the shape of a circle.
+     *
+     * @param x      the x coordinate for the center of the circle.
+     * @param y      the y coordinate for the center of the circle.
+     * @param radius the radius of the circle.
+     */
+    @Override
+    public final native void setCircleClip(int x, int y, int radius) /*-{
+        context.beginPath();
+
+        context.arc(x, y, radius, 0, Math.PI * 2);
+
         context.clip();
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -683,7 +873,7 @@ public class GwtRender2DProvider implements Render2DProvider {
 
     /**
      * Removes clipping area. Has the same affect as calling
-     * {@link edu.catalindumitru.bee.graphics.Render2DProvider#setClip(int, int, float, float)}
+     * {@link edu.catalindumitru.bee.graphics.Render2DProvider#setRectangleClip(int, int, float, float)}
      * with a rectangle described by coordinates (0, 0) and dimensions (
      * {@link edu.catalindumitru.bee.graphics.Render2DProvider#getScreenWidth(),
      * ({@link edu.catalindumitru.bee.graphics.Render2DProvider#getScreenWidth()}}
@@ -699,6 +889,7 @@ public class GwtRender2DProvider implements Render2DProvider {
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Translates the origin of future drawing on the screen.
      *
@@ -736,6 +927,7 @@ public class GwtRender2DProvider implements Render2DProvider {
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Adds the given values to the transform of the drawing api, which will affect all future drawings.
      * Values (a11, a21, a12, a22) affect scale and rotation and values (x, y) affect translation.
@@ -753,6 +945,7 @@ public class GwtRender2DProvider implements Render2DProvider {
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Sets the transform of the drawing api to the given values, which will affect all future drawings.
      * Values (a11, a21, a12, a22) affect scale and rotation and values (x, y) affect translation.
@@ -781,6 +974,10 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public native void fillRectangle(int x, int y, int width, int height) /*-{
+        //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsStyleUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateStyle()();
+
         //if the current drawing style is a gradient then we need to create a gradient specific for this rectangles
         //dimensions
         if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::dynamicFillGradient) {
@@ -802,6 +999,64 @@ public class GwtRender2DProvider implements Render2DProvider {
     public void fillRectangle(RectangleShape rectangle) {
         this.fillRectangle((int) rectangle.getX(), (int) rectangle.getY(), (int) rectangle.getWidth(), (int) rectangle.getHeight());
     }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * Fills the rectangle where the corners are rounded to the given radius.
+     *
+     * @param x      the x coordinate of where the rectangle should begin.
+     * @param y      the y coordinate of where the rectangle should begin.
+     * @param width  the width of the rectangle
+     * @param height the height of the rectangle.
+     * @param radius the radius of the rectangle.
+     */
+    @Override
+    public final native void fillRoundRectangle(int x, int y, int width, int height, int radius) /*-{
+        //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsStyleUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateStyle()();
+
+        //if the current drawing style is a gradient then we need to create a gradient specific for this rectangles
+        //dimensions
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::dynamicFillGradient) {
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::createNativeGradient(Ledu/catalindumitru/bee/graphics/Gradient;IIIII)(
+                    this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::fillGradient,
+                    x, y, width, height, 1);
+        }
+
+        var context = this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext;
+
+        context.beginPath();
+
+        context.moveTo(x + radius, y);
+        context.lineTo(x + width - radius, y);
+        context.quadraticCurveTo(x + width, y, x + width,  y + radius);
+        context.lineTo(x + width, y + height - radius);
+        context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        context.lineTo(x + radius, y + height);
+        context.quadraticCurveTo(x, y + height, x, y + height - radius);
+        context.lineTo(x, y + radius);
+        context.quadraticCurveTo(x, y, x + radius, y);
+
+        context.closePath();
+
+        context.fill();
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Fills the rectangle where the corners are rounded to the given radius.
+     *
+     * @param rectangle the rectangle to fill.
+     * @param radius    the radius of the corners.
+     */
+    @Override
+    public void fillRoundRectangle(RectangleShape rectangle, int radius) {
+        this.fillRoundRectangle((int)rectangle.getX(), (int)rectangle.getY(), (int)rectangle.getWidth(),
+                (int)rectangle.getHeight(), radius);
+    }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
@@ -815,6 +1070,10 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public native void strokeRectangle(int x, int y, int width, int height) /*-{
+        //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsStyleUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateStyle()();
+
         //if the current drawing style is a gradient then we need to create a gradient specific for this rectangles
         //dimensions
         if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::dynamicStrokeGradient) {
@@ -836,6 +1095,64 @@ public class GwtRender2DProvider implements Render2DProvider {
     public void strokeRectangle(RectangleShape rectangle) {
         this.strokeRectangle((int) rectangle.getX(), (int) rectangle.getY(), (int) rectangle.getWidth(), (int) rectangle.getHeight());
     }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * Strokes the rectangle where the corners are rounded to the given radius.
+     *
+     * @param x      the x coordinate of where the rectangle should begin.
+     * @param y      the y coordinate of where the rectangle should begin.
+     * @param width  the width of the rectangle
+     * @param height the height of the rectangle.
+     * @param radius the radius of the rectangle.
+     */
+    @Override
+    public final native void strokeRoundRectangle(int x, int y, int width, int height, int radius) /*-{
+         //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsStyleUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateStyle()();
+
+        //if the current drawing style is a gradient then we need to create a gradient specific for this rectangles
+        //dimensions
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::dynamicFillGradient) {
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::createNativeGradient(Ledu/catalindumitru/bee/graphics/Gradient;IIIII)(
+                    this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::fillGradient,
+                    x, y, width, height, 1);
+        }
+
+        var context = this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext;
+
+        context.beginPath();
+
+        context.moveTo(x + radius, y);
+        context.lineTo(x + width - radius, y);
+        context.quadraticCurveTo(x + width, y, x + width,  y + radius);
+        context.lineTo(x + width, y + height - radius);
+        context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        context.lineTo(x + radius, y + height);
+        context.quadraticCurveTo(x, y + height, x, y + height - radius);
+        context.lineTo(x, y + radius);
+        context.quadraticCurveTo(x, y, x + radius, y);
+
+        context.closePath();
+
+        context.stroke();
+    }-*/;
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Strokes the rectangle where the corners are rounded to the given radius.
+     *
+     * @param rectangle the rectangle to stroke.
+     * @param radius    the radius of the corners.
+     */
+    @Override
+    public void strokeRoundRectangle(RectangleShape rectangle, int radius) {
+        this.strokeRoundRectangle((int)rectangle.getX(), (int)rectangle.getY(), (int)rectangle.getWidth(),
+                (int)rectangle.getHeight(), radius);
+    }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
@@ -850,6 +1167,10 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public native void fillArc(float x, float y, float radius, float startAngle, float endAngle) /*-{
+        //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsStyleUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateStyle()();
+
         //if the current drawing style is a gradient then we need to create a gradient specific for this rectangles
         //dimensions
         if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::dynamicFillGradient) {
@@ -881,6 +1202,9 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public native void strokeArc(float x, float y, float radius, float startAngle, float endAngle)  /*-{
+        //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsStyleUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateStyle()();
 
         //if the current drawing style is a gradient then we need to create a gradient specific for this rectangles
         //dimensions
@@ -910,6 +1234,9 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public void fillShape(Shape shape) {
+        if(this.needsStyleUpdate)
+            this.updateStyle();
+
         if (this.dynamicFillGradient)
             this.createNativeGradient(this.fillGradient, (int) shape.getBounds().getX(), (int) shape.getBounds().getY(),
                     (int) shape.getBounds().getWidth(), (int) shape.getBounds().getHeight(), 1);
@@ -934,6 +1261,9 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public void strokeShape(Shape shape) {
+        if(this.needsStyleUpdate)
+            this.updateStyle();
+
         if (this.dynamicFillGradient)
             this.createNativeGradient(this.strokeGradient, (int) shape.getBounds().getX(), (int) shape.getBounds().getY(),
                     (int) shape.getBounds().getWidth(), (int) shape.getBounds().getHeight(), 0);
@@ -958,6 +1288,9 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public void drawShape(Shape shape) {
+        if(this.needsStyleUpdate)
+            this.updateStyle();
+
         if (shape.isFilled()) {
             this.createNativeGradient(this.fillGradient, (int) shape.getBounds().getX(), (int) shape.getBounds().getY(),
                     (int) shape.getBounds().getWidth(), (int) shape.getBounds().getHeight(), 1);
@@ -992,6 +1325,13 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public native void fillString(float x, float y, String text) /*-{
+        //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsStyleUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateStyle()();
+        //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsFontUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateFont()();
+
         //if the current drawing style is a gradient then we need to create a gradient specific for this rectangles
         //dimensions
 
@@ -1025,6 +1365,13 @@ public class GwtRender2DProvider implements Render2DProvider {
      */
     @Override
     public native void strokeString(float x, float y, String text) /*-{
+        //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsStyleUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateStyle()();
+        //check if we need to update the style
+        if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::needsFontUpdate)
+            this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::updateFont()();
+
         //if the current drawing style is a gradient then we need to create a gradient specific for this rectangles
         //dimensions
         if (this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::dynamicStrokeGradient) {
@@ -1042,14 +1389,14 @@ public class GwtRender2DProvider implements Render2DProvider {
     /**
      * Draw the specified imageResource to the canvas. The imageResource will retain it's dimensions when drawn.
      *
-     * @param imageResource        which imageResource to draw to the canvas.
-     * @param destinationX the x coordinate of the top left point on the canvas where the imageResource should be drawn.
-     * @param destinationY the y coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param imageResource which imageResource to draw to the canvas.
+     * @param destinationX  the x coordinate of the top left point on the canvas where the imageResource should be drawn.
+     * @param destinationY  the y coordinate of the top left point on the canvas where the imageResource should be drawn.
      */
     @Override
     public native void drawImage(ImageResource imageResource, float destinationX, float destinationY) /*-{
         this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.drawImage(imageResource,
-            destinationX, destinationY);
+                destinationX, destinationY);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1059,7 +1406,7 @@ public class GwtRender2DProvider implements Render2DProvider {
      * destinationY with the dimensions destinationWidth and destinationHeight. If the height or width differ from
      * the source imageResource, then the imageResource will be scaled accordingly.
      *
-     * @param imageResource             which imageResource to draw to the canvas.
+     * @param imageResource     which imageResource to draw to the canvas.
      * @param destinationX      the x coordinate of the top left point on the canvas where the imageResource should be drawn.
      * @param destinationY      the y coordinate of the top left point on the canvas where the imageResource should be drawn.
      * @param destinationWidth  the destination width of the final imageResource to be drawn.
@@ -1069,7 +1416,7 @@ public class GwtRender2DProvider implements Render2DProvider {
     public native void drawImage(ImageResource imageResource, float destinationX, float destinationY, float destinationWidth,
                                  float destinationHeight) /*-{
         this.@edu.catalindumitru.gwt.graphics.GwtRender2DProvider::gwtContext.drawImage(imageResource,
-            destinationX, destinationY, destinationWidth, destinationHeight);
+                destinationX, destinationY, destinationWidth, destinationHeight);
     }-*/;
 
     //------------------------------------------------------------------------------------------------------------------
@@ -1081,7 +1428,7 @@ public class GwtRender2DProvider implements Render2DProvider {
      * destinationY with the dimensions destinationWidth and destinationHeight. If the height or width differ from
      * the source imageResource, then the imageResource will be scaled accordingly.
      *
-     * @param imageResource             which imageResource to draw to the canvas.
+     * @param imageResource     which imageResource to draw to the canvas.
      * @param destinationX      the x coordinate of the top left point on the canvas where the imageResource should be drawn.
      * @param destinationY      the y coordinate of the top left point on the canvas where the imageResource should be drawn.
      * @param destinationWidth  the destination width of the final imageResource to be drawn.

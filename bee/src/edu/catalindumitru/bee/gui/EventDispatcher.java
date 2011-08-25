@@ -1,7 +1,8 @@
 package edu.catalindumitru.bee.gui;
 
-import java.awt.*;
-import java.util.*;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,23 +25,26 @@ public class EventDispatcher {
             }
         });
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void addProxy(EventProxy proxy) {
         this.proxies.add(proxy);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void removeProxy(EventProxy proxy) {
         this.proxies.remove(proxy);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void dispatchEvent(UiEvent event) {
         /*iterate through all event proxies, in order or priority, and send the event to them*/
-        for(EventProxy proxy : this.proxies){
+        for (EventProxy proxy : this.proxies) {
             /*If the event has been handled, exist method.*/
-            if(proxy.handleEvent(event))
+            if (proxy.handleEvent(event))
                 return;
         }
 

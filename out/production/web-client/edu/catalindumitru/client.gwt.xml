@@ -9,8 +9,6 @@
     <inherits name="edu.catalindumitru.bee"/>
     <inherits name="edu.catalindumitru.steel"/>
 
-    <stylesheet src="css/common.css"/>
-
     <entry-point class="edu.catalindumitru.gwt.client.GameCore"/>
 
     <source path=""/>

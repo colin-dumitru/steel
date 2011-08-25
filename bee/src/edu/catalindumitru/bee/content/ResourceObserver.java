@@ -9,6 +9,7 @@ package edu.catalindumitru.bee.content;
 public interface ResourceObserver {
     /**
      * This method is called when a resource's state has changed.
+     *
      * @param from what resource has had it's state changed.
      */
     public void stateChanged(Resource from);

@@ -7,22 +7,28 @@ package edu.catalindumitru.gwt.client;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.user.client.ui.RootPanel;
-import edu.catalindumitru.bee.content.ImageResource;
 import edu.catalindumitru.bee.content.Resource;
 import edu.catalindumitru.bee.content.ResourceObserver;
-import edu.catalindumitru.bee.content.TextResource;
+import edu.catalindumitru.bee.content.XmlResource;
+import edu.catalindumitru.bee.content.xml.Node;
 import edu.catalindumitru.bee.core.Engine;
 import edu.catalindumitru.bee.core.Environment;
+import edu.catalindumitru.bee.core.Game;
+import edu.catalindumitru.bee.graphics.Color;
+import edu.catalindumitru.bee.gui.UiManager;
 import edu.catalindumitru.gwt.concurent.GwtScheduleProvider;
+import edu.catalindumitru.gwt.content.GwtResourceProvider;
 import edu.catalindumitru.gwt.content.PngConverter;
+import edu.catalindumitru.gwt.content.TextConverter;
+import edu.catalindumitru.gwt.content.XmlConverter;
 import edu.catalindumitru.gwt.core.GwtLoggingProvider;
 import edu.catalindumitru.gwt.graphics.GwtRender2DProvider;
 import edu.catalindumitru.gwt.input.GwtInputProvider;
-import edu.catalindumitru.gwt.content.GwtResourceProvider;
-import edu.catalindumitru.gwt.content.XmlConverter;
+import edu.catalindumitru.steel.game.Steel;
 
+import java.util.Map;
 
 
 /**
@@ -37,6 +43,7 @@ public class GameCore implements EntryPoint {
     protected Canvas canvas3d;
 
     protected Engine engine;
+    protected Game game;
 
 
     //------------------------------------------------------------------------------------------------------------------
@@ -58,24 +65,6 @@ public class GameCore implements EntryPoint {
     public void onModuleLoad() {
         this.initialise();
 
-        final Resource img = new Resource("png", "/resource/images/test/Blob.PNG");
-
-        img.addResourceObserver(new ResourceObserver() {
-            @Override
-            public void stateChanged(Resource from) {
-                engine.getEnvironment().getRender2dProvider().drawImage((ImageResource) img.getResource(), 0, 0);
-            }
-        });
-
-        final Resource str = new Resource("xml", "/resource/layout/test.xml");
-
-        str.addResourceObserver(new ResourceObserver() {
-            @Override
-            public void stateChanged(Resource from) {
-                if(from.getStatus() == Resource.STATUS.COMPLETED)
-                    GWT.log(((TextResource)from.getResource()).getString());
-            }
-        });
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -85,6 +74,8 @@ public class GameCore implements EntryPoint {
         this.setupWindow();
         /*setup game engine*/
         this.engine = this.setupEngine(this.createEnvironment());
+        /*setup actual game*/
+        this.game = new Steel(this.engine);
 
         /*first time game initialisation*/
         this.resetGame();
@@ -94,14 +85,14 @@ public class GameCore implements EntryPoint {
     //------------------------------------------------------------------------------------------------------------------
     protected void resetGame() {
         this.engine.initialize();
-
+        this.game.initialise();
     }
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected void setupWindow() {
         /*used to setup different elements*/
-        Element tmp = null;
+        CanvasElement tmp = null;
 
         /*create and setup canvas for 2d rendering and input*/
         this.canvas2d = Canvas.createIfSupported();
@@ -139,8 +130,9 @@ public class GameCore implements EntryPoint {
 
         /*setup content loader*/
         GwtResourceProvider resourceProvider = new GwtResourceProvider();
-        resourceProvider.addResourceConverter(new XmlConverter());
+        resourceProvider.addResourceConverter(new TextConverter());
         resourceProvider.addResourceConverter(new PngConverter());
+        resourceProvider.addResourceConverter(new XmlConverter());
         ret.setResourceProvider(resourceProvider);
 
         return ret;

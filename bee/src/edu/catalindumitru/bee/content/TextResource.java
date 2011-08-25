@@ -9,6 +9,7 @@ package edu.catalindumitru.bee.content;
 public interface TextResource extends NativeResource {
     /**
      * Returns the string resource saved saved.
+     *
      * @return the string resource.
      */
     public String getString();

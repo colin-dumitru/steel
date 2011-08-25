@@ -63,13 +63,17 @@ public class GwtResourceProvider implements ResourceProvider, ResourceConverterO
         Resource tmp = null;
 
         if ((tmp = this.activeResources.get(resource.getName())) != null) {
-            resource.setResource(tmp.getResource());
+            /*copy params from the first resource to the second*/
+            resource.copyFrom(tmp);
+
             return; /*content found*/
         }
 
         /*search for the content inside previously released resources*/
         if ((tmp = this.cachedMap.get(resource.getName())) != null) {
-            resource.setResource(tmp.getResource());
+            /*copy resources and params from the cached resource*/
+            resource.copyFrom(tmp);
+
             /*remove the content from the cached queue*/
             this.cachedQueue.remove(tmp);
             return; /*content found*/
@@ -106,6 +110,9 @@ public class GwtResourceProvider implements ResourceProvider, ResourceConverterO
             return;
         }
 
+        /*add the resource to the loading map*/
+        this.loadingResources.put(resource.getName(), resource);
+
         converter.loadResource(resource);
 
     }
@@ -126,7 +133,7 @@ public class GwtResourceProvider implements ResourceProvider, ResourceConverterO
             /*remove the content from the active resources*/
             this.activeResources.remove(resource.getName());
             /*we also remove the content from the loading map in case the content has not finished loading*/
-            this.loadingResources.remove(resource);
+            this.loadingResources.remove(resource.getName());
             /*also remove the content from the cache*/
             if (this.cachedMap.remove(resource.getName()) != null)
                 this.cachedQueue.remove(resource);
@@ -167,7 +174,7 @@ public class GwtResourceProvider implements ResourceProvider, ResourceConverterO
     public void updateGC() {
         /*remove cached resources which overflow the current queue*/
         while (this.cachedQueue.size() > this.maxCachedElements) {
-            this.cachedMap.remove(this.cachedQueue.poll());
+            this.cachedMap.remove(this.cachedQueue.poll().getName());
         }
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -192,8 +199,7 @@ public class GwtResourceProvider implements ResourceProvider, ResourceConverterO
      */
     @Override
     public void onStart(Resource resource) {
-        resource.setStatus(Resource.STATUS.LOADING);
-        this.loadingResources.put(resource.getName(), resource);
+
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -206,7 +212,6 @@ public class GwtResourceProvider implements ResourceProvider, ResourceConverterO
      */
     @Override
     public void onError(Resource resource, String error) {
-        resource.setStatus(Resource.STATUS.ERROR);
         this.loadingResources.remove(resource.getName());
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -219,8 +224,6 @@ public class GwtResourceProvider implements ResourceProvider, ResourceConverterO
      */
     @Override
     public void onComplete(Resource resource) {
-        resource.setStatus(Resource.STATUS.COMPLETED);
-
         /*We only add the content into active map if it exists into the currently loading resources. This prevents
         * errors when a content has been released, but it is still loading.*/
         if (this.loadingResources.remove(resource.getName()) != null)
@@ -231,6 +234,7 @@ public class GwtResourceProvider implements ResourceProvider, ResourceConverterO
     //------------------------------------------------------------------------------------------------------------------
     public void addResourceConverter(ResourceConverter converter) {
         this.converters.put(converter.typeHandled().toLowerCase(), converter);
+        converter.setObserver(this);
     }
 
     //------------------------------------------------------------------------------------------------------------------

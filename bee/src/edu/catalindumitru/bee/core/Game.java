@@ -23,12 +23,12 @@ public abstract class Game {
     protected ResourceProvider resourceProvider;
     protected ScheduleProvider scheduleProvider;
 
-    private int lastTime;
-    private int currentTime;
+    private double lastTime;
+    private double currentTime;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void Game(Engine engine) {
+    public Game(Engine engine) {
         this.engine = engine;
         this.environment = engine.getEnvironment();
 
@@ -38,17 +38,18 @@ public abstract class Game {
         this.resourceProvider = this.environment.getResourceProvider();
         this.scheduleProvider = this.environment.getScheduleProvider();
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public boolean initialise() {
-        if(this.engine == null)
+        if (this.engine == null)
             return false;
 
         /*create update cycle*/
         this.scheduleProvider.schedule(new Runnable() {
             @Override
             public void run() {
-                 update();
+                update();
             }
         }, ScheduleProvider.TYPE.PERIODIC, P_UPDATE);
 
@@ -61,9 +62,11 @@ public abstract class Game {
 
         return true;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected abstract boolean startup();
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     private void update() {
@@ -72,9 +75,11 @@ public abstract class Game {
         this.update(this.currentTime - this.lastTime);
         this.currentTime = this.lastTime;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    protected abstract void update(float dt);
+    protected abstract void update(double dt);
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected abstract void cleanup();

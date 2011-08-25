@@ -8,11 +8,12 @@ import edu.catalindumitru.bee.content.Resource;
  * Date: 8/9/11
  * Time: 2:13 PM
  */
-public class PngConverter implements ResourceConverter{
+public class PngConverter implements ResourceConverter {
     protected ResourceConverterObserver observer;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Returns which type this converter supports.
      *
@@ -46,7 +47,7 @@ public class PngConverter implements ResourceConverter{
                     request, resource
             )
             that.@edu.catalindumitru.gwt.content.PngConverter::updateStatus(Ledu/catalindumitru/bee/content/Resource;)(
-                cache
+                    cache
             );
             //notify the observer AFTER you 've set the resource dumbass
             cache.@edu.catalindumitru.bee.content.Resource::setStatus(Ledu/catalindumitru/bee/content/Resource$STATUS;)(
@@ -56,17 +57,18 @@ public class PngConverter implements ResourceConverter{
         }
 
         request.onerror = function(from) {
-                cache.@edu.catalindumitru.bee.content.Resource::setStatus(Ledu/catalindumitru/bee/content/Resource$STATUS;)(
-                        @edu.catalindumitru.bee.content.Resource.STATUS::ERROR
-                );
-                cache.@edu.catalindumitru.bee.content.Resource::setErrorMessage(Ljava/lang/String;)("An error has occured" +
-                        " while loading image : " + cache.@edu.catalindumitru.bee.content.Resource::getName()())
-                that.@edu.catalindumitru.gwt.content.PngConverter::updateStatus(Ledu/catalindumitru/bee/content/Resource;)(
+            cache.@edu.catalindumitru.bee.content.Resource::setStatus(Ledu/catalindumitru/bee/content/Resource$STATUS;)(
+                    @edu.catalindumitru.bee.content.Resource.STATUS::ERROR
+            );
+            cache.@edu.catalindumitru.bee.content.Resource::setErrorMessage(Ljava/lang/String;)("An error has occured" +
+                    " while loading image : " + cache.@edu.catalindumitru.bee.content.Resource::getName()())
+            that.@edu.catalindumitru.gwt.content.PngConverter::updateStatus(Ledu/catalindumitru/bee/content/Resource;)(
                     cache
-                );
+            );
 
         }
     }-*/;
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected void setImageResource(GwtImageResource imageResource, Resource resource) {
@@ -74,6 +76,7 @@ public class PngConverter implements ResourceConverter{
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
+
     /**
      * Sets the content converter observer which will be called whenever a content completes loading.
      *

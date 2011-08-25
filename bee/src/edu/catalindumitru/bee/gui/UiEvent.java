@@ -1,6 +1,5 @@
 package edu.catalindumitru.bee.gui;
 
-import edu.catalindumitru.bee.math.Point2D;
 import edu.catalindumitru.bee.math.Rectangle;
 
 /**
@@ -11,7 +10,7 @@ import edu.catalindumitru.bee.math.Rectangle;
  */
 public class UiEvent {
     public enum TYPE {
-         /*drawing events*/
+        /*drawing events*/
         REDRAW_REGION,
         REDRAW_ALL,
 
@@ -69,11 +68,13 @@ public class UiEvent {
     public void setParams(float[] params) {
         this.params = params;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public TYPE getType() {
         return type;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void setType(TYPE type) {

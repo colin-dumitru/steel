@@ -1,5 +1,7 @@
 package edu.catalindumitru.bee.content;
 
+import edu.catalindumitru.bee.xscript.XScriptHandler;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -62,11 +64,13 @@ public class Resource {
     //------------------------------------------------------------------------------------------------------------------
 
     public void setStatus(STATUS status) {
-        this.status = status;
+        if (status != this.status) {
+            this.status = status;
 
-        /*notify observer that the state has changed*/
-        for(ResourceObserver observer : this.observers)
-            observer.stateChanged(this);
+            /*notify observer that the state has changed*/
+            for (ResourceObserver observer : this.observers)
+                observer.stateChanged(this);
+        }
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -102,8 +106,11 @@ public class Resource {
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
-    public static void setProvider(ResourceProvider provider) {
+    public static void initialise(ResourceProvider provider) {
         Resource.provider = provider;
+
+        /*add the command handler to the xml script translator*/
+        XScriptHandler.instance().addCommand(new ResourceProvider.ResourceXCommand());
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -114,7 +121,7 @@ public class Resource {
      * this method is called, the resource begins loading.
      */
     protected void preLoad() {
-        if(Resource.provider == null)
+        if (Resource.provider == null)
             throw new NullPointerException("Resource <" + this.name +
                     "> cannot be loaded because no Resource Provider is set.");
 
@@ -153,15 +160,25 @@ public class Resource {
 
         return false;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void addResourceObserver(ResourceObserver observer) {
         this.observers.add(observer);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void removeResourceObserver(ResourceObserver observer) {
         this.observers.remove(observer);
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void copyFrom(Resource other) {
+        this.status = other.status;
+        this.resource = other.resource;
+        this.errorMessage = other.errorMessage;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
