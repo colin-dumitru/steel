@@ -1,14 +1,14 @@
 <xscript>
 
     <action name="log">
-        <param name="text" val="Preloading beginning" />
+        <param name="text" val="Preloading beginning"/>
     </action>
 
     <preload type="xml" link="/resource/layout/main.xml">
         <oncomplete>
             <action name="addMenu">
-                <param name="id" val="main" />
-                <param name="resource" val="/resource/layout/main.xml" />
+                <param name="id" val="main"/>
+                <param name="resource" val="/resource/layout/main.xml"/>
             </action>
 
             <action name="activateMenu">
@@ -16,7 +16,7 @@
             </action>
 
             <action name="log">
-                <param name="text" val="menu loaded succesfully." />
+                <param name="text" val="menu loaded succesfully."/>
                 <param name="priority" val="error"/>
             </action>
         </oncomplete>

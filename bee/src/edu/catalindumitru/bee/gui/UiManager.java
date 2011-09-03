@@ -1,7 +1,6 @@
 package edu.catalindumitru.bee.gui;
 
 import edu.catalindumitru.bee.core.ActionDispatcher;
-import edu.catalindumitru.bee.core.Engine;
 import edu.catalindumitru.bee.graphics.Render2DProvider;
 import edu.catalindumitru.bee.input.InputManager;
 import edu.catalindumitru.bee.input.InputObserver;
@@ -30,6 +29,8 @@ public class UiManager implements InputObserver {
     protected EventDispatcher eventDispatcher;
     /*Proxy used to render root widget*/
     protected GraphicProxy graphicProxy;
+    /*Proxy used to send events to the root widget*/
+    protected WidgetProxy widgetProxy;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -53,6 +54,9 @@ public class UiManager implements InputObserver {
 
         /*create supported layouts*/
         LayoutFactory.instance().addLayout(new AbsoluteLayout.Creator());
+
+        /*create event dispatcher*/
+        this.getEventDispatcher();
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -86,28 +90,42 @@ public class UiManager implements InputObserver {
     //------------------------------------------------------------------------------------------------------------------
     public void removePanel(Panel panel) {
         this.panels.remove(panel.getId());
+
+        if (this.activePanel == panel)
+            this.switchActivePanel(null);
     }
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void removePanel(String id) {
-        this.panels.remove(id);
+        if (this.activePanel == this.panels.remove(id))
+            this.switchActivePanel(null);
     }
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void switchActivePanel(String id) {
-        this.activePanel = this.panels.get(id);
+        this.switchActivePanelImpl(this.panels.get(id));
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    protected void switchActivePanelImpl(Panel panel) {
+        this.activePanel = panel;
+
+        /*reset root widget for event proxies*/
+        this.graphicProxy.setRoot(this.activePanel);
+        this.widgetProxy.setRoot(this.activePanel);
 
         /*switch and redraw active panel*/
-        if(this.activePanel != null)
+        if (this.activePanel != null)
             this.activePanel.redraw();
     }
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void hideActivePanel() {
-        this.activePanel = null;
+        this.switchActivePanel(null);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -123,7 +141,12 @@ public class UiManager implements InputObserver {
             this.graphicProxy.setProvider(this.renderProvider);
             this.graphicProxy.setRoot(this.activePanel);
 
+            /*ui proxy*/
+            this.widgetProxy = new WidgetProxy();
+            this.widgetProxy.setRoot(this.activePanel);
+
             this.eventDispatcher.addProxy(this.graphicProxy);
+            this.eventDispatcher.addProxy(this.widgetProxy);
         }
 
         return this.eventDispatcher;
@@ -134,6 +157,7 @@ public class UiManager implements InputObserver {
     public void setEventDispatcher(EventDispatcher eventDispatcher) {
         this.eventDispatcher = eventDispatcher;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     @Override
@@ -141,32 +165,32 @@ public class UiManager implements InputObserver {
         switch (event) {
 
             case E_MOUSE_CLICK:
-                this.getEventDispatcher().dispatchEvent(new UiEvent(new Rectangle(params[0], params[1], 1, 1), params,
+                this.eventDispatcher.dispatchEvent(new UiEvent(new Rectangle(params[0], params[1], 1, 1), params,
                         UiEvent.TYPE.MOUSE_CLICK));
                 break;
             case E_MOUSE_DOWN:
-                this.getEventDispatcher().dispatchEvent(new UiEvent(new Rectangle(params[0], params[1], 1, 1), params,
+                this.eventDispatcher.dispatchEvent(new UiEvent(new Rectangle(params[0], params[1], 1, 1), params,
                         UiEvent.TYPE.MOUSE_DOWN));
                 break;
             case E_MOUSE_UP:
-                this.getEventDispatcher().dispatchEvent(new UiEvent(new Rectangle(params[0], params[1], 1, 1), params,
+                this.eventDispatcher.dispatchEvent(new UiEvent(new Rectangle(params[0], params[1], 1, 1), params,
                         UiEvent.TYPE.MOUSE_UP));
                 break;
             case E_MOUSE_MOVE:
-                this.getEventDispatcher().dispatchEvent(new UiEvent(null, params, UiEvent.TYPE.MOUSE_MOVE));
+                this.eventDispatcher.dispatchEvent(new UiEvent(null, params, UiEvent.TYPE.MOUSE_MOVE));
                 break;
             case E_MOUSE_WHEEL:
-                this.getEventDispatcher().dispatchEvent(new UiEvent(null, params, UiEvent.TYPE.MOUSE_WHEEL));
+                this.eventDispatcher.dispatchEvent(new UiEvent(null, params, UiEvent.TYPE.MOUSE_WHEEL));
                 break;
             case E_MOUSE_DOUBLE_CLICK:
-                this.getEventDispatcher().dispatchEvent(new UiEvent(new Rectangle(params[0], params[1], 1, 1), params,
+                this.eventDispatcher.dispatchEvent(new UiEvent(new Rectangle(params[0], params[1], 1, 1), params,
                         UiEvent.TYPE.MOUSE_DOUBLE_CLICK));
                 break;
             case E_KEY_UP:
-                this.getEventDispatcher().dispatchEvent(new UiEvent(null, params, UiEvent.TYPE. KEY_UP));
+                this.eventDispatcher.dispatchEvent(new UiEvent(null, params, UiEvent.TYPE.KEY_UP));
                 break;
             case E_KEY_DOWN:
-                this.getEventDispatcher().dispatchEvent(new UiEvent(null, params, UiEvent.TYPE.KEY_DOWN));
+                this.eventDispatcher.dispatchEvent(new UiEvent(null, params, UiEvent.TYPE.KEY_DOWN));
                 break;
         }
     }

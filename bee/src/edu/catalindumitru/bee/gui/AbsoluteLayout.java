@@ -37,37 +37,40 @@ public class AbsoluteLayout extends Layout {
         int width = (int) this.root.getBounds().getWidth();
         int height = (int) this.root.getBounds().getHeight();
 
-        int baseX = 0;
-        int baseY = 0;
+        int baseX = (int) this.root.getBounds().getX();
+        int baseY = (int) this.root.getBounds().getY();
+
+        int finalX = 0;
+        int finalY = 0;
 
         for (Widget child : this.children) {
             switch (child.getHorizontalAlign()) {
 
                 case LEFT:
-                    baseX = 0 + child.getHorizontalOffset();
+                    finalX = baseX + child.getHorizontalOffset();
                     break;
                 case CENTER:
-                    baseX = (int) (((width / 2) - (child.getBounds().getWidth() / 2)) + child.getHorizontalOffset());
+                    finalX = baseX + (int) (((width / 2) - (child.getBounds().getWidth() / 2)) + child.getHorizontalOffset());
                     break;
                 case RIGHT:
-                    baseX = (int) (width - child.bounds.getWidth()) + child.getHorizontalOffset();
+                    finalX = baseX + (int) (width - child.bounds.getWidth()) + child.getHorizontalOffset();
                     break;
             }
 
             switch (child.getVerticalAlign()) {
 
                 case TOP:
-                    baseY = 0 + child.getVerticalOffset();
+                    finalY = baseY + child.getVerticalOffset();
                     break;
                 case CENTER:
-                    baseY = (int) (((height / 2) - (child.getBounds().getHeight() / 2)) + child.getVerticalOffset());
+                    finalY = baseY + (int) (((height / 2) - (child.getBounds().getHeight() / 2)) + child.getVerticalOffset());
                     break;
                 case BOTTOM:
-                    baseY = (int) (height - child.bounds.getHeight()) + child.getVerticalOffset();
+                    finalY = baseY + (int) (height - child.bounds.getHeight()) + child.getVerticalOffset();
                     break;
             }
 
-            child.setBounds(baseX, baseY);
+            child.setBounds(finalX, finalY);
         }
 
 

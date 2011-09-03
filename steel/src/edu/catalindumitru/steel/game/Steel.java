@@ -1,5 +1,6 @@
 package edu.catalindumitru.steel.game;
 
+import edu.catalindumitru.bee.core.ActionDispatcher;
 import edu.catalindumitru.bee.core.Engine;
 import edu.catalindumitru.bee.core.Game;
 import edu.catalindumitru.bee.xscript.XScriptHandler;
@@ -27,6 +28,9 @@ public class Steel extends Game {
     //------------------------------------------------------------------------------------------------------------------
     @Override
     protected boolean startup() {
+        /*register game controller*/
+        ActionDispatcher.instance().addController(new GameController());
+
         /*TODO realocate starting script*/
         XScriptHandler.instance().handleScript(INITIAL_XSCRIPT);
 

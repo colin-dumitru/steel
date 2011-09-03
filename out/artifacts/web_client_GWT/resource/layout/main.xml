@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<panel id="main" layout="absolute" bgcolor="#A0000050" fgcolor="rgba(100, 20, 10, 50)" visible="true">
+<panel id="main" layout="absolute" fgcolor="rgba(100, 20, 10, 50)" visible="true">
 
-    <label id="TestLabel" width="100px" height="3%h" text="Test Label" bgcolor="rgba(0, 0, 100, 50)" voffset="100"
-           fgcolor="#FFFFFFFF" fontSize="0.7" paddingX="10" paddingY="2" border="true" borderRadius="3"
-           borderColor="#FF0000FF"/>
+    <panel width="600px" height="60px" voffset="-20px" id="inner" layout="absolute" bgcolor="#30303080" valign="bottom"
+           halign="center" visible="true" border="true" borderWidth="2" borderColor="#D0D0D0FF" radius="5">
 
-    <button width="150px" height="30px" text="Test Button" onclick="TestAction" voffset="50" />
+        <button width="120px" height="30px" text="Continue" onClick="ContinueGame" voffset="20px" hoffset="-200px"
+                valign="top" halign="center"/>
+        <button width="120px" height="30px" text="Options" onClick="OptionsMenu" voffset="20px" hoffset="-70px"
+                valign="top" halign="center"/>
+        <button width="120px" height="30px" text="Support" onClick="SupportMenu" voffset="20px" hoffset="70px"
+                valign="top" halign="center"/>
+        <button width="120px" height="30px" text="Exit Game" onClick="ExitGame" voffset="20px" hoffset="200px"
+                valign="top" halign="center"/>
+
+    </panel>
 
 </panel>

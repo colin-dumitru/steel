@@ -37,7 +37,8 @@ public class UiEvent {
     //------------------------------------------------------------------------------------------------------------------
 
     public UiEvent(Rectangle regionAffected, float[] params, TYPE type) {
-        this.regionAffected = regionAffected;
+        if (regionAffected != null)
+            this.regionAffected = regionAffected.clone();
         this.params = params;
         this.type = type;
     }
@@ -52,7 +53,8 @@ public class UiEvent {
     //------------------------------------------------------------------------------------------------------------------
 
     public void setRegionAffected(Rectangle regionAffected) {
-        this.regionAffected = regionAffected;
+        if (regionAffected != null)
+            this.regionAffected = regionAffected.clone();
     }
 
     //------------------------------------------------------------------------------------------------------------------

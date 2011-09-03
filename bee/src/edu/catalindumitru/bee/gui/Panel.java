@@ -4,6 +4,7 @@ import edu.catalindumitru.bee.content.xml.Element;
 import edu.catalindumitru.bee.content.xml.Node;
 import edu.catalindumitru.bee.content.xml.NodeList;
 import edu.catalindumitru.bee.core.Logger;
+import edu.catalindumitru.bee.graphics.Color;
 import edu.catalindumitru.bee.graphics.Render2DProvider;
 import edu.catalindumitru.bee.math.Rectangle;
 
@@ -20,7 +21,10 @@ import java.util.Queue;
  */
 public class Panel extends Widget {
     public static final String LABEL = "panel";
+
     protected static final String A_LAYOUT = "layout";
+
+    protected static final Color C_DEFAULT_BG = Color.TRANSPARENT;
 
 
     public static class Builder implements WidgetBuilder {
@@ -50,7 +54,7 @@ public class Panel extends Widget {
                 Node child = children.item(i);
 
                 if (child.getNodeType() == Node.ELEMENT_NODE) {
-                    try{
+                    try {
                         Widget subWidget = WidgetFactory.instance().create(child.castToElement());
 
                         /*if the widget is a supported one*/
@@ -60,7 +64,7 @@ public class Panel extends Widget {
                     } catch (Exception ex) {
                         /*exception building child*/
                         Logger.log(Logger.PRIORITY.ERROR, "Error building child " + child.getNodeName() + " : " +
-                            ex.toString());
+                                ex.toString());
                     }
                 }
             }
@@ -122,7 +126,9 @@ public class Panel extends Widget {
     protected void initialise() {
         super.initialise();
 
-        this.childrenQueue = new PriorityQueue<Widget>(1, new Widget.ZIndexComparator());
+        this.background = C_DEFAULT_BG;
+
+        this.childrenQueue = new PriorityQueue<Widget>(10, new Widget.ZIndexComparator());
         this.childrenList = new LinkedList<Widget>();
         this.dimensions = new Rectangle(0, 0);
     }
@@ -148,12 +154,12 @@ public class Panel extends Widget {
 
         /*if the radius is smaller than 0, then we draw a simple recngle*/
         if (this.radius <= 0) {
-            provider.fillRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                    (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight());
+            provider.fillRectangle((int) this.dimensions.x, (int) this.dimensions.y,
+                    (int) this.dimensions.width, (int) this.dimensions.height);
         } else {
             /*otherwise we draw a round rectangle*/
-            provider.fillRoundRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                    (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight(), radius);
+            provider.fillRoundRectangle((int) this.dimensions.x, (int) this.dimensions.y,
+                    (int) this.dimensions.width, (int) this.dimensions.height, radius);
         }
 
         /*draw a border if requested*/
@@ -165,12 +171,12 @@ public class Panel extends Widget {
 
             /*if the radius is smaller than 0, then we draw a simple recngle*/
             if (this.radius <= 0) {
-                provider.strokeRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                        (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight());
+                provider.strokeRectangle((int) this.dimensions.x, (int) this.dimensions.y,
+                        (int) this.dimensions.width, (int) this.dimensions.height);
             } else {
                 /*otherwise we draw a round rectangle*/
-                provider.strokeRoundRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                        (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight(), radius);
+                provider.strokeRoundRectangle((int) this.dimensions.x, (int) this.dimensions.y,
+                        (int) this.dimensions.width, (int) this.dimensions.height, radius);
             }
 
         }
@@ -183,7 +189,6 @@ public class Panel extends Widget {
 
         /*also draw the children*/
         this.drawChildren(provider, region);
-
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -235,10 +240,6 @@ public class Panel extends Widget {
      * @param region   what region should be redrawn.
      */
     protected void drawChildren(Render2DProvider provider, Rectangle region) {
-        /*translate drawing center to ensure that the widgets are world aligned*/
-        provider.translate(this.bounds.getX(), this.bounds.getY());
-        /*translate the region affected to ensure that it is world aligned*/
-        region.translate(-this.bounds.getX(), -this.bounds.getY());
 
         /*Iterate through all the children an verify if the region affected by the redraw event intersects
         * the child's bound. If so then it should be redrawn.*/
@@ -248,7 +249,7 @@ public class Panel extends Widget {
 
                 /*ensure that the child does not draw outside it's bounds*/
                 Rectangle bounds = child.getBounds();
-                provider.setRectangleClip((int) bounds.getX(), (int) bounds.getY(), (int) bounds.getWidth(), (int) bounds.getHeight());
+                provider.setRectangleClip((int) bounds.x, (int) bounds.y, (int) bounds.width, (int) bounds.height);
 
                 /*call the draw method of the child*/
                 child.draw(provider, region);
@@ -256,11 +257,6 @@ public class Panel extends Widget {
                 provider.popState();
             }
         }
-
-        /*translate the origin back to it's original state*/
-        provider.translate(-this.bounds.getX(), -this.bounds.getY());
-        /*translate back the region*/
-        region.translate(this.bounds.getX(), this.bounds.getY());
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -308,7 +304,7 @@ public class Panel extends Widget {
 
         for (Widget child : this.childrenList) {
             /*dispatch the event only when the region affected of the effect intersects the region of the child widget*/
-            if (child.getBounds().intersects(event.regionAffected))
+            if (event.regionAffected == null || child.getBounds().intersects(event.regionAffected))
                 child.onEvent(event);
         }
     }

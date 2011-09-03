@@ -64,8 +64,6 @@ public class GwtElement extends GwtNode implements Element {
             if (this.attributes[a].name != null)
                 ret.@java.util.Map::put(Ljava/lang/Object;Ljava/lang/Object;)(this.attributes[a].name,
                         this.attributes[a].value);
-
-            console.log(this.attributes[a].name);
         }
 
         return ret;

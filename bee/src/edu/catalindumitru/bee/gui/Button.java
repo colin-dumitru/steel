@@ -1,6 +1,5 @@
 package edu.catalindumitru.bee.gui;
 
-import com.google.gwt.core.client.GWT;
 import edu.catalindumitru.bee.content.xml.Element;
 import edu.catalindumitru.bee.graphics.Color;
 import edu.catalindumitru.bee.graphics.Gradient;
@@ -64,10 +63,10 @@ public class Button extends Label {
         }
     }
 
-    public static final Color C_DEFAULT_BACKGROUND = new Color(0.4f, 0.4f, 0.4f, 1.0f);
+    public static final Color C_DEFAULT_BACKGROUND = new Color(0.3f, 0.3f, 0.3f, 1.0f);
     public static final Color C_DEFAULT_FOREGROUND = new Color(0.9f, 0.9f, 0.9f, 1.0f);
     public static final Color C_DEFAULT_BORDER = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-    public static final Color C_DEFAULT_IDLE = new Color(1.0f, 1.0f, 1.0f, 0.2f);
+    public static final Color C_DEFAULT_IDLE = new Color(0.2f, 0.2f, 0.2f, 0.3f);
     public static final Color C_DEFAULT_HOVER = new Color(0.8f, 0.3f, 0.3f, 0.7f);
     public static final int C_DEFAULT_BORDER_RADIUS = 1;
     public static final int DEFAULT_RADIUS = 5;
@@ -79,6 +78,9 @@ public class Button extends Label {
 
     protected Gradient overlayIdleGradient;
     protected Gradient overlayHoverGradient;
+
+    /*last state of the hovered param, to check whether we should redraw on hover in or out*/
+    protected boolean lastHovered;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -100,6 +102,9 @@ public class Button extends Label {
         this.hasOverlay = true;
         this.setOverlayIdleColor(C_DEFAULT_IDLE);
         this.setOverlayHoverColor(C_DEFAULT_HOVER);
+
+        /*enabled by default to ensure hovering effects*/
+        this.enabled = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -155,14 +160,22 @@ public class Button extends Label {
             provider.setStrokeColor(this.borderColor);
             provider.setLineWidth(this.borderWidth);
 
-            /*if the radius is smaller than 0, then we draw a simple recngle*/
+            /*if the radius is smaller than 0, then we draw a simple rectangle. We translate the rectangle to ensure
+            * that the stroked border will be inside the clipping area. Also we subtract 1 for coordinates and add 2
+            * for dimensions because the border has the center one pixel in the rectangle.*/
             if (this.radius <= 0) {
-                provider.strokeRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                        (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight());
+                /*otherwise we draw a round rectangle*/
+                provider.strokeRectangle((int) this.dimensions.getX() + this.radius / 2 - 1,
+                        (int) this.dimensions.getY() + this.radius / 2 - 1,
+                        (int) this.dimensions.getWidth() - this.radius + 2,
+                        (int) this.dimensions.getHeight() - this.radius + 2);
             } else {
                 /*otherwise we draw a round rectangle*/
-                provider.strokeRoundRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                        (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight(), radius);
+                provider.strokeRoundRectangle((int) this.dimensions.getX() + this.radius / 2 - 1,
+                        (int) this.dimensions.getY() + this.radius / 2 - 1,
+                        (int) this.dimensions.getWidth() - this.radius + 2,
+                        (int) this.dimensions.getHeight() - this.radius + 2,
+                        radius);
             }
 
         }
@@ -180,8 +193,6 @@ public class Button extends Label {
         provider.fillString((int) (this.dimensions.getX() + (this.dimensions.getWidth() / 2) - (textWidth / 2)),
                 (int) (this.dimensions.getY() + (this.dimensions.getHeight() / 2) - (this.font.getSize() * 8)),
                 this.text);
-
-        GWT.log(new Integer((int) (this.dimensions.getX() + (this.dimensions.getWidth() / 2) - (textWidth / 2))).toString());
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -233,6 +244,20 @@ public class Button extends Label {
         this.overlayHoverGradient.addColorStop(1.0, this.overlayHoverColor);
     }
 
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void onEvent(UiEvent event) {
+        this.lastHovered = this.hovered;
+
+        super.onEvent(event);
+
+        /*check for state changed*/
+        if (this.lastHovered != this.hovered)
+            /*call a redraw*/
+            UiManager.instance().getEventDispatcher().dispatchEvent(new UiEvent(this.bounds,
+                    null, UiEvent.TYPE.REDRAW_REGION));
+    }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 

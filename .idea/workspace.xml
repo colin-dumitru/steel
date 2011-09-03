@@ -76,46 +76,231 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Label.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Label.java">
+      <file leaf-file-name="GwtRender3DProvider.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtRender3DProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.0">
+            <state line="1438" column="45" selection-start="83518" selection-end="83518" vertical-scroll-proportion="0.20094563">
+              <folding>
+                <marker date="1314950393712" expanded="true" signature="1070:1117" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="1555:1603" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="2081:2396" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="3153:3194" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="4101:4164" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="7954:8018" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="8824:8921" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="9697:9730" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="10209:10524" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="10989:11028" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="11497:11534" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="12297:12353" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="13070:13106" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="14290:14327" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="14804:14841" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="15482:15527" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="17001:17041" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="18512:18551" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="18913:18943" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="19309:19338" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="20325:20364" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="21315:21356" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="22943:22986" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="23711:23758" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="24386:24437" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="25011:25062" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="25817:25867" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="27398:27448" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="29393:29457" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="30037:30076" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="30997:31050" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="32583:32634" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="34569:34634" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="35323:35374" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="36690:36742" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="38608:38668" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="39381:39418" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="39879:39917" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="40560:40604" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="41234:41284" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="43805:43901" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="46296:46389" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="46791:46958" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="47397:47441" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="48112:48156" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="49372:49431" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="50027:50074" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="53058:53167" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="55916:56000" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="57212:57269" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="58479:58536" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="60976:61081" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="63301:63390" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="64092:64143" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="64646:64689" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="65117:65295" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="65986:66153" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="66609:66653" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="67084:67126" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="67686:67737" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="68307:68696" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="68442:68669" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="69913:69977" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="70561:70616" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="71426:71488" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="72064:72117" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="72622:72674" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="73306:73359" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="73949:73994" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="74565:74607" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="75134:75184" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="75763:75804" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="76345:76391" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="77090:77152" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="77609:77662" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="78120:78172" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="78842:79031" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="79679:79869" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="80557:80618" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="81213:81430" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="81356:81403" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="82061:82262" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="83616:83674" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="84404:84468" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="85070:85114" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="85735:85780" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="86382:86426" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="87049:87094" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="87833:87880" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="88585:88630" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="89368:89415" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="90124:90169" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="90995:91045" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="91754:91799" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="92621:92671" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="93384:93429" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="94340:94393" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="95100:95145" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="96050:96103" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="96814:96859" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="97670:97736" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="98547:98613" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="99426:99492" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="100089:100135" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="100749:100801" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="101485:101534" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="102206:102258" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="103013:103065" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="103737:103789" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="104616:104671" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="105343:105395" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="107024:107112" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="107816:107864" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="108935:108988" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="109827:109884" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="110282:110445" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="110876:110918" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="111529:111574" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="112325:112383" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="113458:113517" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="113935:114113" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="114576:114628" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="115843:115942" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="117880:117973" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="119652:119734" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="120354:120409" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="122224:122299" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="123059:123119" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="123543:123724" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="124181:124229" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="125872:125940" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="126566:126623" placeholder="{...}" />
+                <marker date="1314950393712" expanded="true" signature="127966:128046" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Shape.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/graphics/Shape.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="189" column="10" selection-start="7618" selection-end="7618" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WidgetFactory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/WidgetFactory.java">
+      <file leaf-file-name="GwtRender2DProvider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtRender2DProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="0" selection-start="2566" selection-end="2566" vertical-scroll-proportion="0.0">
+            <state line="750" column="30" selection-start="30329" selection-end="30329" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1314950324058" expanded="true" signature="10242:10610" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="22877:25895" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="23593:24415" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="23753:23933" placeholder="//..." />
+                <marker date="1314950324058" expanded="true" signature="23996:24095" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="24101:24202" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="24421:24750" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="25056:25754" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="26406:26510" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="26968:27074" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="30863:30956" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="31436:31532" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="31903:32183" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="32855:32972" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="33688:33914" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="34692:35395" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="36011:36124" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="36844:37187" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="37690:37792" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="38246:38346" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="38844:38942" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="39943:40065" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="41069:41194" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="41861:42724" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="42096:42224" placeholder="//..." />
+                <marker date="1314950324058" expanded="true" signature="42317:42608" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="44115:45565" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="44350:44478" placeholder="//..." />
+                <marker date="1314950324058" expanded="true" signature="44571:44862" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="46935:47804" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="47170:47298" placeholder="//..." />
+                <marker date="1314950324058" expanded="true" signature="47393:47686" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="49205:50657" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="49440:49568" placeholder="//..." />
+                <marker date="1314950324058" expanded="true" signature="49661:49952" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="52149:53368" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="52384:52512" placeholder="//..." />
+                <marker date="1314950324058" expanded="true" signature="52605:52927" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="54158:55384" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="54393:54521" placeholder="//..." />
+                <marker date="1314950324058" expanded="true" signature="54616:54940" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="59666:61350" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="60123:60326" placeholder="//..." />
+                <marker date="1314950324058" expanded="true" signature="60695:61242" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="61952:63066" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="62409:62537" placeholder="//..." />
+                <marker date="1314950324058" expanded="true" signature="62632:62956" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="63884:64039" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="65350:65542" placeholder="{...}" />
+                <marker date="1314950324058" expanded="true" signature="67511:67764" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GwtTexture.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtTexture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="0" selection-start="577" selection-end="577" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Button.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Button.java">
+      <file leaf-file-name="Render3DProvider.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/graphics/Render3DProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="78" selection-start="2754" selection-end="2754" vertical-scroll-proportion="0.53288364">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-client/war/resource/layout/main.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="91" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Widget.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Widget.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="302" column="0" selection-start="11577" selection-end="11577" vertical-scroll-proportion="0.0">
+            <state line="1292" column="28" selection-start="56954" selection-end="56964" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -131,24 +316,27 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/UiController.java" />
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/content/Resource.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/content/GwtResourceProvider.java" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/content/XmlConverter.java" />
-        <option value="$PROJECT_DIR$/web-client/war/resource/xscript/steel/initial.xml" />
-        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/client/GameCore.java" />
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/GraphicProxy.java" />
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/math/Rectangle.java" />
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Widget.java" />
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Label.java" />
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/graphics/Render2DProvider.java" />
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/UiManager.java" />
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Panel.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/array/GwtNativeArrayProvider.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/core/GwtNativeArrayProvider.java" />
+        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/graphics/ActiveInfo.java" />
+        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/graphics/UniformLocation.java" />
+        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/world/World.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtShaderProgram.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtShader.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtActiveInfo.java" />
+        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/graphics/Render3DProvider.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtUniformLocation.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtBuffer.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtFrameBuffer.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtRenderBuffer.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtTexture.java" />
         <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtRender2DProvider.java" />
-        <option value="$PROJECT_DIR$/web-client/war/resource/layout/main.xml" />
-        <option value="$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Button.java" />
+        <option value="$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtRender3DProvider.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState />
   </component>
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
@@ -196,517 +384,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xscript" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="steel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gwt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gwt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="input" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gwt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gwt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gwt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="steel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="steel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="steel" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="game" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xscript" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="input" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="graphics" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Favorites" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <PATH>
@@ -769,6 +446,169 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalindumitru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalindumitru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gwt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalindumitru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gwt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalindumitru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalindumitru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="catalindumitru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Favorites" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -856,8 +696,34 @@
               <option name="myItemId" value="gwt" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xml" />
+              <option name="myItemId" value="web-client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bee" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="google" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gwt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -887,7 +753,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="xml" />
+              <option name="myItemId" value="dom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -904,116 +770,20 @@
               <option name="myItemId" value="bee" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="google" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gwt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="edu.catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="edu.catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="edu.catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web-client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="edu.catalindumitru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="content" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xml" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.General" />
     <property name="GWT.GenerateCompileReport.Module" value="edu.catalindumitru.client" />
     <property name="DefaultHtmlFileTemplate" value="Xhtml" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -1021,9 +791,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1092,14 +862,12 @@
         <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
-      <JSDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSDebuggerConfigurationSettings>
+    <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
+      <module name="" />
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
         <option name="PhingTarget" enabled="false" />
       </method>
@@ -1131,12 +899,14 @@
         <option name="PhingTarget" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
-      <module name="" />
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
       <method>
         <option name="AntTarget" enabled="false" />
         <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
         <option name="PhingTarget" enabled="false" />
       </method>
@@ -1198,23 +968,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28980526" sideWeight="0.0" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32875144" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32875144" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31500572" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19325154" sideWeight="0.21814007" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18711656" sideWeight="0.20274915" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19325154" sideWeight="0.21814007" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944787" sideWeight="0.7101947" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18711656" sideWeight="0.7101947" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2006135" sideWeight="0.6849943" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47995418" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3814433" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944787" sideWeight="0.7010309" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1270,145 +1040,291 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/core/Logger.java">
+    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/core/ControllerProxy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="3451" selection-end="3451" vertical-scroll-proportion="0.0" />
+        <state line="8" column="17" selection-start="142" selection-end="142" vertical-scroll-proportion="0.1891253" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/core/Action.java">
+    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/world/World.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="0" selection-start="1812" selection-end="1812" vertical-scroll-proportion="0.0" />
+        <state line="25" column="10" selection-start="823" selection-end="823" vertical-scroll-proportion="0.4787234" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Panel.java">
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtShaderProgram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="0" selection-start="5904" selection-end="5904" vertical-scroll-proportion="1.2687813" />
+        <state line="19" column="23" selection-start="688" selection-end="688" vertical-scroll-proportion="0.4491726" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Label.java">
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtShader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1743" selection-end="1743" vertical-scroll-proportion="0.0" />
+        <state line="19" column="22" selection-start="645" selection-end="645" vertical-scroll-proportion="0.4491726" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/UiManager.java">
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtActiveInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="0" selection-start="4641" selection-end="4641" vertical-scroll-proportion="0.0" />
+        <state line="19" column="20" selection-start="665" selection-end="665" vertical-scroll-proportion="0.4491726" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/GraphicProxy.java">
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtUniformLocation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="2885" selection-end="2885" vertical-scroll-proportion="0.0" />
+        <state line="19" column="24" selection-start="702" selection-end="702" vertical-scroll-proportion="0.4491726" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/UiEvent.java">
+    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/graphics/Render3DProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1427" selection-end="1427" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/EventDispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="0" selection-start="2052" selection-end="2052" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Widget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="302" column="0" selection-start="11577" selection-end="11577" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/content/Resource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1761" selection-end="1761" vertical-scroll-proportion="0.0">
+        <state line="1292" column="28" selection-start="56954" selection-end="56964" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/WidgetFactory.java">
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtBuffer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="0" selection-start="2566" selection-end="2566" vertical-scroll-proportion="0.0" />
+        <state line="19" column="22" selection-start="645" selection-end="645" vertical-scroll-proportion="0.4491726">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/war/resource/xscript/steel/initial.xml">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="3" column="7" selection-start="29" selection-end="29" vertical-scroll-proportion="0.07092199" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtFrameBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="27" selection-start="684" selection-end="684" vertical-scroll-proportion="0.4491726">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtRenderBuffer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="29" selection-start="694" selection-end="694" vertical-scroll-proportion="0.4491726">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtTexture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="577" selection-end="577" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/concurent/Event.java">
+    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/graphics/Shape.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.5480607">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-client/war/resource/layout/main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="91" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0">
+        <state line="189" column="10" selection-start="7618" selection-end="7618" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtRender2DProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1124" column="108" selection-start="50140" selection-end="50140" vertical-scroll-proportion="0.3556338">
+        <state line="750" column="30" selection-start="30329" selection-end="30329" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="//..." />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1314287765391" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="10242:10610" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="22877:25895" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="23593:24415" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="23753:23933" placeholder="//..." />
+            <marker date="1314950324058" expanded="true" signature="23996:24095" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="24101:24202" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="24421:24750" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="25056:25754" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="26406:26510" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="26968:27074" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="30863:30956" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="31436:31532" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="31903:32183" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="32855:32972" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="33688:33914" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="34692:35395" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="36011:36124" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="36844:37187" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="37690:37792" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="38246:38346" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="38844:38942" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="39943:40065" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="41069:41194" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="41861:42724" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="42096:42224" placeholder="//..." />
+            <marker date="1314950324058" expanded="true" signature="42317:42608" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="44115:45565" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="44350:44478" placeholder="//..." />
+            <marker date="1314950324058" expanded="true" signature="44571:44862" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="46935:47804" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="47170:47298" placeholder="//..." />
+            <marker date="1314950324058" expanded="true" signature="47393:47686" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="49205:50657" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="49440:49568" placeholder="//..." />
+            <marker date="1314950324058" expanded="true" signature="49661:49952" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="52149:53368" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="52384:52512" placeholder="//..." />
+            <marker date="1314950324058" expanded="true" signature="52605:52927" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="54158:55384" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="54393:54521" placeholder="//..." />
+            <marker date="1314950324058" expanded="true" signature="54616:54940" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="59666:61350" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="60123:60326" placeholder="//..." />
+            <marker date="1314950324058" expanded="true" signature="60695:61242" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="61952:63066" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="62409:62537" placeholder="//..." />
+            <marker date="1314950324058" expanded="true" signature="62632:62956" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="63884:64039" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="65350:65542" placeholder="{...}" />
+            <marker date="1314950324058" expanded="true" signature="67511:67764" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bee/src/edu/catalindumitru/bee/gui/Button.java">
+    <entry file="file://$PROJECT_DIR$/web-client/src/edu/catalindumitru/gwt/graphics/GwtRender3DProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="78" selection-start="2754" selection-end="2754" vertical-scroll-proportion="0.53288364">
+        <state line="1438" column="45" selection-start="83518" selection-end="83518" vertical-scroll-proportion="0.20094563">
+          <folding>
+            <marker date="1314950393712" expanded="true" signature="1070:1117" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="1555:1603" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="2081:2396" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="3153:3194" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="4101:4164" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="7954:8018" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="8824:8921" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="9697:9730" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="10209:10524" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="10989:11028" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="11497:11534" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="12297:12353" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="13070:13106" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="14290:14327" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="14804:14841" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="15482:15527" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="17001:17041" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="18512:18551" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="18913:18943" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="19309:19338" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="20325:20364" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="21315:21356" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="22943:22986" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="23711:23758" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="24386:24437" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="25011:25062" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="25817:25867" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="27398:27448" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="29393:29457" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="30037:30076" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="30997:31050" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="32583:32634" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="34569:34634" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="35323:35374" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="36690:36742" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="38608:38668" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="39381:39418" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="39879:39917" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="40560:40604" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="41234:41284" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="43805:43901" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="46296:46389" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="46791:46958" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="47397:47441" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="48112:48156" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="49372:49431" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="50027:50074" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="53058:53167" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="55916:56000" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="57212:57269" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="58479:58536" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="60976:61081" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="63301:63390" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="64092:64143" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="64646:64689" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="65117:65295" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="65986:66153" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="66609:66653" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="67084:67126" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="67686:67737" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="68307:68696" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="68442:68669" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="69913:69977" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="70561:70616" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="71426:71488" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="72064:72117" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="72622:72674" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="73306:73359" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="73949:73994" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="74565:74607" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="75134:75184" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="75763:75804" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="76345:76391" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="77090:77152" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="77609:77662" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="78120:78172" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="78842:79031" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="79679:79869" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="80557:80618" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="81213:81430" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="81356:81403" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="82061:82262" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="83616:83674" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="84404:84468" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="85070:85114" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="85735:85780" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="86382:86426" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="87049:87094" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="87833:87880" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="88585:88630" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="89368:89415" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="90124:90169" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="90995:91045" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="91754:91799" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="92621:92671" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="93384:93429" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="94340:94393" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="95100:95145" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="96050:96103" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="96814:96859" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="97670:97736" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="98547:98613" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="99426:99492" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="100089:100135" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="100749:100801" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="101485:101534" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="102206:102258" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="103013:103065" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="103737:103789" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="104616:104671" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="105343:105395" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="107024:107112" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="107816:107864" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="108935:108988" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="109827:109884" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="110282:110445" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="110876:110918" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="111529:111574" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="112325:112383" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="113458:113517" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="113935:114113" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="114576:114628" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="115843:115942" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="117880:117973" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="119652:119734" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="120354:120409" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="122224:122299" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="123059:123119" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="123543:123724" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="124181:124229" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="125872:125940" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="126566:126623" placeholder="{...}" />
+            <marker date="1314950393712" expanded="true" signature="127966:128046" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/steel/src/edu/catalindumitru/steel/game/Steel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="10" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.33274958">
           <folding />
         </state>
       </provider>
@@ -1443,7 +1359,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android</last-edited>
+          <last-edited>GWT (steel)|GWT</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1478,12 +1394,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>web-client</last-edited>
+          <last-edited>GWT|web-client</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

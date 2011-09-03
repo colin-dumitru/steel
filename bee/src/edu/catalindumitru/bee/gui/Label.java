@@ -189,7 +189,7 @@ public class Label extends Widget {
             provider.fillRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
                     (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight());
         } else {
-        /*otherwise we draw a round rectangle*/
+            /*otherwise we draw a round rectangle*/
             provider.fillRoundRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
                     (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight(), radius);
         }

@@ -1,7 +1,17 @@
 <component name="ProjectDictionaryState">
   <dictionary name="colin">
     <words>
+      <w>bitmask</w>
+      <w>bitplanes</w>
       <w>catalindumitru</w>
+      <w>mipmap</w>
+      <w>mipmaps</w>
+      <w>multisample</w>
+      <w>shaders</w>
+      <w>subpixel</w>
+      <w>texel</w>
+      <w>viewport</w>
+      <w>writemask</w>
     </words>
   </dictionary>
 </component>

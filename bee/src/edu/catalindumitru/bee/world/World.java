@@ -23,7 +23,7 @@ public class World implements NodeObserver {
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void World() {
+    public World() {
         /*initialize containers*/
         this.rootNodes = new TreeMap<String, Node>();
         this.componentResolvers = new TreeMap<Integer, ComponentResolver>();

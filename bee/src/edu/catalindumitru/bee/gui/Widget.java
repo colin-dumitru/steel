@@ -34,12 +34,17 @@ public abstract class Widget {
     public static final String A_ZINDEX = "zIndex";
     public static final String A_RADIUS = "radius";
     public static final String A_HAS_BORDER = "border";
-    public static final String A_BORDER_RADIUS = "borderRadius";
+    public static final String A_BORDER_RADIUS = "borderWidth";
     public static final String A_BORDER_COLOR = "borderColor";
+    public static final String A_ON_CLICK = "onClick";
+    public static final String A_ON_HOVER_IN = "onHoverIn";
+    public static final String A_ON_HOVER_OUT = "onHoverOut";
+    public static final String A_ON_DOUBLE_CLICK = "onDoubleClick";
 
     public static final Integer E_CLICK = 1;
     public static final Integer E_MOUSE_HOVER_IN = 2;
     public static final Integer E_MOUSE_HOVER_OUT = 3;
+    public static final Integer E_DOUBLE_CLICK = 4;
 
     /**
      * Comparator class used for widget sorting based on their zIndex.
@@ -77,6 +82,8 @@ public abstract class Widget {
     protected boolean visible;
     /*if teh cursor is currently hovering over the widget*/
     protected boolean hovered;
+    /*if the widget should listen for actions - default false to minimise call cycles to onEvent*/
+    protected boolean enabled;
     /*widget's parent*/
     protected Widget parent;
 
@@ -197,10 +204,10 @@ public abstract class Widget {
 
         /*offset and align*/
         if (root.hasAttribute(A_VOFFSET))
-            widget.setVerticalOffset(Integer.parseInt(root.getAttribute(A_VOFFSET)));
+            widget.setVerticalOffset(UiManager.instance().getRenderProvider().convertDimension(root.getAttribute(A_VOFFSET)));
 
         if (root.hasAttribute(A_HOFFSET))
-            widget.setHorizontalOffset(Integer.parseInt(root.getAttribute(A_HOFFSET)));
+            widget.setHorizontalOffset(UiManager.instance().getRenderProvider().convertDimension(root.getAttribute(A_HOFFSET)));
 
         if (root.hasAttribute(A_HALIGN)) {
             String align = root.getAttribute(A_HALIGN);
@@ -214,14 +221,27 @@ public abstract class Widget {
         }
 
         /*border related attribuites*/
-        if(root.hasAttribute(A_HAS_BORDER))
+        if (root.hasAttribute(A_HAS_BORDER))
             widget.setBorder(Boolean.parseBoolean(root.getAttribute(A_HAS_BORDER)));
 
-        if(root.hasAttribute(A_BORDER_RADIUS))
+        if (root.hasAttribute(A_BORDER_RADIUS))
             widget.setBorderWidth(Integer.parseInt(root.getAttribute(A_BORDER_RADIUS)));
 
-        if(root.hasAttribute(A_BORDER_COLOR))
+        if (root.hasAttribute(A_BORDER_COLOR))
             widget.setBorderColor(UiManager.instance().getRenderProvider().convertColor(root.getAttribute(A_BORDER_COLOR)));
+
+        /*actions*/
+        if (root.hasAttribute(A_ON_CLICK))
+            widget.registerAction(E_CLICK, root.getAttribute(A_ON_CLICK));
+
+        if (root.hasAttribute(A_ON_DOUBLE_CLICK))
+            widget.registerAction(E_DOUBLE_CLICK, root.getAttribute(A_ON_DOUBLE_CLICK));
+
+        if (root.hasAttribute(A_ON_HOVER_IN))
+            widget.registerAction(E_MOUSE_HOVER_IN, root.getAttribute(A_ON_HOVER_IN));
+
+        if (root.hasAttribute(A_ON_HOVER_OUT))
+            widget.registerAction(E_MOUSE_HOVER_OUT, root.getAttribute(A_ON_HOVER_OUT));
 
 
         if (root.hasAttribute(A_VALIGN)) {
@@ -446,7 +466,9 @@ public abstract class Widget {
     /**
      * This method is called after widgets bounds have been modified.
      */
-    protected abstract void boundsChanged();
+    protected void boundsChanged() {
+
+    }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
@@ -472,6 +494,12 @@ public abstract class Widget {
     public Shape getPrecisionBounds() {
         return this.precisionBounds;
     }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public boolean hasActions() {
+        return this.registeredActions.size() > 0;
+    }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
@@ -481,28 +509,61 @@ public abstract class Widget {
      * @param event what event to be handled.
      */
     public void onEvent(UiEvent event) {
+        if (!this.enabled)
+            return;
+
+        /*caching*/
+        float params[] = event.getParams();
+        String action = null;
+
         switch (event.getType()) {
 
             case MOUSE_CLICK:
                 /*check if the click event intersects us and then dispatch the action*/
-                if (this.bounds.contains(event.getParams()[0], event.getParams()[1])) {
-                    if (this.registeredActions.containsKey(E_CLICK))
-                        this.dispatchAction(this.registeredActions.get(E_CLICK));
+                if (this.bounds.contains(params[0], params[1])) {
+
+                    action = this.registeredActions.get(E_CLICK);
+                    if (action != null)
+                        this.dispatchAction(action);
+
+                }
+                break;
+
+            case MOUSE_DOUBLE_CLICK:
+                /*check if the click event intersects us and then dispatch the action*/
+                if (this.bounds.contains(params[0], params[1])) {
+
+                    action = this.registeredActions.get(E_DOUBLE_CLICK);
+                    if (action != null)
+                        this.dispatchAction(action);
+
                 }
                 break;
 
             case MOUSE_MOVE:
                 /*if previously was hovering and now it is out of out bounds, then we send a hover out event*/
-                if(this.hovered) {
-                    if(!this.bounds.contains(event.getParams()[0], event.getParams()[1])
-                            && this.registeredActions.containsKey(E_MOUSE_HOVER_OUT))
-                        this.dispatchAction(this.registeredActions.get(E_MOUSE_HOVER_OUT));
+                if (this.hovered) {
+                    if (!this.bounds.contains(params[0], params[1])) {
+                        this.hovered = false;
+
+
+                        action = this.registeredActions.get(E_MOUSE_HOVER_OUT);
+                        if (action != null)
+                            this.dispatchAction(action);
+
+                    }
 
                 } else {
-                /*if previously we were not under the cursor, but now we are, then we send a mouse hover in event.*/
-                    if(this.bounds.contains(event.getParams()[0], event.getParams()[1])
-                            && this.registeredActions.containsKey(E_MOUSE_HOVER_IN))
-                        this.dispatchAction(this.registeredActions.get(E_MOUSE_HOVER_IN));
+                    /*if previously we were not under the cursor, but now we are, then we send a mouse hover in event.*/
+                    if (this.bounds.contains(params[0], params[1])) {
+                        this.hovered = true;
+
+
+                        action = this.registeredActions.get(E_MOUSE_HOVER_IN);
+                        if (action != null)
+                            this.dispatchAction(action);
+
+                    }
 
                 }
                 break;
@@ -757,6 +818,8 @@ public abstract class Widget {
     //------------------------------------------------------------------------------------------------------------------
     public void registerAction(Integer actionType, String actionName) {
         this.registeredActions.put(actionType, actionName);
+
+        this.enabled = true;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -770,6 +833,19 @@ public abstract class Widget {
     protected void dispatchAction(String actionName) {
         ActionDispatcher.instance().dispatchAction(new Action(actionName, null));
     }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 

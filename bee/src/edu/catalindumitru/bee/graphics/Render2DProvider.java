@@ -54,21 +54,22 @@ public interface Render2DProvider {
      * Converts the given color formatted as a string, into a {@link Color} object. The formatted string can be one of
      * two types:
      * <ul>
-     *     <li>
-     *         A color comprised of a # symbol fallowed by four pairs of hexadecimal numbers, which represent,
-     *         in order : red, green, blue, and alpha. For example #A000007F results in a dark semitransparent red.
-     *     </li>
-     *     <li>
-     *         A color comprised of a function call to rgba(...) which takes 4 params, all numbers between 0 and 255,
-     *         representing , in order : red, green , blue and alpha. For example rgba(160, 0, 0, 127) yelds the
-     *         same color as before.
-     *     </li>
-     *     <li>
-     *         A color comprised of a function call to rgb(...) which takes 3 params, all numbers between 0 and 255,
-     *         representing , in order : red, green and blue. For example rgb(160, 0, 0) yields the same color as before,
-     *         except it is now fully opaque. The value of alpha is considered to be fully opaque.
-     *     </li>
+     * <li>
+     * A color comprised of a # symbol fallowed by four pairs of hexadecimal numbers, which represent,
+     * in order : red, green, blue, and alpha. For example #A000007F results in a dark semitransparent red.
+     * </li>
+     * <li>
+     * A color comprised of a function call to rgba(...) which takes 4 params, all numbers between 0 and 255,
+     * representing , in order : red, green , blue and alpha. For example rgba(160, 0, 0, 127) yelds the
+     * same color as before.
+     * </li>
+     * <li>
+     * A color comprised of a function call to rgb(...) which takes 3 params, all numbers between 0 and 255,
+     * representing , in order : red, green and blue. For example rgb(160, 0, 0) yields the same color as before,
+     * except it is now fully opaque. The value of alpha is considered to be fully opaque.
+     * </li>
      * </ul>
+     *
      * @param color the color formatted as a string.
      * @return the corresponding {@link Color} object.
      */
@@ -76,6 +77,7 @@ public interface Render2DProvider {
 
     /**
      * Returns the given string's width when drawn, using the current text metrics.
+     *
      * @param text which text to calculate it's dimension.
      * @return the width of the string as it will be rendered on the screen.
      */
@@ -237,6 +239,7 @@ public interface Render2DProvider {
 
     /**
      * Sets the clipping area for future drawings in the shape of a rounded rectangle.
+     *
      * @param x      x coordinate for the top left corner of the rectangle.
      * @param y      y coordinate for the top left corner of the rectangle.
      * @param width  width of the rectangle.
@@ -247,8 +250,9 @@ public interface Render2DProvider {
 
     /**
      * Sets the clipping area for future drawings in the shape of a circle.
-     * @param x the x coordinate for the center of the circle.
-     * @param y the y coordinate for the center of the circle.
+     *
+     * @param x      the x coordinate for the center of the circle.
+     * @param y      the y coordinate for the center of the circle.
      * @param radius the radius of the circle.
      */
     public void setCircleClip(int x, int y, int radius);
@@ -331,9 +335,10 @@ public interface Render2DProvider {
 
     /**
      * Fills the rectangle where the corners are rounded to the given radius.
-     * @param x the x coordinate of where the rectangle should begin.
-     * @param y the y coordinate of where the rectangle should begin.
-     * @param width the width of the rectangle
+     *
+     * @param x      the x coordinate of where the rectangle should begin.
+     * @param y      the y coordinate of where the rectangle should begin.
+     * @param width  the width of the rectangle
      * @param height the height of the rectangle.
      * @param radius the radius of the rectangle.
      */
@@ -341,8 +346,9 @@ public interface Render2DProvider {
 
     /**
      * Fills the rectangle where the corners are rounded to the given radius.
+     *
      * @param rectangle the rectangle to fill.
-     * @param radius the radius of the corners.
+     * @param radius    the radius of the corners.
      */
     public void fillRoundRectangle(RectangleShape rectangle, int radius);
 
@@ -365,9 +371,10 @@ public interface Render2DProvider {
 
     /**
      * Strokes the rectangle where the corners are rounded to the given radius.
-     * @param x the x coordinate of where the rectangle should begin.
-     * @param y the y coordinate of where the rectangle should begin.
-     * @param width the width of the rectangle
+     *
+     * @param x      the x coordinate of where the rectangle should begin.
+     * @param y      the y coordinate of where the rectangle should begin.
+     * @param width  the width of the rectangle
      * @param height the height of the rectangle.
      * @param radius the radius of the rectangle.
      */
@@ -375,8 +382,9 @@ public interface Render2DProvider {
 
     /**
      * Strokes the rectangle where the corners are rounded to the given radius.
+     *
      * @param rectangle the rectangle to stroke.
-     * @param radius the radius of the corners.
+     * @param radius    the radius of the corners.
      */
     public void strokeRoundRectangle(RectangleShape rectangle, int radius);
 

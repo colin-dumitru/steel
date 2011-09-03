@@ -23,9 +23,10 @@ public class ActionDispatcher {
             return o1.priority() - o2.priority();
         }
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public final static class ActionCommand implements XScriptCommand{
+    public final static class ActionCommand implements XScriptCommand {
         public static final String COMMAND = "action";
 
         public static final String A_NAME = "name";
@@ -56,15 +57,15 @@ public class ActionDispatcher {
          */
         @Override
         public void handleCommand(Element root, XScriptHandler handler) {
-            if(!root.getTagName().equals(COMMAND))
+            if (!root.getTagName().equals(COMMAND))
                 return;
 
             String commandName = null;
             Map<String, String> params = null;
 
-            if(root.hasAttribute(A_NAME)) {
+            if (root.hasAttribute(A_NAME)) {
                 commandName = root.getAttribute(A_NAME);
-            }   else {
+            } else {
                 /*no valid action specified*/
                 return;
             }
@@ -72,11 +73,11 @@ public class ActionDispatcher {
             /*check for additional params*/
             NodeList children = root.getChildNodes();
 
-            if(children.getLength() > 0)
+            if (children.getLength() > 0)
                 params = new TreeMap<String, String>();
 
-            for(int i = 0; i < children.getLength(); i++) {
-                if(children.item(i).getNodeType() != Node.ELEMENT_NODE)
+            for (int i = 0; i < children.getLength(); i++) {
+                if (children.item(i).getNodeType() != Node.ELEMENT_NODE)
                     continue;
 
                 Element child = children.item(i).castToElement();
@@ -110,11 +111,13 @@ public class ActionDispatcher {
     public static ActionDispatcher instance() {
         return instance;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void initialise() {
         XScriptHandler.instance().addCommand(new ActionCommand());
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public void addController(ControllerProxy controller) {

@@ -3,7 +3,6 @@ package edu.catalindumitru.bee.content;
 import edu.catalindumitru.bee.content.xml.Element;
 import edu.catalindumitru.bee.content.xml.Node;
 import edu.catalindumitru.bee.content.xml.NodeList;
-import edu.catalindumitru.bee.core.Logger;
 import edu.catalindumitru.bee.xscript.XScriptCommand;
 import edu.catalindumitru.bee.xscript.XScriptHandler;
 
@@ -26,6 +25,7 @@ public interface ResourceProvider {
 
         //--------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------
+
         /**
          * The name of the command it can handle
          *
@@ -37,6 +37,7 @@ public interface ResourceProvider {
         }
         //--------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------
+
         /**
          * Handles the given command.
          *
@@ -64,41 +65,40 @@ public interface ResourceProvider {
                 @Override
                 public void stateChanged(Resource from) {
                     /*for call back when completed successfully*/
-                    if(from.getStatus() == Resource.STATUS.COMPLETED) {
+                    if (from.getStatus() == Resource.STATUS.COMPLETED) {
                         /*get the root nodes for the on complete command*/
                         NodeList rootList = rootCache.getElementsByTagName(COMMAND_ON_COMPLETE);
 
                         /*for every on complete command, send the commands to the interpreter*/
-                        for(int i = 0; i < rootList.getLength(); i++) {
+                        for (int i = 0; i < rootList.getLength(); i++) {
                             /*get all the actions of the root node*/
                             NodeList childList = rootList.item(i).getChildNodes();
 
                             /*interpret only element nodes*/
-                            for(int j = 0; j < childList.getLength(); j++)
-                                if(childList.item(j).getNodeType() == Node.ELEMENT_NODE)
+                            for (int j = 0; j < childList.getLength(); j++)
+                                if (childList.item(j).getNodeType() == Node.ELEMENT_NODE)
                                     handlerCache.handleScript(childList.item(j).castToElement(), false);
                         }
 
                         /*call backs on errors*/
-                    }   else if(from.getStatus() == Resource.STATUS.ERROR) {
-                         /*get the root nodes for the on error command*/
+                    } else if (from.getStatus() == Resource.STATUS.ERROR) {
+                        /*get the root nodes for the on error command*/
                         NodeList rootList = rootCache.getElementsByTagName(COMMAND_ON_ERROR);
 
                         /*for every on complete command, send the commands to the interpreter*/
-                        for(int i = 0; i < rootList.getLength(); i++) {
+                        for (int i = 0; i < rootList.getLength(); i++) {
                             /*get all the actions of the root node*/
                             NodeList childList = rootList.item(i).getChildNodes();
 
                             /*interpret only element nodes*/
-                            for(int j = 0; j < childList.getLength(); j++)
-                                if(childList.item(j).getNodeType() == Node.ELEMENT_NODE)
+                            for (int j = 0; j < childList.getLength(); j++)
+                                if (childList.item(j).getNodeType() == Node.ELEMENT_NODE)
                                     handlerCache.handleScript(childList.item(j).castToElement(), false);
                         }
                     }
                 }
             });
         }
-
 
 
         //--------------------------------------------------------------------------------------------------------------

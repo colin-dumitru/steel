@@ -6,18 +6,11 @@ package edu.catalindumitru.gwt.client;
 
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.user.client.ui.RootPanel;
-import edu.catalindumitru.bee.content.Resource;
-import edu.catalindumitru.bee.content.ResourceObserver;
-import edu.catalindumitru.bee.content.XmlResource;
-import edu.catalindumitru.bee.content.xml.Node;
 import edu.catalindumitru.bee.core.Engine;
 import edu.catalindumitru.bee.core.Environment;
 import edu.catalindumitru.bee.core.Game;
-import edu.catalindumitru.bee.graphics.Color;
-import edu.catalindumitru.bee.gui.UiManager;
 import edu.catalindumitru.gwt.concurent.GwtScheduleProvider;
 import edu.catalindumitru.gwt.content.GwtResourceProvider;
 import edu.catalindumitru.gwt.content.PngConverter;
@@ -27,8 +20,6 @@ import edu.catalindumitru.gwt.core.GwtLoggingProvider;
 import edu.catalindumitru.gwt.graphics.GwtRender2DProvider;
 import edu.catalindumitru.gwt.input.GwtInputProvider;
 import edu.catalindumitru.steel.game.Steel;
-
-import java.util.Map;
 
 
 /**
@@ -44,6 +35,8 @@ public class GameCore implements EntryPoint {
 
     protected Engine engine;
     protected Game game;
+
+    int tmp = 0;
 
 
     //------------------------------------------------------------------------------------------------------------------
@@ -64,6 +57,21 @@ public class GameCore implements EntryPoint {
      */
     public void onModuleLoad() {
         this.initialise();
+
+        /*this.engine.getEnvironment().getScheduleProvider().schedule(new Runnable() {
+            @Override
+            public void run() {
+                 engine.getEnvironment().getRender2dProvider().beginDrawing();
+                engine.getEnvironment().getRender2dProvider().setStrokeColor(new Color(1.0f,1.0f,1.0f,1.0f));
+                engine.getEnvironment().getRender2dProvider().setLineWidth(tmp);
+                engine.getEnvironment().getRender2dProvider().strokeRoundRectangle(tmp * 50, 50, 50, 50, 5);
+                engine.getEnvironment().getRender2dProvider().endDrawing();
+
+                tmp += 1;
+
+            }
+        }, ScheduleProvider.TYPE.PERIODIC, 1000);*/
+
 
     }
 

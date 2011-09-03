@@ -22,6 +22,12 @@ public class GraphicProxy implements EventProxy {
     /*root widget to be drawn*/
     protected Widget root;
 
+    /*cached elements*/
+    int regionX = 0;
+    int regionY = 0;
+    int regionWidth = 0;
+    int regionHeight = 0;
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
@@ -54,7 +60,7 @@ public class GraphicProxy implements EventProxy {
             case REDRAW_REGION:
                 return this.redrawRootWidget(event.getRegionAffected());
             case REDRAW_ALL:
-                return this.redrawRootWidget();
+                return this.redrawRootWidget(null);
         }
 
         return false;
@@ -73,27 +79,36 @@ public class GraphicProxy implements EventProxy {
         if (this.root == null || this.provider == null)
             return false;
 
+        /*we need to set the clipping area for future drawings if the region is set*/
+        if (region != null) {
+            this.regionX = (int) region.getX();
+            this.regionY = (int) region.getY();
+            this.regionWidth = (int) region.getWidth();
+            this.regionHeight = (int) region.getHeight();
+
+            provider.pushState();
+            provider.setRectangleClip(this.regionX, this.regionY, this.regionWidth, this.regionHeight);
+            /*clear the area to be drawn*/
+            provider.clearRect(this.regionX, this.regionY, this.regionWidth, this.regionHeight);
+        } else {
+            /*clear all the screen*/
+            provider.clearAll();
+        }
+
         if (region.intersects(this.root.bounds)) {
             this.provider.beginDrawing();
             this.root.draw(this.provider, region);
             this.provider.endDrawing();
         }
 
-        return true;
-    }
-
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-    private boolean redrawRootWidget() {
-        if (this.root == null || this.provider == null)
-            return false;
-
-        this.provider.beginDrawing();
-        this.root.draw(this.provider, null);
-        this.provider.endDrawing();
+        /*restore the clipping area if the region is not null*/
+        if (region != null) {
+            provider.popState();
+        }
 
         return true;
     }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
