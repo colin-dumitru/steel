@@ -109,9 +109,6 @@ public class Logger {
     //------------------------------------------------------------------------------------------------------------------
     public static void initialise(LoggingProvider provider) {
         Logger.provider = provider;
-
-        /*add the logger controller to the action dispatcher*/
-        ActionDispatcher.instance().addController(new Logger.LoggerController());
     }
 
     //------------------------------------------------------------------------------------------------------------------

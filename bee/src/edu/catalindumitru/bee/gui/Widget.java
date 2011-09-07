@@ -11,6 +11,7 @@ import edu.catalindumitru.bee.graphics.Shape;
 import edu.catalindumitru.bee.math.Rectangle;
 
 import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -41,10 +42,13 @@ public abstract class Widget {
     public static final String A_ON_HOVER_OUT = "onHoverOut";
     public static final String A_ON_DOUBLE_CLICK = "onDoubleClick";
 
-    public static final Integer E_CLICK = 1;
-    public static final Integer E_MOUSE_HOVER_IN = 2;
-    public static final Integer E_MOUSE_HOVER_OUT = 3;
-    public static final Integer E_DOUBLE_CLICK = 4;
+    public enum EVENTS{
+        E_CLICK,
+        E_MOUSE_HOVER_IN,
+        E_MOUSE_HOVER_OUT,
+        E_DOUBLE_CLICK
+    }
+
 
     /**
      * Comparator class used for widget sorting based on their zIndex.
@@ -86,6 +90,10 @@ public abstract class Widget {
     protected boolean enabled;
     /*widget's parent*/
     protected Widget parent;
+    /*event dispatcher*/
+    protected EventDispatcher eventDispatcher;
+    /*action dispatcher to send events to controllers*/
+    protected ActionDispatcher actionDispatcher;
 
     /*bounds of this widget*/
     protected Rectangle bounds;
@@ -127,7 +135,12 @@ public abstract class Widget {
     protected int horizontalOffset;
 
     /*used to distribute ui events to a controller proxy*/
-    protected Map<Integer, String> registeredActions;
+    protected Map<EVENTS, String> registeredActions;
+
+    /*cached action to minimize object creation*/
+    protected Action cachedAction = new Action();
+    /*cached ui event to minimize object creation*/
+    protected UiEvent cachedUiEvent = new UiEvent();
 
 
     //------------------------------------------------------------------------------------------------------------------
@@ -167,7 +180,7 @@ public abstract class Widget {
      * @param widget the already build, but empty widget.
      * @param root   the root element of the widget to be built.
      */
-    public static void builderProxy(Widget widget, Element root) {
+    public static void builderProxy(Widget widget, Element root, Render2DProvider provider) {
         /*unique id*/
         if (root.hasAttribute(A_ID))
             widget.setId(root.getAttribute(A_ID));
@@ -183,8 +196,8 @@ public abstract class Widget {
         widget.setBounds(
                 0,
                 0,
-                root.hasAttribute(A_WIDTH) ? UiManager.instance().getRenderProvider().convertDimension(root.getAttribute(A_WIDTH)) : 0,
-                root.hasAttribute(A_HEIGHT) ? UiManager.instance().getRenderProvider().convertDimension(root.getAttribute(A_HEIGHT)) : 0,
+                root.hasAttribute(A_WIDTH) ? provider.convertDimension(root.getAttribute(A_WIDTH)) : 0,
+                root.hasAttribute(A_HEIGHT) ? provider.convertDimension(root.getAttribute(A_HEIGHT)) : 0,
                 false);
 
         /*Zindex*/
@@ -197,17 +210,17 @@ public abstract class Widget {
 
         /*foregroung and background colors*/
         if (root.hasAttribute(A_FGCOLOR))
-            widget.setForeground(UiManager.instance().getRenderProvider().convertColor(root.getAttribute(A_FGCOLOR)));
+            widget.setForeground(provider.convertColor(root.getAttribute(A_FGCOLOR)));
 
         if (root.hasAttribute(A_BGCOLOR))
-            widget.setBackground(UiManager.instance().getRenderProvider().convertColor(root.getAttribute(A_BGCOLOR)));
+            widget.setBackground(provider.convertColor(root.getAttribute(A_BGCOLOR)));
 
         /*offset and align*/
         if (root.hasAttribute(A_VOFFSET))
-            widget.setVerticalOffset(UiManager.instance().getRenderProvider().convertDimension(root.getAttribute(A_VOFFSET)));
+            widget.setVerticalOffset(provider.convertDimension(root.getAttribute(A_VOFFSET)));
 
         if (root.hasAttribute(A_HOFFSET))
-            widget.setHorizontalOffset(UiManager.instance().getRenderProvider().convertDimension(root.getAttribute(A_HOFFSET)));
+            widget.setHorizontalOffset(provider.convertDimension(root.getAttribute(A_HOFFSET)));
 
         if (root.hasAttribute(A_HALIGN)) {
             String align = root.getAttribute(A_HALIGN);
@@ -228,20 +241,20 @@ public abstract class Widget {
             widget.setBorderWidth(Integer.parseInt(root.getAttribute(A_BORDER_RADIUS)));
 
         if (root.hasAttribute(A_BORDER_COLOR))
-            widget.setBorderColor(UiManager.instance().getRenderProvider().convertColor(root.getAttribute(A_BORDER_COLOR)));
+            widget.setBorderColor(provider.convertColor(root.getAttribute(A_BORDER_COLOR)));
 
         /*actions*/
         if (root.hasAttribute(A_ON_CLICK))
-            widget.registerAction(E_CLICK, root.getAttribute(A_ON_CLICK));
+            widget.registerAction(EVENTS.E_CLICK, root.getAttribute(A_ON_CLICK));
 
         if (root.hasAttribute(A_ON_DOUBLE_CLICK))
-            widget.registerAction(E_DOUBLE_CLICK, root.getAttribute(A_ON_DOUBLE_CLICK));
+            widget.registerAction(EVENTS.E_DOUBLE_CLICK, root.getAttribute(A_ON_DOUBLE_CLICK));
 
         if (root.hasAttribute(A_ON_HOVER_IN))
-            widget.registerAction(E_MOUSE_HOVER_IN, root.getAttribute(A_ON_HOVER_IN));
+            widget.registerAction(EVENTS.E_MOUSE_HOVER_IN, root.getAttribute(A_ON_HOVER_IN));
 
         if (root.hasAttribute(A_ON_HOVER_OUT))
-            widget.registerAction(E_MOUSE_HOVER_OUT, root.getAttribute(A_ON_HOVER_OUT));
+            widget.registerAction(EVENTS.E_MOUSE_HOVER_OUT, root.getAttribute(A_ON_HOVER_OUT));
 
 
         if (root.hasAttribute(A_VALIGN)) {
@@ -277,7 +290,7 @@ public abstract class Widget {
         this.borderWidth = 1;
         this.border = false;
 
-        this.registeredActions = new TreeMap<Integer, String>();
+        this.registeredActions = new EnumMap<EVENTS, String> (EVENTS.class);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -301,6 +314,31 @@ public abstract class Widget {
     public void setId(String id) {
         this.id = id;
     }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public EventDispatcher getEventDispatcher() {
+        return eventDispatcher;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void setEventDispatcher(EventDispatcher eventDispatcher) {
+        this.eventDispatcher = eventDispatcher;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public ActionDispatcher getActionDispatcher() {
+        return actionDispatcher;
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public void setActionDispatcher(ActionDispatcher actionDispatcher) {
+        this.actionDispatcher = actionDispatcher;
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
@@ -319,9 +357,14 @@ public abstract class Widget {
      * Tells the widget that it needs to be redrawn.
      */
     public void redraw() {
-        /*send a new event to redraw the region contained by this widget*/
-        UiManager.instance().getEventDispatcher().dispatchEvent
-                (new UiEvent(this.bounds, null, UiEvent.TYPE.REDRAW_REGION));
+        if (this.eventDispatcher != null) {
+            this.cachedUiEvent.setRegionAffected(this.bounds);
+            this.cachedUiEvent.setParams(null);
+            this.cachedUiEvent.setType(UiEvent.TYPE.REDRAW_REGION);
+
+            /*send a new event to redraw the region contained by this widget*/
+            this.eventDispatcher.dispatchEvent(this.cachedUiEvent);
+        }
 
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -516,15 +559,19 @@ public abstract class Widget {
         float params[] = event.getParams();
         String action = null;
 
+
         switch (event.getType()) {
 
             case MOUSE_CLICK:
                 /*check if the click event intersects us and then dispatch the action*/
                 if (this.bounds.contains(params[0], params[1])) {
 
-                    action = this.registeredActions.get(E_CLICK);
-                    if (action != null)
-                        this.dispatchAction(action);
+                    action = this.registeredActions.get(EVENTS.E_CLICK);
+                    if (action != null) {
+                        this.cachedAction.setName(action);
+                        this.cachedAction.setParams(null);
+                        this.dispatchAction(this.cachedAction);
+                    }
 
                 }
                 break;
@@ -533,9 +580,12 @@ public abstract class Widget {
                 /*check if the click event intersects us and then dispatch the action*/
                 if (this.bounds.contains(params[0], params[1])) {
 
-                    action = this.registeredActions.get(E_DOUBLE_CLICK);
-                    if (action != null)
-                        this.dispatchAction(action);
+                    action = this.registeredActions.get(EVENTS.E_DOUBLE_CLICK);
+                    if (action != null) {
+                        this.cachedAction.setName(action);
+                        this.cachedAction.setParams(null);
+                        this.dispatchAction(this.cachedAction);
+                    }
 
                 }
                 break;
@@ -547,9 +597,12 @@ public abstract class Widget {
                         this.hovered = false;
 
 
-                        action = this.registeredActions.get(E_MOUSE_HOVER_OUT);
-                        if (action != null)
-                            this.dispatchAction(action);
+                        action = this.registeredActions.get(EVENTS.E_MOUSE_HOVER_OUT);
+                        if (action != null) {
+                            this.cachedAction.setName(action);
+                            this.cachedAction.setParams(null);
+                            this.dispatchAction(this.cachedAction);
+                        }
 
                     }
 
@@ -559,9 +612,12 @@ public abstract class Widget {
                         this.hovered = true;
 
 
-                        action = this.registeredActions.get(E_MOUSE_HOVER_IN);
-                        if (action != null)
-                            this.dispatchAction(action);
+                        action = this.registeredActions.get(EVENTS.E_MOUSE_HOVER_IN);
+                        if (action != null) {
+                            this.cachedAction.setName(action);
+                            this.cachedAction.setParams(null);
+                            this.dispatchAction(this.cachedAction);
+                        }
 
                     }
 
@@ -816,7 +872,7 @@ public abstract class Widget {
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void registerAction(Integer actionType, String actionName) {
+    public void registerAction(EVENTS actionType, String actionName) {
         this.registeredActions.put(actionType, actionName);
 
         this.enabled = true;
@@ -830,14 +886,14 @@ public abstract class Widget {
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    protected void dispatchAction(String actionName) {
-        ActionDispatcher.instance().dispatchAction(new Action(actionName, null));
+    protected void dispatchAction(Action action) {
+        this.actionDispatcher.dispatchAction(action);
     }
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public boolean isEnabled() {
-        return enabled;
+        return this.enabled;
     }
 
     //------------------------------------------------------------------------------------------------------------------

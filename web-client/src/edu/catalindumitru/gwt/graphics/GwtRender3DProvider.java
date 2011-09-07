@@ -1,5 +1,6 @@
 package edu.catalindumitru.gwt.graphics;
 
+import com.google.gwt.canvas.dom.client.Context;
 import edu.catalindumitru.bee.content.ImageResource;
 import edu.catalindumitru.bee.core.NativeArray;
 import edu.catalindumitru.bee.graphics.*;
@@ -13,11 +14,17 @@ import java.util.List;
  * Time: 3:06 PM
  */
 public class GwtRender3DProvider implements Render3DProvider {
+    protected Context context3d;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    protected GwtRender3DProvider() {
-
+    public GwtRender3DProvider(Context context3d) {
+        this.setupContext(context3d);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    protected void setupContext(Context context) {
+        this.context3d = context;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -29,7 +36,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native int getScreenWidth() /*-{
-        return this.drawingBufferWidth;
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.drawingBufferWidth;
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -41,7 +48,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native int getScreenHeight() /*-{
-        return this.drawingBufferHeight;
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.drawingBufferHeight;
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -53,7 +60,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void blendColor(Color color) /*-{
-        this.blendColor(
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.blendColor(
                 color.@edu.catalindumitru.bee.graphics.Color::red,
                 color.@edu.catalindumitru.bee.graphics.Color::green,
                 color.@edu.catalindumitru.bee.graphics.Color::blue,
@@ -73,7 +80,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void blendEquation(int mode) /*-{
-        this.blendEquation(mode);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.blendEquation(mode);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -90,7 +97,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void blendEquationSeparate(int modeRGB, int modeAlpha) /*-{
-        this.blendEquationSeparate(modeRGB, modeAlpha);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.blendEquationSeparate(modeRGB, modeAlpha);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -133,7 +140,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void blendFunction(int sourceFactor, int destinationFactor) /*-{
-        this.blendFunc(sourceFactor, destinationFactor);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.blendFunc(sourceFactor, destinationFactor);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -149,7 +156,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void blendFunctionSeparate(int sourceRGB, int destinationRGB, int sourceAlpha,
                                                    int destinationAlpha) /*-{
-        this.blendFuncSeparate(sourceRGB, destinationRGB, sourceAlpha, destinationAlpha);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.blendFuncSeparate(sourceRGB, destinationRGB, sourceAlpha, destinationAlpha);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -164,7 +171,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void clear(int mask) /*-{
-        this.clear(mask);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.clear(mask);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -176,7 +183,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void clearColor(Color color) /*-{
-        this.clearColor(
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.clearColor(
                 color.@edu.catalindumitru.bee.graphics.Color::red,
                 color.@edu.catalindumitru.bee.graphics.Color::green,
                 color.@edu.catalindumitru.bee.graphics.Color::blue,
@@ -193,7 +200,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void clearDepth(float depth) /*-{
-        this.clearDepth(depth);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.clearDepth(depth);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -205,7 +212,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void clearStencil(int s) /*-{
-        this.clearStencil(s);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.clearStencil(s);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -220,7 +227,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void colorMask(boolean red, boolean green, boolean blue, boolean alpha) /*-{
-        this.colorMask(red, green, blue, alpha);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.colorMask(red, green, blue, alpha);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -235,7 +242,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void cullFace(int mode) /*-{
-        this.cullFace(mode);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.cullFace(mode);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -255,7 +262,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void depthFunc(int func) /*-{
-        this.depthFunc(func);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.depthFunc(func);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -267,7 +274,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void depthMask(boolean flag) /*-{
-        this.depthMask(flag);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.depthMask(flag);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -280,7 +287,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void depthRange(float zNear, float zFar) /*-{
-        this.depthRange(zNear, zFar);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.depthRange(zNear, zFar);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -302,7 +309,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void disable(int component) /*-{
-        this.disable(component);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.disable(component);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -324,7 +331,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void enable(int component) /*-{
-        this.enable(component);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.enable(component);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -334,7 +341,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void finish() /*-{
-        this.finish();
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.finish();
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -344,7 +351,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void flush() /*-{
-        this.flush();
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.flush();
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -362,7 +369,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native int getError() /*-{
-        return this.getError();
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getError();
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -379,7 +386,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void hint(int target, int mode) /*-{
-        this.hint(target, mode);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.hint(target, mode);
 
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -404,7 +411,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native boolean isEnabled(int cap) /*-{
-        return this.isEnabled(cap);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.isEnabled(cap);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -419,7 +426,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void pixelStore(int pName, int param) /*-{
-        this.pixelStorei(pName, param);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.pixelStorei(pName, param);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -432,7 +439,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void polygonOffset(float factor, float offset) /*-{
-        this.polygonOffset(factor, offset);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.polygonOffset(factor, offset);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -445,7 +452,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void sampleCoverage(float value, boolean invert) /*-{
-        this.sampleCoverage(value, invert);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.sampleCoverage(value, invert);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -460,7 +467,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void scissor(int x, int y, int width, int height) /*-{
-        this.scissor(x, y, width, height);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.scissor(x, y, width, height);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -484,7 +491,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void stencilFunction(int func, int ref, int mask) /*-{
-        this.stencilFunc(func, ref, mask);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.stencilFunc(func, ref, mask);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -512,7 +519,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void stencilFuncSeparate(int face, int func, int ref, int mask) /*-{
-        this.stencilFuncSeparate(face, func, ref, mask);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.stencilFuncSeparate(face, func, ref, mask);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -525,7 +532,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void stencilMask(int mask) /*-{
-        this.stencilMask(mask);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.stencilMask(mask);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -541,7 +548,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void stencilMaskSeparate(int face, int mask) /*-{
-        this.stencilMaskSeparate(face, mask);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.stencilMaskSeparate(face, mask);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -565,7 +572,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void stencilOp(int fail, int zFail, int zPass) /*-{
-        this.stencilOp(fail, zFail, zPass);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.stencilOp(fail, zFail, zPass);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -593,7 +600,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void stencilOpSeparate(int face, int fail, int zFail, int zPass) /*-{
-        this.stencilOpSeparate(face, fail, zFail, zPass);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.stencilOpSeparate(face, fail, zFail, zPass);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -608,7 +615,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void viewport(int x, int y, int width, int height) /*-{
-        this.viewport(x, y, width, height);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.viewport(x, y, width, height);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -629,7 +636,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void drawArrays(int mode, int first, int count) /*-{
-        this.drawArrays(mode, first, count);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.drawArrays(mode, first, count);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -655,7 +662,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void drawElements(int mode, int count, int type, int offset) /*-{
-        this.drawElements(mode, count, type, offse);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.drawElements(mode, count, type, offse);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -669,7 +676,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void frontFace(int mode) /*-{
-        this.frontFace(mode);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.frontFace(mode);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -681,7 +688,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void lineWidth(float width) /*-{
-        this.lineWidth(width);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.lineWidth(width);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -695,7 +702,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void activateTexture(int texture) /*-{
-        this.activeTexture(texture);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.activeTexture(texture);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -709,7 +716,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void bindTexture(int target, Texture texture) /*-{
-        this.bindTexture(target, texture);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.bindTexture(target, texture);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -742,7 +749,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void copyTexImage2D(int target, int level, int internalFormat, int x, int y, int width,
                                             int height, int border) /*-{
-        this.copyTexImage2D(target, level, internalFormat, x, y, width, height, border);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.copyTexImage2D(target, level, internalFormat, x, y, width, height, border);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -775,7 +782,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void copyTexSubImage2D(int target, int level, int xOffset, int yOffset, int x, int y,
                                                int width, int height) /*-{
-        this.copyTexSubImage2D(target, level, xOffset, yOffset, x, y, width, height);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.copyTexSubImage2D(target, level, xOffset, yOffset, x, y, width, height);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -788,7 +795,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native Texture createTexture() /*-{
         return @edu.catalindumitru.gwt.graphics.GwtTexture::wrap(Ledu/catalindumitru/gwt/graphics/GwtTexture;)(
-                this.createTexture()
+                this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.createTexture()
         );
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -801,7 +808,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void deleteTexture(Texture texture) /*-{
-        this.deleteTexture(texture);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.deleteTexture(texture);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -815,7 +822,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void generateMipmap(int target) /*-{
-        this.generateMipmap(target);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.generateMipmap(target);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -835,7 +842,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native float getTextureParameter(int target, int pName) /*-{
-        return this.getTexParameter(target, pName);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getTexParameter(target, pName);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -848,7 +855,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native boolean isTexture(Texture texture) /*-{
-        return this.isTexture(texture);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.isTexture(texture);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -886,7 +893,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     public final native void texImage2D(int target, int level, int internalFormat, int width, int height,
                                         int border, int format, int type, NativeArray<?> pixels) /*-{
 
-        this.texImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.texImage2D(target, level, internalFormat, width, height, border, format, type, pixels);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -920,7 +927,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void texImage2D(int target, int level, int internalFormat, int format, int type,
                                         ImageResource image) /*-{
-        this.texImage2D(target, level, internalFormat, format, type, image);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.texImage2D(target, level, internalFormat, format, type, image);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -940,7 +947,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void texParameter(int target, int pName, float param) /*-{
-        this.texParameterf(target, pName, param);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.texParameterf(target, pName, param);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -960,7 +967,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void texParameter(int target, int pName, int param) /*-{
-        this.texParameteri(target, pName, param);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.texParameteri(target, pName, param);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -993,7 +1000,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void texSubImage2D(int target, int level, int xOffset, int yOffset, int width,
                                            int height, int border, int format, int type, NativeArray<?> pixels) /*-{
-        this.texSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.texSubImage2D(target, level, xOffset, yOffset, width, height, format, type, pixels);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1023,7 +1030,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void texImage2D(int target, int level, int xOffset, int yOffset, int format, int type,
                                         ImageResource image) /*-{
-        this.texSubImage2D(target, level, xOffset, yOffset, format, type, image);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.texSubImage2D(target, level, xOffset, yOffset, format, type, image);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1037,7 +1044,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void attachShader(ShaderProgram program, Shader shader) /*-{
-        this.attachShader(program, shader);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.attachShader(program, shader);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1049,7 +1056,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void compileShader(Shader shader) /*-{
-        this.compileShader(shader);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.compileShader(shader);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1062,7 +1069,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native ShaderProgram createShaderProgram() /*-{
         return @edu.catalindumitru.gwt.graphics.GwtShaderProgram::wrap(Ledu/catalindumitru/gwt/graphics/GwtShaderProgram;)(
-                this.createProgram()
+                this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.createProgram()
         )
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -1079,7 +1086,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native Shader createShader(int type) /*-{
         return @edu.catalindumitru.gwt.graphics.GwtShader::wrap(Ledu/catalindumitru/gwt/graphics/GwtShader;)(
-                this.createShader(type)
+                this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.createShader(type)
         )
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -1092,7 +1099,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void deleteShaderProgram(Shader program) /*-{
-        this.deleteProgram(program);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.deleteProgram(program);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1104,7 +1111,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void deleteShader(Shader shader) /*-{
-        this.deleteShader(shader);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.deleteShader(shader);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1117,7 +1124,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void detachShader(ShaderProgram program, Shader shader) /*-{
-        this.detachShader(program, shader);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.detachShader(program, shader);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1132,7 +1139,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     public final native List<Shader> getAttachedShaders(ShaderProgram program) /*-{
         var ret = @java.util.LinkedList::new()();
 
-        var shaders = this.getAttachedShaders();
+        var shaders = this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getAttachedShaders();
 
         for (shader in shaders) {
             ret.add(
@@ -1163,7 +1170,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native Object getProgramParameter(ShaderProgram program, int pName) /*-{
-        return this.getProgramParameter(program, pName);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getProgramParameter(program, pName);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1176,7 +1183,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native String getProgramInfoLog(ShaderProgram program) /*-{
-        return this.getProgramInfoLog(program);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getProgramInfoLog(program);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1193,7 +1200,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native Object getShaderParameter(ShaderProgram shader, int pName) /*-{
-        return this.getShaderParameter(shader, pName);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getShaderParameter(shader, pName);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1206,7 +1213,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native String getShaderInfoLog(Shader shader) /*-{
-        return this.getShaderInfoLog(shader);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getShaderInfoLog(shader);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1219,7 +1226,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native String getShaderSource(Shader shader) /*-{
-        return this.getShaderSource(shader);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getShaderSource(shader);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1232,7 +1239,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native boolean isShaderProgram(ShaderProgram shaderProgram) /*-{
-        return this.isProgram(shaderProgram);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.isProgram(shaderProgram);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1245,7 +1252,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native boolean isShader(Shader shader) /*-{
-        return this.isShader(shader);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.isShader(shader);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1258,7 +1265,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void linkProgram(ShaderProgram program) /*-{
-        this.linkProgram(program);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.linkProgram(program);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1271,7 +1278,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void shaderSource(Shader shader, String source) /*-{
-        this.shaderSource(shader, source);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.shaderSource(shader, source);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1284,7 +1291,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void useProgram(ShaderProgram program) /*-{
-        this.useProgram(program);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.useProgram(program);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1297,7 +1304,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void validateProgram(ShaderProgram program) /*-{
-        this.validateProgram(program);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.validateProgram(program);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1311,7 +1318,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void bindAttributeLocation(ShaderProgram program, int index, String name) /*-{
-        this.bindAttribLocation(program, index, name);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.bindAttribLocation(program, index, name);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1323,7 +1330,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void disableVertexAttributeArray(int index) /*-{
-        this.disableVertexAttribArray(index);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.disableVertexAttribArray(index);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1335,7 +1342,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void enableVertexAttributeArray(int index) /*-{
-        this.enableVertexAttribArray(index);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.enableVertexAttribArray(index);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1350,7 +1357,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native ActiveInfo getActiveAttribute(ShaderProgram program, int index) /*-{
         return @edu.catalindumitru.gwt.graphics.GwtActiveInfo::wrap(Ledu/catalindumitru/gwt/graphics/GwtActiveInfo;)(
-                this.getActiveAttrib(program, index)
+                this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getActiveAttrib(program, index)
         );
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -1366,7 +1373,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native ActiveInfo getActiveUniform(ShaderProgram program, int index) /*-{
         return @edu.catalindumitru.gwt.graphics.GwtActiveInfo::wrap(Ledu/catalindumitru/gwt/graphics/GwtActiveInfo;)(
-                this.getActiveUniform(program, index)
+                this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getActiveUniform(program, index)
         );
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -1381,7 +1388,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native int getAttributeLocation(ShaderProgram program, String name) /*-{
-        return this.getAttribLocation(program, name);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getAttribLocation(program, name);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1397,7 +1404,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     public final native List<Float> getUniform(ShaderProgram program, UniformLocation location) /*-{
         var ret = @java.util.LinkedList::new()();
 
-        var uniforms = this.getUniform(program, location);
+        var uniforms = this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getUniform(program, location);
 
         for (uni in uniforms) {
             ret.add(uniforms[uni]);
@@ -1418,7 +1425,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native UniformLocation getUniformLocation(ShaderProgram program, String name) /*-{
         return @edu.catalindumitru.gwt.graphics.GwtUniformLocation::wrap(Ledu/catalindumitru/gwt/graphics/GwtUniformLocation;)(
-                this.getUniformLocation(program, name)
+                this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getUniformLocation(program, name)
         );
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -1440,7 +1447,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native Object getVertexAttribute(int index, int pName) /*-{
-        return this.getVertexAttrib(index, pName);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getVertexAttrib(index, pName);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1455,7 +1462,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native int getVertexAttributeOffset(int index, int pName) /*-{
-        return this.getVertexAttribOffset(index, pName);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getVertexAttribOffset(index, pName);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1468,7 +1475,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform1f(UniformLocation location, float x) /*-{
-        this.uniform1f(location, x);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform1f(location, x);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1481,7 +1488,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform1f(UniformLocation location, NativeArray<Float> v) /*-{
-        this.uniform1fv(location, v);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform1fv(location, v);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1494,7 +1501,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform1i(UniformLocation location, int x) /*-{
-        this.uniform1i(location, x);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform1i(location, x);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1507,7 +1514,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform1i(UniformLocation location, NativeArray<Integer> v) /*-{
-        this.uniform1iv(location, v);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform1iv(location, v);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1522,7 +1529,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform2f(UniformLocation location, float x, float y) /*-{
-        this.uniform2f(location, x, y);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform2f(location, x, y);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1536,7 +1543,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform2f(UniformLocation location, NativeArray<Float> v) /*-{
-        this.uniform2fv(location, v);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform2fv(location, v);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1551,7 +1558,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform2i(UniformLocation location, int x, int y) /*-{
-        this.uniform2i(location, x, y);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform2i(location, x, y);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1565,7 +1572,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform2i(UniformLocation location, NativeArray<Integer> v) /*-{
-        this.uniform2iv(location, v);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform2iv(location, v);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1581,7 +1588,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform3f(UniformLocation location, float x, float y, float z) /*-{
-        this.uniform3f(location, x, y, z);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform3f(location, x, y, z);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1595,7 +1602,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform3f(UniformLocation location, NativeArray<Float> v) /*-{
-        this.uniform3fv(location, v);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform3fv(location, v);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1611,7 +1618,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform3i(UniformLocation location, int x, int y, int z) /*-{
-        this.uniform3i(location, x, y, z);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform3i(location, x, y, z);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1625,7 +1632,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform3i(UniformLocation location, NativeArray<Integer> v) /*-{
-        this.uniform3iv(location, v);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform3iv(location, v);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1642,7 +1649,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform4f(UniformLocation location, float x, float y, float z, float w) /*-{
-        this.uniform4f(location, x, y, z, w);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform4f(location, x, y, z, w);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1656,7 +1663,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform4f(UniformLocation location, NativeArray<Float> v) /*-{
-        this.uniform4fv(location, v);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform4fv(location, v);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1673,7 +1680,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform4i(UniformLocation location, int x, int y, int z, int w) /*-{
-        this.uniform4i(location, x, y, z, w);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform4i(location, x, y, z, w);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1687,7 +1694,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniform4i(UniformLocation location, NativeArray<Integer> v) /*-{
-        this.uniform4iv(location, v);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniform4iv(location, v);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1702,7 +1709,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniformMatrix2f(UniformLocation location, boolean transpose, NativeArray<Float> value) /*-{
-        this.uniformMatrix2fv(location, transpose, value);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniformMatrix2fv(location, transpose, value);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1717,7 +1724,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniformMatrix3f(UniformLocation location, boolean transpose, NativeArray<Float> value) /*-{
-        this.uniformMatrix3fv(location, transpose, value);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniformMatrix3fv(location, transpose, value);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1732,7 +1739,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void uniformMatrix4f(UniformLocation location, boolean transpose, NativeArray<Float> value) /*-{
-        this.uniformMatrix4fv(location, transpose, value);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.uniformMatrix4fv(location, transpose, value);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1746,7 +1753,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void vertexAttribute1f(int index, float x) /*-{
-        this.vertexAttrib1f(index, x);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.vertexAttrib1f(index, x);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1760,7 +1767,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void vertexAttribute1f(int index, NativeArray<Float> values) /*-{
-        this.vertexAttrib1fv(index, values);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.vertexAttrib1fv(index, values);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1775,7 +1782,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void vertexAttribute2f(int index, float x, float y) /*-{
-        this.vertexAttrib2f(index, x, y);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.vertexAttrib2f(index, x, y);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1789,7 +1796,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void vertexAttribute2f(int index, NativeArray<Float> values) /*-{
-        this.vertexAttrib2fv(index, values);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.vertexAttrib2fv(index, values);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1805,7 +1812,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void vertexAttribute3f(int index, float x, float y, float z) /*-{
-        this.vertexAttrib3f(index, x, y, z);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.vertexAttrib3f(index, x, y, z);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1819,7 +1826,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void vertexAttribute3f(int index, NativeArray<Float> values) /*-{
-        this.vertexAttrib3fv(index, values);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.vertexAttrib3fv(index, values);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1836,7 +1843,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void vertexAttribute4f(int index, float x, float y, float z, float w) /*-{
-        this.vertexAttrib4f(index, x, y, z, w);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.vertexAttrib4f(index, x, y, z, w);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1850,7 +1857,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void vertexAttribute4f(int index, NativeArray<Float> values) /*-{
-        this.vertexAttrib4fv(index, values);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.vertexAttrib4fv(index, values);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1874,7 +1881,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void vertexAttributePointer(int index, int size, int type, boolean normalized,
                                                     int stride, int offset) /*-{
-        this.vertexAttribPointer(index, size, type, normalized, stride, offset);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.vertexAttribPointer(index, size, type, normalized, stride, offset);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1889,7 +1896,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void bindBuffer(int target, Buffer buffer) /*-{
-        this.bindBuffer(target, buffer);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.bindBuffer(target, buffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1907,7 +1914,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void bufferData(int target, NativeArray<?> data, int usage) /*-{
-        this.bufferData(target, data, usage);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.bufferData(target, data, usage);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1922,7 +1929,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void bufferSubData(int target, int offset, NativeArray<?> data) /*-{
-        this.bufferSubData(target, offset, data);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.bufferSubData(target, offset, data);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1935,7 +1942,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native Buffer createBuffer() /*-{
         return @edu.catalindumitru.gwt.graphics.GwtBuffer::wrap(Ledu/catalindumitru/gwt/graphics/GwtBuffer;)(
-                this.createBuffer()
+                this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.createBuffer()
         )
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -1948,7 +1955,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void deleteBuffer(Buffer buffer) /*-{
-        this.deleteBuffer(buffer);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.deleteBuffer(buffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1961,7 +1968,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native boolean isBuffer(Buffer buffer) /*-{
-        return this.isBuffer(buffer);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.isBuffer(buffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1976,7 +1983,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void bindFrameBuffer(int target, FrameBuffer frameBuffer) /*-{
-        this.bindFramebuffer(target, frameBuffer);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.bindFramebuffer(target, frameBuffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -1994,7 +2001,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native int checkFrameBufferStatus(int target) /*-{
-        return this.checkFramebufferStatus(target);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.checkFramebufferStatus(target);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2007,7 +2014,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native FrameBuffer createFameBuffer() /*-{
         return @edu.catalindumitru.gwt.graphics.GwtFrameBuffer::wrap(Ledu/catalindumitru/gwt/graphics/GwtFrameBuffer;)(
-                this.createFramebuffer()
+                this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.createFramebuffer()
         )
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -2020,7 +2027,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void deleteFrameBuffer(FrameBuffer frameBuffer) /*-{
-        this.deleteFramebuffer(frameBuffer);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.deleteFramebuffer(frameBuffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2039,7 +2046,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void frameBufferRenderBuffer(int target, int attachment, int renderBufferTarget,
                                                      RenderBuffer renderBuffer) /*-{
-        this.framebufferRenderbuffer(target, attachment, renderBufferTarget, renderBuffer);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.framebufferRenderbuffer(target, attachment, renderBufferTarget, renderBuffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2066,7 +2073,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void frameBufferTexture2D(int target, int attachment, int textureTarget,
                                                   Texture texture, int level) /*-{
-        this.framebufferTexture2D(target, attachment, textureTarget, texture, level);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.framebufferTexture2D(target, attachment, textureTarget, texture, level);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2090,7 +2097,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native Object getFrameBufferAttachmentParameter(int target, int attachment, int pName) /*-{
-        this.getFramebufferAttachmentParameter(target, attachment, pName);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getFramebufferAttachmentParameter(target, attachment, pName);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2103,7 +2110,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native boolean isFrameBuffer(FrameBuffer frameBuffer) /*-{
-        return this.isFramebuffer(frameBuffer);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.isFramebuffer(frameBuffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2129,7 +2136,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native void readPixels(int x, int y, int width, int height, int format,
                                         int type, NativeArray<?> pixels) /*-{
-        this.readPixels(x, y, width, height, format, type, pixels);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.readPixels(x, y, width, height, format, type, pixels);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2144,7 +2151,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void bindRenderBuffer(int target, RenderBuffer renderBuffer) /*-{
-        this.bindRenderbuffer(target, renderBuffer);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.bindRenderbuffer(target, renderBuffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2157,7 +2164,7 @@ public class GwtRender3DProvider implements Render3DProvider {
     @Override
     public final native RenderBuffer createRenderBuffer() /*-{
         return @edu.catalindumitru.gwt.graphics.GwtRenderBuffer::wrap(Ledu/catalindumitru/gwt/graphics/GwtRenderBuffer;)(
-                this.createRenderbuffer()
+                this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.createRenderbuffer()
         )
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
@@ -2170,7 +2177,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void deleteRenderBuffer(RenderBuffer buffer) /*-{
-        this.deleteRenderbuffer(buffer);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.deleteRenderbuffer(buffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2195,7 +2202,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native Object getRenderBufferParameter(int target, int pName) /*-{
-        return this.getRenderbufferParameter(target, pName);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.getRenderbufferParameter(target, pName);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2208,7 +2215,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native boolean isRenderBuffer(RenderBuffer renderBuffer) /*-{
-        return this.isRenderbuffer(renderBuffer);
+        return this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.isRenderbuffer(renderBuffer);
     }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -2229,7 +2236,7 @@ public class GwtRender3DProvider implements Render3DProvider {
      */
     @Override
     public final native void renderBufferStorage(int target, int internalFormat, int width, int height) /*-{
-        this.renderbufferStorage(target, internalFormat, width, height);
+        this.@edu.catalindumitru.gwt.graphics.GwtRender3DProvider::context3d.renderbufferStorage(target, internalFormat, width, height);
     }-*/;
 
     //------------------------------------------------------------------------------------------------------------------

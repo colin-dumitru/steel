@@ -1,6 +1,7 @@
 package edu.catalindumitru.bee.gui;
 
 import edu.catalindumitru.bee.content.xml.Element;
+import edu.catalindumitru.bee.graphics.Render2DProvider;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,10 +13,12 @@ public interface WidgetBuilder {
     /**
      * Creates a new widget from the root element.
      *
+     *
      * @param root the root element from the xml we are building.
+     * @param factory
      * @return the built widget.
      */
-    public Widget build(Element root);
+    public Widget build(Element root, Render2DProvider provider, WidgetFactory factory);
 
     /**
      * Returns the root widget this builder can handle.

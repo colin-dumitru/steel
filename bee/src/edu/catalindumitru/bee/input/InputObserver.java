@@ -7,5 +7,12 @@ package edu.catalindumitru.bee.input;
  * Time: 10:32 AM
  */
 public interface InputObserver {
-    public void onEvent(InputManager.EVENTS event, float params[]);
+    public void onMouseMove(int x, int y);
+    public void onClick(int x, int y);
+    public void onDoubleClick(int x, int y);
+    public void onMouseUp(int x, int y);
+    public void onMouseDown(int x, int y);
+    public void onKeyUp(int key);
+    public void onKeyDown(int key);
+    public void onKeyPress(int key);
 }

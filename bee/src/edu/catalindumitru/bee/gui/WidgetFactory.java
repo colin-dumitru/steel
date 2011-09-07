@@ -1,6 +1,7 @@
 package edu.catalindumitru.bee.gui;
 
 import edu.catalindumitru.bee.content.xml.Element;
+import edu.catalindumitru.bee.graphics.Render2DProvider;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -15,19 +16,11 @@ public class WidgetFactory {
     /*registered widgets*/
     protected Map<String, WidgetBuilder> builders = new TreeMap<String, WidgetBuilder>();
 
-    /*unique instance*/
-    protected final static WidgetFactory instance = new WidgetFactory();
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected WidgetFactory() {
 
-    }
-
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-    public static WidgetFactory instance() {
-        return instance;
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -50,13 +43,13 @@ public class WidgetFactory {
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public Widget create(Element root) {
+    public Widget create(Element root, Render2DProvider provider) {
         WidgetBuilder builder = this.builders.get(root.getTagName().toLowerCase());
 
         if (builder == null)
             return null;
         else
-            return builder.build(root);
+            return builder.build(root, provider, this);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------

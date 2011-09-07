@@ -23,6 +23,15 @@ public class UiController implements ControllerProxy {
 
     /*if we should receive actions*/
     protected boolean active = true;
+    /*parent ui manager*/
+    protected UiManager uiManager;
+
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+
+    public UiController(UiManager uiManager) {
+        this.uiManager = uiManager;
+    }
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -87,10 +96,12 @@ public class UiController implements ControllerProxy {
         if (resource.getStatus() == Resource.STATUS.COMPLETED) {
             try {
                 /*When the xml file has been completed, then create a new root widget and add it to the UiManager*/
-                Widget res = WidgetFactory.instance().create(
-                        ((XmlResource) resource.getResource()).getRootNode().castToElement());
+                Widget res = this.uiManager.widgetFactory.create(
+                        ((XmlResource) resource.getResource()).getRootNode().castToElement(),
+                        this.uiManager.getRenderProvider()
+                );
 
-                UiManager.instance().addPanel((Panel) res);
+                this.uiManager.addPanel((Panel) res);
             } catch (Exception ex) {
                 Logger.log(Logger.PRIORITY.ERROR, ex.toString());
             }
@@ -112,7 +123,7 @@ public class UiController implements ControllerProxy {
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected boolean activateMenu(String menuName) {
-        UiManager.instance().switchActivePanel(menuName);
+        this.uiManager.switchActivePanel(menuName);
 
         return true;
     }

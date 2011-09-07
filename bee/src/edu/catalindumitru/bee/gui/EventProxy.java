@@ -24,5 +24,5 @@ public interface EventProxy {
      * @return whether or not the event has been handled. If it returns true, then the remainder of proxies will not
      *         be called.
      */
-    public boolean handleEvent(UiEvent event);
+    public boolean handleEvent(final UiEvent event);
 }

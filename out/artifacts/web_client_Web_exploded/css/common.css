@@ -55,19 +55,40 @@ body {
     background-image: -moz-linear-gradient(center bottom, rgba(66, 98, 150, 0.0) 0%, rgba(33, 114, 255, 1.0) 100%);
 }
 
+.root{
+    position: relative;
+
+    width: 100%;
+}
+
 .gameRoot {
     position: relative;
     background: transparent;
+
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #canvas2d {
-    position: relative;
+    position: absolute;
 
     border: white solid 2px;
 
     margin-left: auto;
     margin-right: auto;
 
+    z-index: 21;
+}
+
+#canvas3d {
+    position: absolute;
+    top:0px;
+
+    margin-left: auto;
+    margin-right: auto;
+
     margin-top: 10px;
     margin-bottom: 10px;
+
+    z-index: 20;
 }

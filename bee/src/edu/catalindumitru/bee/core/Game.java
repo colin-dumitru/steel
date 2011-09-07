@@ -4,6 +4,7 @@ import edu.catalindumitru.bee.concurent.ScheduleProvider;
 import edu.catalindumitru.bee.content.ResourceProvider;
 import edu.catalindumitru.bee.graphics.Render2DProvider;
 import edu.catalindumitru.bee.input.InputProvider;
+import edu.catalindumitru.bee.xscript.XScriptHandler;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,6 +24,9 @@ public abstract class Game {
     protected ResourceProvider resourceProvider;
     protected ScheduleProvider scheduleProvider;
 
+    protected ActionDispatcher actionDispatcher;
+    protected XScriptHandler xScriptHandler;
+
     private double lastTime;
     private double currentTime;
 
@@ -37,6 +41,9 @@ public abstract class Game {
         this.uiProvider = this.environment.getRender2dProvider();
         this.resourceProvider = this.environment.getResourceProvider();
         this.scheduleProvider = this.environment.getScheduleProvider();
+
+        this.actionDispatcher = this.engine.getActionDispatcher();
+        this.xScriptHandler = this.engine.getXScriptHandler();
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -54,7 +61,7 @@ public abstract class Game {
         }, ScheduleProvider.TYPE.PERIODIC, P_UPDATE);
 
 
-        /*initialise the actual game*/
+        /*initialize the actual game*/
         this.startup();
 
         /*init update cycle*/

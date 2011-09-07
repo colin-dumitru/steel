@@ -1,10 +1,11 @@
 package edu.catalindumitru.gwt.input;
 
 import com.google.gwt.canvas.client.Canvas;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.event.dom.client.*;
-import edu.catalindumitru.bee.input.InputManager;
+import edu.catalindumitru.bee.input.InputObserver;
 import edu.catalindumitru.bee.input.InputProvider;
-import edu.catalindumitru.bee.input.InputResolver;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,141 +13,97 @@ import edu.catalindumitru.bee.input.InputResolver;
  * Date: 7/18/11
  * Time: 10:50 AM
  */
-public class GwtInputProvider implements InputProvider, ClickHandler, KeyDownHandler, KeyUpHandler, MouseUpHandler,
-        MouseDownHandler, MouseMoveHandler, MouseWheelHandler, DoubleClickHandler {
+public class GwtInputProvider implements InputProvider {
     protected Canvas canvas;
-    protected InputResolver resolver;
+    protected InputObserver observer;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     public GwtInputProvider(Canvas canvas) {
-        /*cmouse events*/
-        canvas.addClickHandler(this);
-        canvas.addMouseDownHandler(this);
-        canvas.addMouseUpHandler(this);
-        canvas.addMouseMoveHandler(this);
-        canvas.addMouseWheelHandler(this);
-
-        /*key events*/
-        canvas.addKeyDownHandler(this);
-        canvas.addKeyUpHandler(this);
-        canvas.addDoubleClickHandler(this);
-
         this.canvas = canvas;
+        this.initImpl(canvas.getCanvasElement());
     }
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * Called when a native click event is fired.
-     *
-     * @param event the {@link com.google.gwt.event.dom.client.ClickEvent} that was fired
-     */
-    public void onClick(ClickEvent event) {
-        if (this.resolver != null) {
-            resolver.onEvent(InputManager.EVENTS.E_MOUSE_CLICK, new float[]{event.getX(), event.getY()});
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    protected final native void initImpl(CanvasElement canvas) /*-{
+        var that = this;
+
+        canvas.addEventListener("mousemove", mouseMove, true );
+        canvas.addEventListener("mousedown", mouseDown, true );
+        canvas.addEventListener("mouseup",   mouseUp,   true );
+        canvas.addEventListener("click",     click,     true );
+        canvas.addEventListener("dblclick ", doubleClick, true );
+
+        canvas.addEventListener("keyup",     keyUp, true );
+        canvas.addEventListener("keydown",   keyDown, true );
+        canvas.addEventListener("keypress",  keyPress, true );
+
+        function mouseDown(event) {
+            that.@edu.catalindumitru.gwt.input.GwtInputProvider::observer.@edu.catalindumitru.bee.input.InputObserver::onMouseDown(II)(
+                    event.layerX,
+                    event.layerY
+            )
         }
-    }
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * Called when MouseDown is fired.
-     *
-     * @param event the {@link com.google.gwt.event.dom.client.MouseDownEvent} that was fired
-     */
-    public void onMouseDown(MouseDownEvent event) {
-        if (this.resolver != null) {
-            resolver.onEvent(InputManager.EVENTS.E_MOUSE_DOWN, new float[]{event.getX(), event.getY()});
+        function mouseUp(event) {
+            that.@edu.catalindumitru.gwt.input.GwtInputProvider::observer.@edu.catalindumitru.bee.input.InputObserver::onMouseUp(II)(
+                    event.layerX,
+                    event.layerY
+            )
         }
-    }
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * Called when MouseUpEvent is fired.
-     *
-     * @param event the {@link com.google.gwt.event.dom.client.MouseUpEvent} that was fired
-     */
-    public void onMouseUp(MouseUpEvent event) {
-        if (this.resolver != null) {
-            resolver.onEvent(InputManager.EVENTS.E_MOUSE_UP, new float[]{event.getX(), event.getY()});
+        function click(event) {
+            that.@edu.catalindumitru.gwt.input.GwtInputProvider::observer.@edu.catalindumitru.bee.input.InputObserver::onClick(II)(
+                    event.layerX,
+                    event.layerY
+            )
         }
-    }
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * Called when {@link com.google.gwt.event.dom.client.KeyDownEvent} is fired.
-     *
-     * @param event the {@link com.google.gwt.event.dom.client.KeyDownEvent} that was fired
-     */
-    public void onKeyDown(KeyDownEvent event) {
-        if (this.resolver != null) {
-            resolver.onEvent(InputManager.EVENTS.E_KEY_DOWN, new float[]{event.getNativeKeyCode()});
+        function doubleClick(event) {
+            that.@edu.catalindumitru.gwt.input.GwtInputProvider::observer.@edu.catalindumitru.bee.input.InputObserver::onDoubleClick(II)(
+                    event.layerX,
+                    event.layerY
+            )
         }
-    }
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * Called when KeyUpEvent is fired.
-     *
-     * @param event the {@link com.google.gwt.event.dom.client.KeyUpEvent} that was fired
-     */
-    public void onKeyUp(KeyUpEvent event) {
-        if (this.resolver != null) {
-            resolver.onEvent(InputManager.EVENTS.E_KEY_UP, new float[]{event.getNativeKeyCode()});
+        function mouseMove(event) {
+            that.@edu.catalindumitru.gwt.input.GwtInputProvider::observer.@edu.catalindumitru.bee.input.InputObserver::onMouseMove(II)(
+                    event.layerX,
+                    event.layerY
+            )
         }
-    }
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
 
-    public void setInputResolver(InputResolver resolver) {
-        this.resolver = resolver;
-    }
+        function keyUp(event) {
+            that.@edu.catalindumitru.gwt.input.GwtInputProvider::observer.@edu.catalindumitru.bee.input.InputObserver::onKeyUp(I)(
+                    event.keyCode
+            )
 
-
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-
-    /**
-     * Called when MouseMoveEvent is fired.
-     *
-     * @param event the {@link com.google.gwt.event.dom.client.MouseMoveEvent} that was fired
-     */
-    @Override
-    public void onMouseMove(MouseMoveEvent event) {
-        if (this.resolver != null) {
-            resolver.onEvent(InputManager.EVENTS.E_MOUSE_MOVE, new float[]{event.getX(), event.getY()});
         }
-    }
+
+        function keyDown(event) {
+            that.@edu.catalindumitru.gwt.input.GwtInputProvider::observer.@edu.catalindumitru.bee.input.InputObserver::onKeyDown(I)(
+                    event.keyCode
+            )
+        }
+
+        function keyPress(event) {
+            that.@edu.catalindumitru.gwt.input.GwtInputProvider::observer.@edu.catalindumitru.bee.input.InputObserver::onKeyPress(I)(
+                    event.keyCode
+            )
+        }
+
+    }-*/;
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * Called when MouseWheelEvent is fired.
-     *
-     * @param event the {@link com.google.gwt.event.dom.client.MouseWheelEvent} that was fired
-     */
-    @Override
-    public void onMouseWheel(MouseWheelEvent event) {
-        if (this.resolver != null) {
-            resolver.onEvent(InputManager.EVENTS.E_MOUSE_WHEEL, new float[]{event.getDeltaY()});
-        }
+    public void setInputObserver(InputObserver observer) {
+        this.observer = observer;
     }
+
+
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
-    /**
-     * Called when a {@link com.google.gwt.event.dom.client.DoubleClickEvent} is fired.
-     *
-     * @param event the {@link com.google.gwt.event.dom.client.DoubleClickEvent} that was fired
-     */
-    @Override
-    public void onDoubleClick(DoubleClickEvent event) {
-        if (this.resolver != null) {
-            resolver.onEvent(InputManager.EVENTS.E_MOUSE_DOUBLE_CLICK, new float[]{event.getX(), event.getY()});
-        }
-    }
+
 }

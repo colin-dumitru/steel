@@ -20,18 +20,19 @@ public class UiEvent {
         MOUSE_DOWN,
         MOUSE_UP,
         MOUSE_MOVE,
-        MOUSE_WHEEL,
         MOUSE_DOUBLE_CLICK,
+
         KEY_UP,
-        KEY_DOWN
+        KEY_DOWN,
+        KEY_PRESS
     }
 
     /*which region is affected by this event. null if not important or all the area is affected*/
-    protected Rectangle regionAffected;
+    protected Rectangle regionAffected = null;
     /*event params*/
-    protected float params[];
+    protected float params[] = null;
     /*type of event*/
-    public TYPE type;
+    public TYPE type = null;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -42,7 +43,11 @@ public class UiEvent {
         this.params = params;
         this.type = type;
     }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public UiEvent() {
 
+    }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
@@ -82,7 +87,13 @@ public class UiEvent {
     public void setType(TYPE type) {
         this.type = type;
     }
-
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void setAll(Rectangle regionAffected, float[] params, TYPE type) {
+        this.regionAffected = regionAffected;
+        this.params = params;
+        this.type = type;
+    }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 

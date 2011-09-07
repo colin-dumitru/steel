@@ -34,6 +34,14 @@ public class ActionDispatcher {
         public static final String A_PARAM_VAL = "val";
         public static final String N_PARAM = "param";
 
+        protected ActionDispatcher actionDispatcher;
+
+
+        //--------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------
+        public ActionCommand(ActionDispatcher actionDispatcher) {
+            this.actionDispatcher = actionDispatcher;
+        }
         //--------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------
 
@@ -86,7 +94,7 @@ public class ActionDispatcher {
             }
 
             /*send the new action*/
-            ActionDispatcher.instance().dispatchAction(new Action(commandName, params));
+            this.actionDispatcher.dispatchAction(new Action(commandName, params));
         }
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -97,25 +105,16 @@ public class ActionDispatcher {
             new ControllerComparator());
     /*queued actions to be dispatched on the next call to update*/
     protected Queue<Action> queuedActions = new LinkedList<Action>();
-    /*unique instance*/
-    protected static ActionDispatcher instance = new ActionDispatcher();
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     protected ActionDispatcher() {
 
     }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void initialize() {
 
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-    public static ActionDispatcher instance() {
-        return instance;
-    }
-
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-    public void initialise() {
-        XScriptHandler.instance().addCommand(new ActionCommand());
     }
 
     //------------------------------------------------------------------------------------------------------------------

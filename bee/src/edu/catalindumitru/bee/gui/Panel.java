@@ -3,6 +3,7 @@ package edu.catalindumitru.bee.gui;
 import edu.catalindumitru.bee.content.xml.Element;
 import edu.catalindumitru.bee.content.xml.Node;
 import edu.catalindumitru.bee.content.xml.NodeList;
+import edu.catalindumitru.bee.core.ActionDispatcher;
 import edu.catalindumitru.bee.core.Logger;
 import edu.catalindumitru.bee.graphics.Color;
 import edu.catalindumitru.bee.graphics.Render2DProvider;
@@ -34,18 +35,20 @@ public class Panel extends Widget {
         /**
          * Creates a new widget from the root element.
          *
+         *
          * @param root the root element from the xml we are building.
+         * @param factory
          * @return the built widget.
          */
         @Override
-        public Widget build(Element root) {
+        public Widget build(Element root, Render2DProvider provider, WidgetFactory factory) {
             if (!root.getTagName().toLowerCase().equals(LABEL))
                 return null;
 
             /*build panel*/
             Panel ret = new Panel();
 
-            Builder.buildProxy(root, ret);
+            Builder.buildProxy(root, ret, provider);
 
             NodeList children = root.getChildNodes();
 
@@ -55,7 +58,7 @@ public class Panel extends Widget {
 
                 if (child.getNodeType() == Node.ELEMENT_NODE) {
                     try {
-                        Widget subWidget = WidgetFactory.instance().create(child.castToElement());
+                        Widget subWidget = factory.create(child.castToElement(), provider);
 
                         /*if the widget is a supported one*/
                         if (subWidget != null) {
@@ -75,13 +78,15 @@ public class Panel extends Widget {
 
         //--------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------
-        public static final void buildProxy(Element root, Panel widget) {
+        public static final void buildProxy(Element root, Panel widget, Render2DProvider provider) {
             /*pass the widget through the builder proxy provided by the Widget class to get the common attributes*/
-            Widget.builderProxy(widget, root);
+            Widget.builderProxy(widget, root, provider);
 
             /*create layout*/
             if (root.hasAttribute(A_LAYOUT))
                 widget.setLayout(LayoutFactory.instance().createLayout(root.getAttribute(A_LAYOUT)));
+
+            widget.setEnabled(true);
         }
         //--------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------
@@ -303,10 +308,30 @@ public class Panel extends Widget {
         super.onEvent(event);
 
         for (Widget child : this.childrenList) {
-            /*dispatch the event only when the region affected of the effect intersects the region of the child widget*/
-            if (event.regionAffected == null || child.getBounds().intersects(event.regionAffected))
-                child.onEvent(event);
+            if(child.isEnabled()) {
+                /*dispatch the event only when the region affected of the effect intersects the region of the child widget*/
+                if (event.regionAffected == null || child.getBounds().intersects(event.regionAffected))
+                    child.onEvent(event);
+            }
         }
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void setActionDispatcher(ActionDispatcher actionDispatcher) {
+        this.actionDispatcher = actionDispatcher;
+
+        for(Widget child : this.childrenList)
+            child.setActionDispatcher(actionDispatcher);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void setEventDispatcher(EventDispatcher eventDispatcher){
+        this.eventDispatcher = eventDispatcher;
+
+        for(Widget child : this.childrenList)
+            child.setEventDispatcher(eventDispatcher);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------

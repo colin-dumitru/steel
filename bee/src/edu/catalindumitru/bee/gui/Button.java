@@ -23,29 +23,33 @@ public class Button extends Label {
         /**
          * Creates a new widget from the root element.
          *
+         *
          * @param root the root element from the xml we are building.
+         * @param factory
          * @return the built widget.
          */
         @Override
-        public Widget build(Element root) {
+        public Widget build(Element root, Render2DProvider provider, WidgetFactory factory) {
             if (!root.getTagName().toLowerCase().equals(this.widgetLabel()))
                 return null;
 
             Button ret = new Button();
 
-            buildProxy(root, ret);
+            buildProxy(root, ret, provider);
 
             return ret;
         }
 
         //--------------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------------
-        public static final void buildProxy(Element root, Button widget) {
-            Label.Builder.builderProxy(root, widget);
+        public static final void buildProxy(Element root, Button widget, Render2DProvider provider) {
+            Label.Builder.builderProxy(root, widget, provider);
 
             /*check for overlay effect*/
             if (root.hasAttribute(A_OVERLAY))
                 widget.setHasOverlay(Boolean.parseBoolean(root.getAttribute(A_OVERLAY)));
+
+            widget.setEnabled(true);
 
 
         }
@@ -102,9 +106,6 @@ public class Button extends Label {
         this.hasOverlay = true;
         this.setOverlayIdleColor(C_DEFAULT_IDLE);
         this.setOverlayHoverColor(C_DEFAULT_HOVER);
-
-        /*enabled by default to ensure hovering effects*/
-        this.enabled = true;
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -118,18 +119,20 @@ public class Button extends Label {
      */
     @Override
     public void draw(Render2DProvider provider, Rectangle region) {
+
+
         /*first fill the background*/
         provider.setFillColor(this.background);
         provider.setFillStyle(Render2DProvider.STYLE.COLOR);
 
         /*if the radius is smaller than 0, then we draw a simple recngle*/
         if (this.radius <= 0) {
-            provider.fillRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                    (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight());
+            provider.fillRectangle((int) this.dimensions.x, (int) this.dimensions.y,
+                    (int) this.dimensions.width, (int) this.dimensions.height);
         } else {
             /*otherwise we draw a round rectangle*/
-            provider.fillRoundRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                    (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight(), radius);
+            provider.fillRoundRectangle((int) this.dimensions.x, (int) this.dimensions.y,
+                    (int) this.dimensions.width, (int) this.dimensions.height, radius);
         }
 
         /*overlay*/
@@ -144,12 +147,12 @@ public class Button extends Label {
 
             /*if the radius is smaller than 0, then we draw a simple recngle*/
             if (this.radius <= 0) {
-                provider.fillRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                        (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight());
+                provider.fillRectangle((int) this.dimensions.x, (int) this.dimensions.y,
+                        (int) this.dimensions.width, (int) this.dimensions.height);
             } else {
                 /*otherwise we draw a round rectangle*/
-                provider.fillRoundRectangle((int) this.dimensions.getX(), (int) this.dimensions.getY(),
-                        (int) this.dimensions.getWidth(), (int) this.dimensions.getHeight(), radius);
+                provider.fillRoundRectangle((int) this.dimensions.x, (int) this.dimensions.y,
+                        (int) this.dimensions.width, (int) this.dimensions.height, radius);
             }
         }
 
@@ -165,16 +168,16 @@ public class Button extends Label {
             * for dimensions because the border has the center one pixel in the rectangle.*/
             if (this.radius <= 0) {
                 /*otherwise we draw a round rectangle*/
-                provider.strokeRectangle((int) this.dimensions.getX() + this.radius / 2 - 1,
-                        (int) this.dimensions.getY() + this.radius / 2 - 1,
-                        (int) this.dimensions.getWidth() - this.radius + 2,
-                        (int) this.dimensions.getHeight() - this.radius + 2);
+                provider.strokeRectangle((int) this.dimensions.x + this.radius / 2 - 1,
+                        (int) this.dimensions.y + this.radius / 2 - 1,
+                        (int) this.dimensions.width - this.radius + 2,
+                        (int) this.dimensions.height - this.radius + 2);
             } else {
                 /*otherwise we draw a round rectangle*/
-                provider.strokeRoundRectangle((int) this.dimensions.getX() + this.radius / 2 - 1,
-                        (int) this.dimensions.getY() + this.radius / 2 - 1,
-                        (int) this.dimensions.getWidth() - this.radius + 2,
-                        (int) this.dimensions.getHeight() - this.radius + 2,
+                provider.strokeRoundRectangle((int) this.dimensions.x + this.radius / 2 - 1,
+                        (int) this.dimensions.y + this.radius / 2 - 1,
+                        (int) this.dimensions.width - this.radius + 2,
+                        (int) this.dimensions.height - this.radius + 2,
                         radius);
             }
 
@@ -190,14 +193,14 @@ public class Button extends Label {
 
         int textWidth = provider.getStringWidth(this.text);
         /*draw the string at the center of the button*/
-        provider.fillString((int) (this.dimensions.getX() + (this.dimensions.getWidth() / 2) - (textWidth / 2)),
-                (int) (this.dimensions.getY() + (this.dimensions.getHeight() / 2) - (this.font.getSize() * 8)),
+        provider.fillString((int) (this.dimensions.x + (this.dimensions.width / 2) - (textWidth / 2)),
+                (int) (this.dimensions.y + (this.dimensions.height / 2) - (this.font.getSize() * 8)),
                 this.text);
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
 
-    public boolean isHasOverlay() {
+    public boolean hasOverlay() {
         return hasOverlay;
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -254,9 +257,7 @@ public class Button extends Label {
 
         /*check for state changed*/
         if (this.lastHovered != this.hovered)
-            /*call a redraw*/
-            UiManager.instance().getEventDispatcher().dispatchEvent(new UiEvent(this.bounds,
-                    null, UiEvent.TYPE.REDRAW_REGION));
+            this.redraw();
     }
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------

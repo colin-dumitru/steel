@@ -32,18 +32,20 @@ public class Label extends Widget {
         /**
          * Creates a new widget from the root element.
          *
+         *
          * @param root the root element from the xml we are building.
+         * @param factory
          * @return the built widget.
          */
         @Override
-        public Widget build(Element root) {
+        public Widget build(Element root, Render2DProvider provider, WidgetFactory factory) {
             /*check for correct element node.*/
             if (!root.getTagName().toLowerCase().equals(this.widgetLabel()))
                 return null;
 
             Label ret = new Label();
 
-            Builder.builderProxy(root, ret);
+            Builder.builderProxy(root, ret, provider);
 
             return ret;
         }
@@ -56,9 +58,9 @@ public class Label extends Widget {
          * @param root   the root element which contains all the attributes of the widget to be built.
          * @param widget the widget to be built.
          */
-        public static final void builderProxy(Element root, Label widget) {
+        public static final void builderProxy(Element root, Label widget, Render2DProvider provider) {
             /*pass the widget through the builder proxy provided by the Widget class to get the common attributes*/
-            Widget.builderProxy(widget, root);
+            Widget.builderProxy(widget, root, provider);
 
             /*text to be displayed*/
             if (root.hasAttribute(A_TEXT))

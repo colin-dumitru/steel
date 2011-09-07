@@ -1,6 +1,7 @@
 package edu.catalindumitru.bee.gui;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -12,6 +13,7 @@ import java.util.Queue;
  */
 public class EventDispatcher {
     protected Queue<EventProxy> proxies;
+    protected Queue<UiEvent> queuedEvents;
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
@@ -24,6 +26,8 @@ public class EventDispatcher {
                 return o1.priority() - o2.priority();
             }
         });
+
+        this.queuedEvents = new LinkedList<UiEvent>();
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -40,13 +44,25 @@ public class EventDispatcher {
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    public void dispatchEvent(UiEvent event) {
+    public void dispatchEvent (UiEvent event) {
+        this.queuedEvents.add(event);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void dispatchEventImpl(final UiEvent event) {
         /*iterate through all event proxies, in order or priority, and send the event to them*/
         for (EventProxy proxy : this.proxies) {
             /*If the event has been handled, exist method.*/
             if (proxy.handleEvent(event))
                 return;
         }
+
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    public void update() {
+        while(this.queuedEvents.size() > 0)
+            this.dispatchEventImpl(this.queuedEvents.remove());
 
     }
     //------------------------------------------------------------------------------------------------------------------

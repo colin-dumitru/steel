@@ -7,5 +7,5 @@ package edu.catalindumitru.bee.input;
  * Time: 10:43 AM
  */
 public interface InputProvider {
-    public void setInputResolver(InputResolver resolver);
+    public void setInputObserver(InputObserver resolver);
 }

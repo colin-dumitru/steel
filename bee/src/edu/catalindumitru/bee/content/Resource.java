@@ -108,9 +108,6 @@ public class Resource {
 
     public static void initialise(ResourceProvider provider) {
         Resource.provider = provider;
-
-        /*add the command handler to the xml script translator*/
-        XScriptHandler.instance().addCommand(new ResourceProvider.ResourceXCommand());
     }
 
     //------------------------------------------------------------------------------------------------------------------

@@ -29,10 +29,10 @@ public class Steel extends Game {
     @Override
     protected boolean startup() {
         /*register game controller*/
-        ActionDispatcher.instance().addController(new GameController());
+        this.actionDispatcher.addController(new GameController());
 
         /*TODO realocate starting script*/
-        XScriptHandler.instance().handleScript(INITIAL_XSCRIPT);
+        this.xScriptHandler.handleScript(INITIAL_XSCRIPT);
 
         return false;
     }

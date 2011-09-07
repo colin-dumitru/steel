@@ -11,7 +11,8 @@ import java.util.Set;
  * Date: 7/18/11
  * Time: 10:30 AM
  */
-public class InputManager implements InputResolver {
+public class InputManager implements InputObserver {
+
 
 
     public static enum EVENTS {
@@ -25,21 +26,15 @@ public class InputManager implements InputResolver {
         E_KEY_DOWN
     }
 
-    protected static InputManager instance = new InputManager();
     protected InputProvider provider;
     protected Set<InputObserver> observers;
 
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    protected InputManager() {
+    public InputManager(InputProvider provider) {
         this.observers = new HashSet<InputObserver>();
-    }
-
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-    public static InputManager instance() {
-        return instance;
+        this.setInputProvider(provider);
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -61,22 +56,65 @@ public class InputManager implements InputResolver {
     //------------------------------------------------------------------------------------------------------------------
     public void setInputProvider(InputProvider provider) {
         this.provider = provider;
-        this.provider.setInputResolver(this);
+        this.provider.setInputObserver(this);
 
     }
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    protected void setupInputProvider(InputProvider provider) {
-        provider.setInputResolver(this);
 
-        this.setupInputProvider(provider);
-    }
-
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-    public void onEvent(EVENTS event, float[] params) {
+    @Override
+    public void onMouseMove(int x, int y) {
         for (InputObserver observer : this.observers)
-            observer.onEvent(event, params);
+            observer.onMouseMove(x, y);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void onClick(int x, int y) {
+        for (InputObserver observer : this.observers)
+            observer.onClick(x, y);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void onDoubleClick(int x, int y) {
+        for (InputObserver observer : this.observers)
+            observer.onDoubleClick(x, y);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void onMouseUp(int x, int y) {
+        for (InputObserver observer : this.observers)
+            observer.onMouseUp(x, y);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void onMouseDown(int x, int y) {
+        for (InputObserver observer : this.observers)
+            observer.onMouseDown(x, y);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void onKeyUp(int key) {
+        for (InputObserver observer : this.observers)
+            observer.onKeyUp(key);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void onKeyDown(int key) {
+        for (InputObserver observer : this.observers)
+            observer.onKeyDown(key);
+    }
+    //------------------------------------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------------------
+    @Override
+    public void onKeyPress(int key) {
+        for (InputObserver observer : this.observers)
+            observer.onKeyPress(key);
     }
 }

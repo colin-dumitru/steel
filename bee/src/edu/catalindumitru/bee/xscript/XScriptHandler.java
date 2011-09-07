@@ -25,19 +25,11 @@ public class XScriptHandler {
     protected Map<String, XScriptCommand> commandHandlers = new TreeMap<String, XScriptCommand>();
     /*a list of xml scripts which will be handled on the next call to update*/
     protected Queue<Element> queuedElements = new LinkedList<Element>();
-    /*unique instance*/
-    protected static XScriptHandler instance = new XScriptHandler();
 
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-    protected XScriptHandler() {
+    public XScriptHandler() {
 
-    }
-
-    //------------------------------------------------------------------------------------------------------------------
-    //------------------------------------------------------------------------------------------------------------------
-    public static XScriptHandler instance() {
-        return instance;
     }
 
     //------------------------------------------------------------------------------------------------------------------
